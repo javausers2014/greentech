@@ -1,0 +1,113 @@
+<workspace name="For Administrators" model="traditional">
+	<title>eMobility starter - Drivers Portal</title>
+	
+	<header>
+		<bar id="emo-main-top-textbar" cls="emo-main-layout-side-border">
+			<link url="${homepageurl}" cls="emo-main-top-textbar-link" target="_blank">
+				<label>Startpage eMobility</label>
+			</link>			
+			<spacer width="10px" />						
+			<link url="javascript:frameBox('Contact', 'http://servicefunctions.bosch.com/user/contactdealer/index.asp?country=sg&amp;lang=en&amp;app=contact?KeepThis=true&amp;TB_iframe=true&amp;height=600&amp;width=600');">
+				<label>Contact</label>
+			</link>
+			<spacer width="10px" />			
+			<link url="?lang=en_UK">
+				<label>english</label>
+			</link>
+			<spacer width="5px" />
+			<link url="?lang=de_DE">
+				<label>deutsch</label>
+			</link>
+		</bar>
+		
+		<bar id="emo-main-topbar" cls="emo-main-layout-side-border">
+			<spacer width="0px" />
+			<html cls="emo-main-topbar-title">
+				<content>
+				<![CDATA[ Bosch eMobility Solution ]]>
+				</content>
+			</html>
+			<fill />
+			<image src="classpath:com.innovations.emobility.intuity.theme.images/logo_bosch_en.gif" />	
+			<spacer width="0px" />	
+		</bar>
+		
+		<bar id="emo-main-toolbar" cls="emo-main-layout-side-border emo-main-toolbar" justify="center">					
+			<menu>			
+				<entry ctCls="emo-toolbar-btn-search" toggleGroup="mainToolbarToggle" pressed="true">
+					<icon>classpath:com.innovations.emobility.intuity.theme.images.header.white/search.png</icon>
+					<view ref="view.Intuity.Search" />
+					<tooltip>
+						<![CDATA[ <div class="toolbar-menu-tooltip">Search Charging Station</div> ]]>
+					</tooltip>
+				</entry>
+
+				<entry ctCls="emo-toolbar-btn-logbook" toggleGroup="mainToolbarToggle">		
+					<icon>classpath:com.innovations.emobility.intuity.theme.images.header.white/states.png</icon>
+					<view ref="view.Intuity.Logbook" />
+					<tooltip>					
+						<![CDATA[ <div class="toolbar-menu-tooltip">Charging Logbook</div> ]]>
+					</tooltip>
+				</entry>
+
+				<!-- EMSTART - 17 entry ctCls="emo-toolbar-btn-billing" toggleGroup="mainToolbarToggle">			
+					<icon>classpath:com.innovations.emobility.intuity.theme.images.header.white/calc.png</icon>
+					<view ref="view.Intuity.Billing" />
+					<tooltip>					
+						<![CDATA[ <div class="toolbar-menu-tooltip">Billing</div> ]]>
+					</tooltip>
+				</entry -->
+				
+				<entry id="emo-toolbar-profile-btn" ctCls="emo-toolbar-btn-profile" toggleGroup="mainToolbarToggle" >
+					<icon>classpath:com.innovations.emobility.intuity.theme.images.header.white/profile.png</icon>
+					<view ref="view.Intuity.Profile" />
+					<tooltip>					
+						<![CDATA[ <div class="toolbar-menu-tooltip">Account Information</div> ]]>
+					</tooltip>					
+				</entry>
+			</menu>
+			<fill />
+			<html id="emo-user-id" cls="emo-main-topbar-info-text emo-text-white">
+			     <content>Driver ID: {0}</content>
+			</html>
+			<spacer width="20px" />
+			<shutdown title="eMobility Solution" message="You sure you want to log out?" >
+                    <tooltip>                   
+                        <![CDATA[ <div class="toolbar-menu-tooltip">Logout</div> ]]>
+                    </tooltip>
+			</shutdown>
+		</bar>		
+	</header>
+	
+	<footer>
+		<bar id="emo-main-footer" cls="emo-main-footerbar emo-main-layout-side-border emo-main-layout-side-border-transparent">
+			<link url="javascript:frameBox('Imprint', 'http://www.bosch.com.sg/content/language1/html/imprint.htm?KeepThis=true&amp;TB_iframe=true&amp;height=700&amp;width=870');">
+				<label>Imprint</label>
+			</link>
+			<separator />
+			<link url="javascript:frameBox('Privacy Statement', 'http://www.bosch.com.sg/content/language1/html/6846_6847.htm?sort=undefined?KeepThis=true&amp;TB_iframe=true&amp;height=700&amp;width=870')">
+				<label>Privacy Statement</label>
+			</link>
+            <separator />
+            <link>
+                <label>Version : ${project.version}</label>
+            </link>
+		</bar>	
+		<bar id="emo-main-footer-copyright" cls="emo-main-footerbar emo-main-layout-side-border emo-main-layout-side-border-transparent">
+			<html cls="copyrightText">
+				<content>
+				<![CDATA[ &copy; Robert Bosch (SEA) Pte Ltd, Singapore ]]>
+				</content>
+			</html>
+		</bar>
+	</footer>
+	
+	<dashboard columns="0"></dashboard>
+	
+	<initialize>
+		<views>
+			<view ref="view.Intuity.Search" />
+		</views>		
+	</initialize>
+	
+</workspace>

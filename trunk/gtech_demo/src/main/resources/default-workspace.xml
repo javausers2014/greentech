@@ -1,0 +1,151 @@
+<workspace name="For Administrators">
+	<title>${title}</title>
+	<header>
+		<bar justify="left" cls="iarc-main-layout-side-border">
+			<spacer width="10px" />
+			<image src="classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech.png" />
+	
+			<fill />
+			<menu>
+				<entry id="IdOne" cls="xwt-menu-text" ctCls="classContainerOne">
+					<title><@i18nText key="menu.webtop" /></title>
+					<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_32.png</icon>
+					<menuItems>
+						<menuItem id="IdOne2" cls="classOne2" ctCls="classContainerOne2">
+							<name><@i18nText key="menu.webtop.helloworld" /></name>	
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<description><@i18nText key="menu.webtop.helloworld.description" /></description>
+							<view ref="webtopdemo.view.helloworld" />
+						</menuItem>
+						<menuItem>
+							<name><@i18nText key="menu.webtop.pubsub" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.pubsubdemo" />
+							<description><@i18nText key="menu.webtop.pubsub.description" /></description>	
+						</menuItem>		
+						<menuItem>
+							<name><@i18nText key="menu.webtop.webtopapi" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.webtopapi" />	
+							<description><@i18nText key="menu.webtop.webtopapi.description" /></description>
+						</menuItem>
+						<menuItem>
+							<name><@i18nText key="menu.webtop.controls" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.controls" />	
+							<description><@i18nText key="menu.webtop.controls.description" /></description>
+						</menuItem>
+					</menuItems>
+				</entry>			
+				<entry>
+					<title><@i18nText key="menu.general" /></title>
+					<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_32.png</icon>
+					<menuItems>
+						<menuItem>
+							<name><@i18nText key="menu.general.googlemaps" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.googlemaps" />	
+							<description><@i18nText key="menu.general.googlemaps.description" /></description>
+						</menuItem>
+						<menuItem>
+							<name><@i18nText key="menu.general.fileexplorer" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.fileexplorer" />
+							<description><@i18nText key="menu.general.fileexplorer.description" /></description>
+						</menuItem>
+						<menuItem>
+							<name><@i18nText key="menu.general.richeditor" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.richeditor" />
+							<description><@i18nText key="menu.general.richeditor.description" /></description>
+						</menuItem>
+					</menuItems>
+				</entry>
+				<entry>
+					<title><@i18nText key="menu.remoting" /></title>
+					<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_32.png</icon>
+					<menuItems>
+						<menuItem>
+							<name><@i18nText key="menu.remoting.dwr" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.dwrintegration" />	
+							<description><@i18nText key="menu.remoting.dwr.description" /></description>
+						</menuItem>			
+						<menuItem>
+							<name><@i18nText key="menu.remoting.reverseajax" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.reverseajax" />	
+							<description><@i18nText key="menu.remoting.reverseajax.description" /></description>
+						</menuItem>				
+						<menuItem>
+							<name><@i18nText key="menu.remoting.serverpush" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.serverpush" />	
+							<description><@i18nText key="menu.remoting.serverpush.description" /></description>
+						</menuItem>
+						<menuItem>
+							<name><@i18nText key="menu.remoting.jsonp" /></name>
+							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<view ref="webtopdemo.view.jsonp" />	
+							<description><@i18nText key="menu.remoting.jsonp.description" /></description>
+						</menuItem>		
+					</menuItems>
+				</entry>
+				<entry>
+					<title><@i18nText key="menu.singlemenuitem" /></title>
+					<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_32.png</icon>
+					<view ref="webtopdemo.view.reverseajax" />
+				</entry>
+			</menu>	
+			<spacer width="10px" />
+			<separator />
+			<html cls="buildNumber">
+				<content>
+				<![CDATA[ <b><@i18nText key="text.language" /></b>: ]]>
+				</content>
+			</html>				
+			<spacer width="5px" />
+			<link url="?lang=en_UK">
+				<label>EN</label>
+			</link>
+			<spacer width="5px" />
+			<link url="?lang=zh_CN">
+				<label>CN</label>
+			</link>	
+			<spacer width="5px" />				
+		</bar>	
+	</header>
+	
+	<footer>
+		<bar id="iarc-main-footer" justify="left" cls="iarc-main-footerbar iarc-main-layout-side-border iarc-main-layout-side-border-transparent">
+			<spacer width="10px" />
+			<separator />
+			<link url="javascript:frameBox('Terms', 'http://...');">
+				<label><@i18nText key="footer.terms" /></label>
+			</link>
+			<separator />
+			<link url="javascript:frameBox('Privacy Statement', 'http://..')">
+				<label><@i18nText key="footer.privacy" /></label>
+			</link>
+            <separator />
+			<fill />
+			<html cls="buildNumber">
+				<content>
+				<![CDATA[ &copy; 2011 GTech All rights reserved.]]>
+				</content>
+			</html>
+			<fill />
+		</bar>
+	</footer>				
+	<dashboard columns="4">
+		<column></column>
+		<column></column>
+		<column></column>
+		<column>
+			<dashlet>
+				<view ref="webtopdemo.view.events" />
+			</dashlet>
+		</column>
+	</dashboard>
+	
+</workspace>

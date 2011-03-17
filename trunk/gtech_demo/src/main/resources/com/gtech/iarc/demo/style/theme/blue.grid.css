@@ -1,0 +1,60 @@
+/* Lite Grid */
+/* Grid */
+.gtech-blue .x-grid3-header {
+	background-color: transparent;
+	background-image: url(images/grid-header-bg.gif);
+}
+
+.gtech-blue .x-grid3-hd-inner {
+	padding: 4px 3px 2px 5px;
+	font-weight: bold;
+	color: #3f3f45;
+}
+
+.gtech-blue .x-grid3-header-offset {
+	padding-left: 0;
+}
+
+.gtech-blue .x-grid3-row {
+	background-image: url(images/grid-cell-bg.gif);	
+}
+
+.gtech-blue .x-grid3-row-selected {
+	background-color: #ccc !important;
+	background-image: none;	
+}
+
+.gtech-blue .x-grid3-cell-inner {
+	padding: 5px 3px 3px 5px;
+}
+
+.gtech-blue .x-grid3-hd-row td {
+	border-color: transparent;    
+}
+
+.gtech-blue .x-grid3-hd-row td, 
+.gtech-blue .x-grid3-row td, 
+.gtech-blue .x-grid3-summary-row td {
+	font-size: 12px;
+	color: #333;
+}
+
+.gtech-blue .x-grid3-row {
+	border-color: #fff;
+}
+ 
+/* Row Numberer */
+.gtech-blue .x-grid3-col-iarc-grid-row-numberer {
+	padding: 6px 0px 6px 0px;		
+	font-weight: bold;
+	background: url(images/grid-cell-row-numberer-bg.gif) 0 0 repeat-x;
+}
+
+.gtech-blue .x-grid3-row-selected .x-grid3-col-iarc-grid-row-numberer {
+	background: 0;
+}
+
+/* Plug Icon */
+.gtech-blue .x-grid3-col-iarc-grid-plug-status {
+	padding: 2px 0px;
+}

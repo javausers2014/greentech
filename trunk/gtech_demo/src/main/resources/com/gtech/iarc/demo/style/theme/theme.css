@@ -1,0 +1,33 @@
+body {
+	background-color: #87888A;
+}
+
+/* Webtop */
+.xwt-menu-text {
+	color: #000 !important;
+	font-weight: bold !important;
+}
+
+/*
+#xwt-container-space {
+	width: 900px !important;
+}
+*/
+
+#xwt-viewport-deskspace {
+  background: #919191 url(wallpaper.png) repeat-x left top;
+}
+
+#main-footer {
+	background-color: #c0c0c0 !important;
+}
+
+#xwt-viewport-deskspace .x-panel-body {
+    background:transparent !important;
+    border: 0 none;
+}
+
+.xwt-mainmenu-text {
+	color: #000 !important;
+	font-weight: bold !important;
+}
