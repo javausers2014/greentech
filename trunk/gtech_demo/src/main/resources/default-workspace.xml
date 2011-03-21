@@ -118,7 +118,7 @@
 	
 	<footer>
 		<bar id="iarc-main-footer" justify="left" cls="iarc-main-footerbar iarc-main-layout-side-border iarc-main-layout-side-border-transparent">
-			<spacer width="10px" />
+			<fill />
 			<separator />
 			<link url="javascript:frameBox('Terms', 'http://...');">
 				<label><@i18nText key="footer.terms" /></label>
@@ -127,8 +127,7 @@
 			<link url="javascript:frameBox('Privacy Statement', 'http://..')">
 				<label><@i18nText key="footer.privacy" /></label>
 			</link>
-            <separator />
-			<fill />
+            <separator />			
 			<html cls="buildNumber">
 				<content>
 				<![CDATA[ &copy; 2011 GTech All rights reserved.]]>

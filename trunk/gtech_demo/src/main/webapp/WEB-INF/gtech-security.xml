@@ -11,28 +11,32 @@
 
 	<security:global-method-security pre-post-annotations="enabled" />
 
-	<security:http auto-config="true" >
-		<!-- Anonymous -->		
-		<security:intercept-url pattern="/resource/**" filters="none" />		
-		<security:intercept-url pattern="/login" filters="none" />
-		<security:intercept-url pattern="/logout" filters="none" />		
-		
-		<!-- Authenticated -->		
-		<security:intercept-url pattern="/**" access="ROLE_AUTHENTICATED"/>
-		
-		<security:form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?e=auth" />
-		<security:logout logout-url="/logout" logout-success-url="/login?e=logout" />		
-	</security:http>
+	<http>
+		<!--
+		 <intercept-url pattern="/css/main.css" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+-->
+		<form-login login-page="/login.html" default-target-url="/sec/index.html"
+			authentication-failure-url="/login.html?e=auth" />
+		<logout logout-url="/logout.html" logout-success-url="/login.html?e=logout" />
+	</http>
  
  	<security:authentication-manager>
    		<security:authentication-provider>
-   			<security:password-encoder hash="md5" />
    			
-      		<security:user-service>
-      			<!-- Password is "12345" -->
+   			<!-- Mem auth provider, Password is "12345" -->
+   			<!--
+   			<security:password-encoder hash="md5" />
+      		<security:user-service>      			
 	        	<security:user name="demo" password="fe01ce2a7fbac8fafaed7c982a04e229" authorities="ROLE_AUTHENTICATED" />
       		</security:user-service>
+      		-->
+      		
+			<bean class="com.gtech.iarc.security.DefaultAuthenticationProvider">
+				<property name="userDetailsService">
+					<bean class="com.gtech.iarc.security.DefaultUserDetailsService"/>
+				</property>
+			</bean>      		
    		</security:authentication-provider>
 	</security:authentication-manager>
- 	
+	
 </beans:beans>
