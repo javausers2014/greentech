@@ -5,7 +5,7 @@ import java.util.List;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 
-import com.gtech.iarc.demo.models.Personnel;
+import com.gtech.iarc.base.models.Personnel;
 import com.gtech.iarc.demo.util.PersonnelFactory;
 
 public class PersonnelService {	

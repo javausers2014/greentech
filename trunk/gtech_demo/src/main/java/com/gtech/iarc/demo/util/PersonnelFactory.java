@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import com.gtech.iarc.demo.models.Personnel;
+import com.gtech.iarc.base.models.Personnel;
 import com.gtech.iarc.demo.web.Department;
 
 public class PersonnelFactory {

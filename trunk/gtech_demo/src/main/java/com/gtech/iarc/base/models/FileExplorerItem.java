@@ -1,4 +1,4 @@
-package com.gtech.iarc.demo.models;
+package com.gtech.iarc.base.models;
 
 import java.io.File;
 import java.util.Date;

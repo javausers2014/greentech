@@ -1,4 +1,4 @@
-package com.gtech.iarc.security;
+package com.gtech.iarc.base.security;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.Ordered;

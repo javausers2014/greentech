@@ -11,6 +11,29 @@
   
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!-- unified location for version numbers. child projects can override -->
+		<spring.framework.version>3.0.4.RELEASE</spring.framework.version>
+		<spring.batch.version>2.1.2.RELEASE </spring.batch.version>
+		<spring.security.version>3.0.3.RELEASE</spring.security.version>
+		<spring.ws.version>1.5.9</spring.ws.version>
+		<aspectj.version>1.6.8</aspectj.version>
+		<hibernate.version>3.5.1-Final</hibernate.version>
+		<hsqldb.version>1.8.0.10</hsqldb.version>
+		<junit.version>4.7</junit.version>
+		<easymock.version>2.5.2</easymock.version>
+		<jamon.version>2.4</jamon.version>
+		<jpa.version>1.0</jpa.version>
+		<jms.version>1.1.1</jms.version>
+		<jackson.version>1.4.2</jackson.version>
+		<hessian.version>3.1.5</hessian.version>
+		<activemq.version>5.3.1</activemq.version>
+		<cglib.version>2.2</cglib.version>
+		<!--
+			using log4j 1.2.14 because 1.2.15 has a transitive dependency to the
+			JMS and JMX jars. This is not needed in most of our projects
+		-->
+		<log4j.version>1.2.14</log4j.version>		
+		
 	</properties>  
   
 	<dependencies>
@@ -83,7 +106,46 @@
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http-jetty</artifactId>
 			<version>2.3.1</version>
-		</dependency>		
+		</dependency>	
+		
+		<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>${jpa.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>					
 	</dependencies>
 	
 	<build>

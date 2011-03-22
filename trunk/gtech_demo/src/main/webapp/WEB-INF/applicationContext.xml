@@ -1,61 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans 	xmlns="http://www.springframework.org/schema/beans"
-    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:p="http://www.springframework.org/schema/p"
-		xmlns:context="http://www.springframework.org/schema/context"
-		xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context-3.0.xsd
 			http://www.springframework.org/schema/jdbc
-            http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">	
-			
-		<jdbc:embedded-database id="dataSource">
-			<jdbc:script location="classpath:com/gtech.iarc/demodb/demo_schema.sql"/>
-			<jdbc:script location="classpath:com/gtech.iarc/demodb/demo_data.sql"/>
-		</jdbc:embedded-database>
-	
-		<!-- A Hibernate SessionFactory for mapping Accounts and Restaurants from object to relation tables -->
-		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-			<property name="dataSource" ref="dataSource"/>
-			<property name="annotatedClasses">
-				<list>
-					<value>rewards.internal.account.Account</value>
-					<value>rewards.internal.account.Beneficiary</value>
-					<value>rewards.internal.account.CreditCard</value>
-					<value>rewards.internal.restaurant.Restaurant</value>
-				</list>
-			</property>
-			<property name="hibernateProperties">
-				<value>
-					hibernate.format_sql=true
-					hibernate.show_sql=true
-				</value>
-			</property>
-		</bean>
-	
-		<!-- A transaction manager for working with Hibernate SessionFactories -->
-		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-			<property name="sessionFactory" ref="sessionFactory"/>
-		</bean>
-		
-   		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" 
-   			  p:locations="classpath:webtop-configuration.properties" />
- 		
+            http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
 
-		<bean id="FileExplorerService" class="com.gtech.iarc.demo.web.FileExplorerService">
-			<property name="fileExplorerPath" value="${webtopdemo.fileexplorer.filePath}" />
-		</bean>
-		
-		<bean id="WebtopProvider" class="com.gtech.iarc.demo.DemoAppWebtopProvider">
-			<property name="customTemplateModel">
-				<map> 
-					<entry key="title" value="${webtop.workspace.title:WEBTOP_DEMO}"/>
-				</map>				
+	<jdbc:embedded-database id="dataSource">
+		<jdbc:script location="classpath:com/gtech.iarc/demodb/demo_schema.sql" />
+		<jdbc:script location="classpath:com/gtech.iarc/demodb/demo_data.sql" />
+	</jdbc:embedded-database>
+
+	<!--
+		A Hibernate SessionFactory for mapping Accounts and Restaurants from
+		object to relation tables
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!--
+			<property name="annotatedClasses"> <list>
+			<value>rewards.internal.account.Account</value>
+			<value>rewards.internal.account.Beneficiary</value>
+			<value>rewards.internal.account.CreditCard</value>
+			<value>rewards.internal.restaurant.Restaurant</value> </list>
 			</property>
-		</bean>  
-			  <!--p:workspaceHelper-ref="WorkspaceHelper"/> ${webtop.workspace.title:WEBTOP_DEMO} -->
-		
-		
-	<import resource="classpath:gtech-security.xml" />
+		-->
+		<property name="automaticAnnotatedPackages">
+			<list>
+				<value>com.gtech.iarc.base.models</value>
+			</list>
+		</property>
+		<!--
+			<property name="annotatedPackages"> <list>
+			<value>com.package.domain</value>
+			<value>com.package.domain.view</value> </list> </property>
+		-->
+		<property name="hibernateProperties">
+			<value>
+				hibernate.format_sql=true
+				hibernate.show_sql=true
+				</value>
+		</property>
+	</bean>
+
+	<!--
+		A transaction manager for working with Hibernate SessionFactories
+	-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:locations="classpath:webtop-configuration.properties" />
+
+
+	<bean id="FileExplorerService" class="com.gtech.iarc.demo.web.FileExplorerService">
+		<property name="fileExplorerPath" value="${webtopdemo.fileexplorer.filePath}" />
+	</bean>
+
+	<bean id="WebtopProvider" class="com.gtech.iarc.demo.DemoAppWebtopProvider">
+		<property name="customTemplateModel">
+			<map>
+				<entry key="title" value="${webtop.workspace.title:WEBTOP_DEMO}" />
+			</map>
+		</property>
+	</bean>
+	<!--
+		p:workspaceHelper-ref="WorkspaceHelper"/>
+		${webtop.workspace.title:WEBTOP_DEMO}
+	-->
+
+
+	<import resource="/gtech-security.xml" />
 </beans>

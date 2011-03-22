@@ -14,7 +14,7 @@ import javax.activation.MimetypesFileTypeMap;
 
 import org.directwebremoting.io.FileTransfer;
 
-import com.gtech.iarc.demo.models.FileExplorerItem;
+import com.gtech.iarc.base.models.FileExplorerItem;
 
 public class FileExplorerService {
 	private String fileExplorerPath;

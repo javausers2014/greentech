@@ -31,9 +31,9 @@
       		</security:user-service>
       		-->
       		
-			<bean class="com.gtech.iarc.security.DefaultAuthenticationProvider">
+			<bean class="com.gtech.iarc.base.security.DefaultAuthenticationProvider">
 				<property name="userDetailsService">
-					<bean class="com.gtech.iarc.security.DefaultUserDetailsService"/>
+					<bean class="com.gtech.iarc.base.security.DefaultUserDetailsService"/>
 				</property>
 			</bean>      		
    		</security:authentication-provider>
