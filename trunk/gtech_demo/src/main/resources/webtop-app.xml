@@ -44,21 +44,14 @@
 		<view id="webtopdemo.view.subscribe" src="com.gtech.iarc.demo.views/Subscriber.js" jsClass="WebtopDemo.Subscriber" />
 		<view id="webtopdemo.view.pubsubdemo" src="com.gtech.iarc.demo.views/PublisherSubscriberDemo.js" jsClass="WebtopDemo.PublisherSubscriberDemo" />
 		<view id="webtopdemo.view.reverseajax" src="com.gtech.iarc.demo.views/ReverseAjaxDemo.js" jsClass="WebtopDemo.ReverseAjax" />
-		<view id="webtopdemo.view.webtopapi" src="com.gtech.iarc.demo.views/WebtopApi.js" jsClass="WebtopDemo.WebtopApi" />
 		<view id="webtopdemo.view.serverpush" src="com.gtech.iarc.demo.views/ServerPushDemo.js" jsClass="WebtopDemo.ServerPushDemo" />
 		<view id="webtopdemo.view.events" src="com.gtech.iarc.demo.views/EventsDashlet.js" jsClass="WebtopDemo.EventsDashlet" />
 		<view id="webtopdemo.view.jsonp" src="com.gtech.iarc.demo.views/JsonpDemo.js" jsClass="WebtopDemo.JSONPDemo" />
 		<view id="webtopdemo.view.controls" src="com.gtech.iarc.demo.views/Controls.js" jsClass="WebtopDemo.Controls" />
-		<view id="webtopdemo.view.fileexplorer" src="com.gtech.iarc.demo.views/FileExplorer.js" jsClass="WebtopDemo.FileExplorer" />
-		
+		<view id="webtopdemo.view.fileexplorer" src="com.gtech.iarc.demo.views/FileExplorer.js" jsClass="WebtopDemo.FileExplorer" />		
 		<view id="webtopdemo.view.serversettings" src="com.gtech.iarc.demo.views/ServerSettings.js" jsClass="WebtopDemo.ServerSettings" />
 		<view id="webtopdemo.view.i18nmanager" src="com.gtech.iarc.demo.views/I18NManager.js" jsClass="WebtopDemo.I18NManager" />
-		<view id="webtopdemo.view.uidesigner" src="com.gtech.iarc.demo.views/UIDesigner.js" jsClass="WebtopDemo.UIDesigner" />
-		<view id="webtopdemo.view.usermanager" src="com.gtech.iarc.demo.views/UserManager.js" jsClass="WebtopDemo.UserManager" />
-		<view id="webtopdemo.view.weatherclockdashlet" src="com.gtech.iarc.demo.views/WeatherClockDashlet.js" jsClass="WebtopDemo.WeatherClock" />
-		
-		<view id="webtopdemo.view.richeditor" src="com.gtech.iarc.demo.views/RichEditor.js" jsClass="WebtopDemo.RichEditor" />
-		
+		<view id="webtopdemo.view.richeditor" src="com.gtech.iarc.demo.views/RichEditor.js" jsClass="WebtopDemo.RichEditor" />		
 		<view id="webtopdemo.view.testlab" src="com.gtech.iarc.demo.views/TestLab.js" jsClass="WebtopDemo.TestLab" />
 		
 	</views>

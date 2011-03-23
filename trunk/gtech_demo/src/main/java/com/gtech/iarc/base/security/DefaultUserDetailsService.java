@@ -19,36 +19,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.gtech.iarc.base.models.UserAccount;
 import com.gtech.iarc.base.models.UserPermission;
+import com.gtech.iarc.base.service.UserAccountService;
 
 public class DefaultUserDetailsService implements
 		AuthenticationUserDetailsService {
 
-	private SessionFactory sessionFactory;
+	private UserAccountService userAccountService;
 
-	/**
-	 * Creates an new hibernate-based account repository.
-	 * 
-	 * @param sessionFactory
-	 *            the Hibernate session factory required to obtain sessions
-	 */
-	public DefaultUserDetailsService(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
-	public UserAccount findByUserName(String userName) {
-		Query query = getCurrentSession().createQuery(
-				"from UserAccount ua where ua.username = ?");
-		query.setString(0, userName);
-		return (UserAccount) query.uniqueResult();
-	}
-
-	/**
-	 * Returns the session associated with the ongoing reward transaction.
-	 * 
-	 * @return the transactional session
-	 */
-	protected Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
+	public void setUserAccountService(UserAccountService userAccountService) {
+		this.userAccountService = userAccountService;
 	}
 
 	public UserDetails loadUserDetails(Authentication token)
@@ -62,7 +42,7 @@ public class DefaultUserDetailsService implements
 
 	private Collection<GrantedAuthority> getGrantedAuthorityAssigned(
 			String userId) {
-		UserAccount user = this.findByUserName(userId);
+		UserAccount user = userAccountService.findByUserName(userId);
 		if (user == null) {
 			throw new UsernameNotFoundException("User " + userId
 					+ " is not found.");

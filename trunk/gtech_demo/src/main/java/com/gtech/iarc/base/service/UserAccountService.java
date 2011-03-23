@@ -3,6 +3,8 @@ package com.gtech.iarc.base.service;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gtech.iarc.base.models.UserAccount;
 
@@ -13,17 +15,12 @@ public class UserAccountService {
 
 	private SessionFactory sessionFactory;
 
-	/**
-	 * Creates an new hibernate-based account repository.
-	 * 
-	 * @param sessionFactory
-	 *            the Hibernate session factory required to obtain sessions
-	 */
-	public UserAccountService(SessionFactory sessionFactory) {
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}	
+	}
 
-
+	@Transactional(propagation=Propagation.SUPPORTS)
 	public UserAccount findByUserName(String userName) {
 		Query query = getCurrentSession().createQuery(
 				"from UserAccount ua where ua.username = ?");

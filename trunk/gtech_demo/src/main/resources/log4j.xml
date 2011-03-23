@@ -26,7 +26,7 @@
 	<logger name="com.innovations.webtop" additivity="false"/>	
 	
 	<root>
-		<priority value="WARN" />
+		<priority value="INFO" />
 		<appender-ref ref="CONSOLE" />
 	</root>
 	

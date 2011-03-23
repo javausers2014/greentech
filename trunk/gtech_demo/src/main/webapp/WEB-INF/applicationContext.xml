@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd			
 			http://www.springframework.org/schema/jdbc
             http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
-
+            
+	<context:annotation-config />
 	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:com/gtech.iarc/demodb/demo_schema.sql" />
-		<jdbc:script location="classpath:com/gtech.iarc/demodb/demo_data.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_schema.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_data.sql" />
 	</jdbc:embedded-database>
 
 	<!--
@@ -30,11 +35,7 @@
 			<value>rewards.internal.restaurant.Restaurant</value> </list>
 			</property>
 		-->
-		<property name="automaticAnnotatedPackages">
-			<list>
-				<value>com.gtech.iarc.base.models</value>
-			</list>
-		</property>
+		 <property name="packagesToScan" value="com.gtech.iarc.base.models"/>
 		<!--
 			<property name="annotatedPackages"> <list>
 			<value>com.package.domain</value>
@@ -56,6 +57,15 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
+	<!--
+		Instructs the container to look for beans with @Transactional and
+		decorate them
+	-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="userAccountService" class="com.gtech.iarc.base.service.UserAccountService">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:locations="classpath:webtop-configuration.properties" />
