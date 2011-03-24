@@ -28,7 +28,7 @@ public class GTechDBUserDetailsSecurityService implements
 	}
 
 	private Collection<GrantedAuthority> getGrantedAuthorityAssigned(
-			Set<UserPermission> permSet) {
+			List<UserPermission> permSet) {
 
 		if (permSet.isEmpty()) {
 			return Collections.emptyList();

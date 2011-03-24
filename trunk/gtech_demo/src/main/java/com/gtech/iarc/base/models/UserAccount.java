@@ -1,6 +1,8 @@
 package com.gtech.iarc.base.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,7 +37,7 @@ public class UserAccount {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "USER_ID")
-	private Set<UserPermission> permissions = new HashSet<UserPermission>();
+	private List<UserPermission> permissions = new ArrayList<UserPermission>();
 
 	public long getId() {
 		return id;
@@ -69,11 +71,11 @@ public class UserAccount {
 		this.personnelId = personnelId;
 	}
 
-	public Set<UserPermission> getPermissions() {
+	public List<UserPermission> getPermissions() {
 		return permissions;
 	}
 
-	public void setPermissions(Set<UserPermission> permissions) {
+	public void setPermissions(List<UserPermission> permissions) {
 		this.permissions = permissions;
 	}
 

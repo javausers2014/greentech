@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,14 +16,14 @@ public class UserPermission {
 	@Column(name = "ID")
 	private long id;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "USER_ID")	
 	private UserAccount user;
 	
 //	@Column(name = "PERMISSION_ID")
 //	private long permissionId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "PERMISSION_ID")
 	private Permission permission;
 	
