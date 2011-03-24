@@ -5,6 +5,7 @@ import java.util.Date;
 import com.gtech.iarc.demo.web.Department;
 
 public class Personnel {
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String house;

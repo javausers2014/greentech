@@ -23,7 +23,7 @@ public class UserAccountService {
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public UserAccount findByUserName(String userName) {
 		Query query = getCurrentSession().createQuery(
-				"from UserAccount ua where ua.username = ?");
+				"from UserAccount ua where ua.userName = ?");
 		query.setString(0, userName);		
 		return (UserAccount) query.uniqueResult();
 	}

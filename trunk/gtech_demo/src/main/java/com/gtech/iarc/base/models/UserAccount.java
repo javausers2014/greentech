@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "USER")
@@ -26,6 +27,10 @@ public class UserAccount {
 	@Column(name = "FULLNAME")
 	private String fullName;
 	
+	@Column(name = "PASSWORD")
+	private String password;
+	
+	@Transient
 	private long personnelId;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -71,4 +76,14 @@ public class UserAccount {
 	public void setPermissions(Set<UserPermission> permissions) {
 		this.permissions = permissions;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 }
