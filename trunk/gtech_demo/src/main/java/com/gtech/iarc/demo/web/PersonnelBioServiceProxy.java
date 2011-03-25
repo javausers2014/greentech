@@ -5,10 +5,10 @@ import java.util.List;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 
-import com.gtech.iarc.base.models.Personnel;
+import com.gtech.iarc.base.models.personalinfo.Personnel;
 import com.gtech.iarc.demo.util.PersonnelFactory;
 
-public class PersonnelService {	
+public class PersonnelBioServiceProxy {	
 	public List<Personnel> getPersonnels() {
 		WebContext f = WebContextFactory.get();
 		return PersonnelFactory.getPersonnel();		

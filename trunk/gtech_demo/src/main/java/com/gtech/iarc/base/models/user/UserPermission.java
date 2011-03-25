@@ -1,4 +1,4 @@
-package com.gtech.iarc.base.models;
+package com.gtech.iarc.base.models.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +8,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.gtech.iarc.base.models.core.DataObject;
+import com.gtech.iarc.base.models.security.Permission;
+
 @Entity
 @Table(name = "USER_PERMISSIONS")
-public class UserPermission {
+public class UserPermission extends DataObject {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5376356727111110868L;
+
 	@Id
 	@Column(name = "ID")
 	private long id;

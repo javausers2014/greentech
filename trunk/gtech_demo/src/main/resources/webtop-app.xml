@@ -21,10 +21,10 @@
 	</globalIncludes>
 	
 	<services>	
-		<dwr class="com.gtech.iarc.demo.web.PersonnelService" scriptName="PersonnelService">
+		<dwr class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" scriptName="PersonnelService">
 			<converters>
-				<converter class="com.gtech.iarc.demo.models.Personnel" />	
-				<converter type="enum" class="com.gtech.iarc.demo.web.Department" />			
+				<converter class="com.gtech.iarc.base.models.personalinfo.Personnel" />	
+				<converter type="enum" class="com.gtech.iarc.base.models.personalinfo.Department" />			
 			</converters>
 		</dwr>
 				
@@ -32,7 +32,7 @@
 		<dwr type="spring" scriptName="FileExplorerService">
 			<property key="beanName" value="FileExplorerService" />
 			<converters>
-				<converter class="com.gtech.iarc.demo.models.FileExplorerItem" />	
+				<converter class="com.gtech.iarc.base.models.resource.FileExplorerItem" />	
 			</converters>			
 		</dwr>
 	</services>

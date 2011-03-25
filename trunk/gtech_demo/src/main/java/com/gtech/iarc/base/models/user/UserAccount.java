@@ -1,4 +1,4 @@
-package com.gtech.iarc.base.models;
+package com.gtech.iarc.base.models.user;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,10 +15,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.gtech.iarc.base.models.core.DataObject;
+
 @Entity
 @Table(name = "USER")
-public class UserAccount {
+public class UserAccount extends DataObject {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -310122997165589415L;
+
 	@Id
 	@Column(name = "ID")
 	private long id;

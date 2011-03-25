@@ -1,4 +1,4 @@
-package com.gtech.iarc.base.security;
+package com.gtech.iarc.base.springsecurity;
 
 import java.util.Collection;
 

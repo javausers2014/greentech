@@ -1,63 +1,50 @@
-package com.gtech.iarc.demo.util;
+package com.gtech.iarc.base.service.userbio;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import com.gtech.iarc.base.models.personalinfo.Department;
 import com.gtech.iarc.base.models.personalinfo.Personnel;
+import com.gtech.iarc.base.persistence.BaseDAO;
 
-public class PersonnelFactory {
-	private static Map<String, Personnel> PERSONNELS = new HashMap<String, Personnel>();
+public class PersonnelBioService {
 	
-	public static List<Personnel> getPersonnel() {
-		if (PERSONNELS.size() == 0) {
-			setupPersonnelList();
-		}
+	private BaseDAO baseDAO;
+
+	public void setBaseDAO(BaseDAO baseDAO) {
+		this.baseDAO = baseDAO;
+	}
+	
+	public List<Personnel> getPersonnel() {
+
 		List<Personnel> personnels = new ArrayList<Personnel>();
-		for (Personnel p : PERSONNELS.values()) {
-			personnels.add(p);
-		}
-		
+
 		return personnels;
 	}
 	
-	public static void addPersonnel(Personnel p) {
-		if (p.getPersonnelNumber() == null) {
-			String id = UUID.randomUUID().toString();
-			p.setPersonnelNumber(id);
-			PERSONNELS.put(id, p);
-		} else {
-			if (!PERSONNELS.containsKey(p.getPersonnelNumber())) {
-				PERSONNELS.put(p.getPersonnelNumber(), p);
-			}			
-		}
+	public void addPersonnel(Personnel p) {
+
 	}
 	
-	public static void addAllPersonnel(List<Personnel> ps) {
+	public void addAllPersonnel(List<Personnel> ps) {
 		for (Personnel p : ps) {
 			addPersonnel(p);
 		}
 	}
 	
-	public static void deleteAllPersonnel(List<Personnel> ps) {
-		for (Personnel p : ps) {
-			PERSONNELS.remove(p.getPersonnelNumber());
-		}		
+	public void deleteAllPersonnel(List<Personnel> ps) {
+		
 	}
 	
-	public static void updateAllPersonnel(List<Personnel> ps) {
-		for (Personnel p : ps) {
-			PERSONNELS.put(p.getPersonnelNumber(), p);
-		}
+	public void updateAllPersonnel(List<Personnel> ps) {
+
 	}	
 	
-	private static void setupPersonnelList() {
+	private void setupPersonnelList() {
 		List<Personnel> personnels = new ArrayList<Personnel>();
 				
 		try {
@@ -144,8 +131,5 @@ public class PersonnelFactory {
 		
 		return p;
 	}
+
 }
-
-
-
-

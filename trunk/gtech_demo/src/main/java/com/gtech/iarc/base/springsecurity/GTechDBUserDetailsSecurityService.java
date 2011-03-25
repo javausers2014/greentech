@@ -1,4 +1,4 @@
-package com.gtech.iarc.base.security;
+package com.gtech.iarc.base.springsecurity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.gtech.iarc.base.models.UserAccount;
-import com.gtech.iarc.base.models.UserPermission;
-import com.gtech.iarc.base.service.UserAccountService;
+import com.gtech.iarc.base.models.user.UserAccount;
+import com.gtech.iarc.base.models.user.UserPermission;
+import com.gtech.iarc.base.service.userbio.UserAccountService;
 
 public class GTechDBUserDetailsSecurityService implements
 		UserDetailsService {

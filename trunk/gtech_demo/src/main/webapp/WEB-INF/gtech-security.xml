@@ -26,9 +26,9 @@
 		<authentication-provider ref="DefaultAuthenticationProvider"/>
 	</authentication-manager>
 
-	<beans:bean id="DefaultAuthenticationProvider" class="com.gtech.iarc.base.security.GTechAuthenticationProvider" >
+	<beans:bean id="DefaultAuthenticationProvider" class="com.gtech.iarc.base.springsecurity.GTechAuthenticationProvider" >
 		<beans:property name="userDetailsService">
-			<beans:bean class="com.gtech.iarc.base.security.GTechDBUserDetailsSecurityService">
+			<beans:bean class="com.gtech.iarc.base.springsecurity.GTechDBUserDetailsSecurityService">
 				<beans:property name="userAccountService" ref="userAccountService" />
 			</beans:bean>
 		</beans:property>
@@ -41,7 +41,7 @@
 	<beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
 		<beans:property name="decisionVoters">
 			<beans:list>
-				<beans:bean class="com.gtech.iarc.base.security.SimplePermissionVoter" />
+				<beans:bean class="com.gtech.iarc.base.springsecurity.SimplePermissionVoter" />
 			</beans:list>
 		</beans:property>
 	</beans:bean>

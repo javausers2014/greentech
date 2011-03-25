@@ -1,4 +1,4 @@
-package com.gtech.iarc.demo.web;
+package com.gtech.iarc.base.models.personalinfo;
 
 public enum Department {
 	IT,

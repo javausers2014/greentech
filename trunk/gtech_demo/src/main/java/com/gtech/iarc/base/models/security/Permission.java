@@ -1,14 +1,21 @@
-package com.gtech.iarc.base.models;
+package com.gtech.iarc.base.models.security;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.gtech.iarc.base.models.core.DataObject;
+
 @Entity
 @Table(name = "PERMISSION")
-public class Permission {
+public class Permission extends DataObject {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1291520203742287916L;
+
 	@Id
 	@Column(name = "ID")
 	private long id;
