@@ -71,6 +71,13 @@
 		<property name="baseDAO" ref="baseDAO" />
 	</bean>
 	
+	<bean id="personnelBioService" class="com.gtech.iarc.base.service.userbio.PersonnelBioService">
+		<property name="baseDAO" ref="baseDAO" />
+	</bean>	
+	
+	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" 
+		  p:personnelBioService-ref = "personnelBioService"/>		
+	
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:locations="classpath:webtop-configuration.properties" />

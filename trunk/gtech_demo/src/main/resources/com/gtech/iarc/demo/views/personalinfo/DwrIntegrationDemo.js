@@ -65,7 +65,7 @@ WebtopDemo.DwrIntegration = Ext.extend(Webtop.View, {
 					{ header: "Number", width: 30, dataIndex: "personnelNumber", editor: new Ext.form.TextField()},
 					{ header: "City", width: 30, dataIndex: "city", editor: new Ext.form.TextField()},
 					{ header: "Mobile", width: 30, dataIndex: "mobile", editor: new Ext.form.TextField()},
-					{ header: "Hire Date", width: 30, dataIndex: "hireDate", renderer: Ext.util.Format.dateRenderer('d/m/Y'), editor: new Ext.form.DateField() },
+					{ header: "BirthDate", width: 30, dataIndex: "hireDate", renderer: Ext.util.Format.dateRenderer('d/m/Y'), editor: new Ext.form.DateField() },
 					{ header: "E-mail", width: 30, dataIndex: "email", editor: new Ext.form.TextField({ vtype: "email" })},
 					{ header: "Department", width: 30, dataIndex: "department", editor: new Ext.form.TextField()}
 				],

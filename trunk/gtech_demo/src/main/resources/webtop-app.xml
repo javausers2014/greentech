@@ -21,7 +21,8 @@
 	</globalIncludes>
 	
 	<services>	
-		<dwr class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" scriptName="PersonnelService">
+		<dwr type="spring" scriptName="PersonnelService">
+			<property key="beanName" value="personnelBioServiceProxy"/>
 			<converters>
 				<converter class="com.gtech.iarc.base.models.personalinfo.Personnel" />	
 				<converter type="enum" class="com.gtech.iarc.base.models.personalinfo.Department" />			

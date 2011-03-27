@@ -11,3 +11,6 @@ insert into USER_PERMISSIONS (PERMISSION_ID, USER_ID) values (1,0);
 insert into USER_PERMISSIONS (PERMISSION_ID, USER_ID) values (2,0);
 insert into USER_PERMISSIONS (PERMISSION_ID, USER_ID) values (3,0);
 insert into USER_PERMISSIONS (PERMISSION_ID, USER_ID) values (1,1);
+
+insert into PERSONNEL (FirstName, LastName, MiddleName , PersonnelNo ,Phone, Fax, Mobile, Email, BirthDate) values ('John', 'Wyne','' , 'YUO19890201987', '', '', '', '', '1965-11-28');
+insert into PERSONNEL (FirstName, LastName, MiddleName , PersonnelNo ,Phone, Fax, Mobile, Email, BirthDate) values ('Kitty', 'Law', 'Aikeo','FND19342019216','123123', '5674577','565473345', 'so@ho.com', '1934-01-08');

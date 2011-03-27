@@ -2,33 +2,37 @@ package com.gtech.iarc.demo.web;
 
 import java.util.List;
 
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
-
 import com.gtech.iarc.base.models.personalinfo.Personnel;
-import com.gtech.iarc.demo.util.PersonnelFactory;
+import com.gtech.iarc.base.service.userbio.PersonnelBioService;
 
 public class PersonnelBioServiceProxy {	
+	
+	private PersonnelBioService personnelBioService;
+	
+	
+	public void setPersonnelBioService(PersonnelBioService personnelBioService) {
+		this.personnelBioService = personnelBioService;
+	}
+
 	public List<Personnel> getPersonnels() {
-		WebContext f = WebContextFactory.get();
-		return PersonnelFactory.getPersonnel();		
+		
+		return personnelBioService.searchByName(null);		
 	}
 	
 	public List<Personnel> createPersonnel(List<Personnel> ps) {
-		PersonnelFactory.addAllPersonnel(ps);
-		
-		return PersonnelFactory.getPersonnel();
+		personnelBioService.addAllPersonnel(ps);		
+		return this.getPersonnels();	
 	}
 	
 	public List<Personnel> deletePersonnel(List<Personnel> ps) {
-		PersonnelFactory.deleteAllPersonnel(ps);
+		personnelBioService.deleteAllPersonnel(ps);
 		
-		return PersonnelFactory.getPersonnel();
+		return this.getPersonnels();
 	}
 	
 	public List<Personnel> updatePersonnel(List<Personnel> ps) {
-		PersonnelFactory.updateAllPersonnel(ps);
+		personnelBioService.updateAllPersonnel(ps);
 		
-		return PersonnelFactory.getPersonnel();
+		return this.getPersonnels();
 	}
 }

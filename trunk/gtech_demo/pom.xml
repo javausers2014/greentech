@@ -33,7 +33,7 @@
 			JMS and JMX jars. This is not needed in most of our projects
 		-->
 		<log4j.version>1.2.14</log4j.version>		
-		
+		<gson.version>1.6</gson.version>
 	</properties>  
   
 	<dependencies>
@@ -148,6 +148,12 @@
 			<artifactId>hsqldb</artifactId>
 			<version>${hsqldb.version}</version>
 		</dependency>
+		
+	    <dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>		
 	</dependencies>
 	
 	<build>

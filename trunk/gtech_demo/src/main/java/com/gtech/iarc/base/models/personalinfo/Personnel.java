@@ -2,20 +2,52 @@ package com.gtech.iarc.base.models.personalinfo;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.gtech.iarc.base.models.core.DataObject;
 
-
+@Entity
+@Table(name = "Personnel")
 public class Personnel extends DataObject {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6134133644198179906L;
+	@Id
+	@Column(name = "ID")
 	private long id;
+	
+	@Column(name = "FirstName")
 	private String firstName;
+	
+	@Column(name = "LastName")
 	private String lastName;
+	
+	@Column(name = "MiddleName")
 	private String middleName;
+	
+	@Column(name = "PersonnelNo")
 	private String personnelNumber;
+	
+	@Column(name = "Phone")
 	private String phone;
+	
+	@Column(name = "Fax")
 	private String fax;
+	
+	@Column(name = "Mobile")
 	private String mobile;
-	private Date birthday;
+	
+	@Column(name = "BirthDate")
+	private Date birthddate;
+	
+	@Column(name = "Email")
 	private String email;
+	
 	public long getId() {
 		return id;
 	}
@@ -64,11 +96,12 @@ public class Personnel extends DataObject {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public Date getBirthday() {
-		return birthday;
+
+	public Date getBirthddate() {
+		return birthddate;
 	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setBirthddate(Date birthddate) {
+		this.birthddate = birthddate;
 	}
 	public String getEmail() {
 		return email;
