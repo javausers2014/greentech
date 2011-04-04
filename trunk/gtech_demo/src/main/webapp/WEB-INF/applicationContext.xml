@@ -87,10 +87,10 @@
 		<property name="fileExplorerPath" value="${webtopdemo.fileexplorer.filePath}" />
 	</bean>
 
-	<bean id="WebtopProvider" class="com.gtech.iarc.demo.DemoAppWebtopProvider">
+	<bean id="WebtopProvider" class=" com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
 		<property name="customTemplateModel">
 			<map>
-				<entry key="title" value="${webtop.workspace.title:WEBTOP_DEMO}" />
+				<entry key="title" value="iPallet" />
 			</map>
 		</property>
 	</bean>
