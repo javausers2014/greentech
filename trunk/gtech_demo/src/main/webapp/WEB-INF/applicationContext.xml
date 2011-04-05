@@ -87,7 +87,7 @@
 		<property name="fileExplorerPath" value="${webtopdemo.fileexplorer.filePath}" />
 	</bean>
 
-	<bean id="WebtopProvider" class=" com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
+	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
 		<property name="customTemplateModel">
 			<map>
 				<entry key="title" value="iPallet" />

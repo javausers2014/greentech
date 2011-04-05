@@ -15,7 +15,7 @@
 							<name><@i18nText key="ipallet.menu.code.uom" /></name>	
 							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
 							<description><@i18nText key="ipallet.menu.code.uom.description" /></description>
-							<view ref="ipallet.view.uom" />
+							<view ref="ipallet.view.code.uom" />
 						</menuItem>
 					</menuItems>
 				</entry>			
@@ -65,7 +65,7 @@
 		<column></column>
 		<column>
 			<dashlet>
-				<view ref="ipallet.view.tasks" />
+				<view ref="ipallet.view.util.tasks" />
 			</dashlet>			
 		</column>
 	</dashboard>

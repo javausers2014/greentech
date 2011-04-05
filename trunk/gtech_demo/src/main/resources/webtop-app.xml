@@ -5,55 +5,27 @@
 	<globalIncludes>
 		<css>classpath:com.innovations.webtop.iconsets/silk.css</css>
 		<css>classpath:com.innovations.webtop.iconsets/fugue.css</css>
-		
-		<css>classpath:com.gtech.iarc.demo.ux.roweditor/RowEditor.css</css>
-		<css>classpath:com.gtech.iarc.demo.ux.explorer/ExplorerView.css</css>
-		<css>classpath:com.gtech.iarc.demo.style.theme/blue.css</css>
-		<css>classpath:com.gtech.iarc.demo.style..theme/blue.layout.css</css>
-		<css>classpath:com.gtech.iarc.demo.style..theme/blue.buttons.css</css>
-		<css>classpath:com.gtech.iarc.demo.style..theme/blue.grid.css</css>		
+		<css>classpath:com.gtech.iarc.base.css/RowEditor.css</css>
+		<css>classpath:com.gtech.iarc.base.css/ExplorerView.css</css>
 
-		<js>classpath:com.gtech.iarc.demo.ux.roweditor/RowEditor.js</js>
-		<js>classpath:com.gtech.iarc.demo.ux.explorer/ExplorerViewGrid.js</js>
-		<js>classpath:com.gtech.iarc.demo.ux.explorer/GroupingExplorerView.js</js>
-		<js>class:com.gtech.iarc.demo.resource.SampleClassStringResource</js>	
+		<js>classpath:com.gtech.iarc.base.view/RowEditor.js</js>
+		<js>classpath:com.gtech.iarc.base.view/ExplorerViewGrid.js</js>
+		<js>classpath:com.gtech.iarc.base.view/GroupingExplorerView.js</js>
 				                                               
 	</globalIncludes>
-	
-	<services>	
-		<dwr type="spring" scriptName="PersonnelService">
-			<property key="beanName" value="personnelBioServiceProxy"/>
-			<converters>
-				<converter class="com.gtech.iarc.base.models.personalinfo.Personnel" />	
-				<converter type="enum" class="com.gtech.iarc.base.models.personalinfo.Department" />			
-			</converters>
-		</dwr>
-				
-		
-		<dwr type="spring" scriptName="FileExplorerService">
-			<property key="beanName" value="FileExplorerService" />
-			<converters>
-				<converter class="com.gtech.iarc.base.models.resource.FileExplorerItem" />	
-			</converters>			
-		</dwr>
+	<services>
+		<rest springBean="UOMCodeRestService">
+			<route>/uomcode</route>
+			<route>/uomcode/{id}</route>			
+			<get method="getUOMCodes" />
+		</rest>
 	</services>
 			
 	<views>
-		<view id="webtopdemo.view.helloworld" src="com.gtech.iarc.demo.views/HelloWorld.js" jsClass="WebtopDemo.HelloWorld" alias="hello-world" />
-		<view id="webtopdemo.view.dwrintegration" src="com.gtech.iarc.demo.views/DwrIntegrationDemo.js" jsClass="WebtopDemo.DwrIntegration" alias="dwrIntegration" />
-		<view id="webtopdemo.view.googlemaps" src="com.gtech.iarc.demo.views/GoogleMapsDemo.js" jsClass="WebtopDemo.GoogleMaps" />
-		<view id="webtopdemo.view.subscribe" src="com.gtech.iarc.demo.views/Subscriber.js" jsClass="WebtopDemo.Subscriber" />
-		<view id="webtopdemo.view.pubsubdemo" src="com.gtech.iarc.demo.views/PublisherSubscriberDemo.js" jsClass="WebtopDemo.PublisherSubscriberDemo" />
-		<view id="webtopdemo.view.reverseajax" src="com.gtech.iarc.demo.views/ReverseAjaxDemo.js" jsClass="WebtopDemo.ReverseAjax" />
-		<view id="webtopdemo.view.serverpush" src="com.gtech.iarc.demo.views/ServerPushDemo.js" jsClass="WebtopDemo.ServerPushDemo" />
-		<view id="webtopdemo.view.events" src="com.gtech.iarc.demo.views/EventsDashlet.js" jsClass="WebtopDemo.EventsDashlet" />
-		<view id="webtopdemo.view.jsonp" src="com.gtech.iarc.demo.views/JsonpDemo.js" jsClass="WebtopDemo.JSONPDemo" />
-		<view id="webtopdemo.view.controls" src="com.gtech.iarc.demo.views/Controls.js" jsClass="WebtopDemo.Controls" />
-		<view id="webtopdemo.view.fileexplorer" src="com.gtech.iarc.demo.views/FileExplorer.js" jsClass="WebtopDemo.FileExplorer" />		
-		<view id="webtopdemo.view.serversettings" src="com.gtech.iarc.demo.views/ServerSettings.js" jsClass="WebtopDemo.ServerSettings" />
-		<view id="webtopdemo.view.i18nmanager" src="com.gtech.iarc.demo.views/I18NManager.js" jsClass="WebtopDemo.I18NManager" />
-		<view id="webtopdemo.view.richeditor" src="com.gtech.iarc.demo.views/RichEditor.js" jsClass="WebtopDemo.RichEditor" />		
-		<view id="webtopdemo.view.testlab" src="com.gtech.iarc.demo.views/TestLab.js" jsClass="WebtopDemo.TestLab" />
+	<!-- Biz Code windows -->
+		<view id="ipallet.view.code.uom" src="com.gtech.iarc.ipallet.view.bizcode/CodeUOMService.js" jsClass="iPallet.CodeUOMService" />
 		
+	<!-- Biz Util windows -->	
+		<view id="ipallet.view.util.tasks" src="com.gtech.iarc.ipallet.view.bizcode/CodeUOMService.js" jsClass="iPallet.CodeUOMService" />			
 	</views>
 </webtop>

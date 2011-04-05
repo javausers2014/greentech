@@ -32,7 +32,8 @@
 			using log4j 1.2.14 because 1.2.15 has a transitive dependency to the
 			JMS and JMX jars. This is not needed in most of our projects
 		-->
-		<log4j.version>1.2.14</log4j.version>		
+		<log4j.version>1.2.14</log4j.version>
+		<webtop.version>1.2-SNAPSHOT</webtop.version>		
 		<gson.version>1.6</gson.version>
 	</properties>  
   
@@ -68,7 +69,7 @@
 		<dependency>
 			<groupId>com.innovations.webtop</groupId>
 			<artifactId>webtop-core</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>${webtop.version}</version>
 		</dependency>		
 		
 		<!-- Logging -->
