@@ -77,15 +77,17 @@
 	
 	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" 
 		  p:personnelBioService-ref = "personnelBioService"/>		
+
+	<bean id="UOMCodeRestService" class="com.gtech.iarc.ipallet.web.UOMCodeRestService">
+		<property name="uomService" ref="UOMService"/>
+	</bean>
+	
+	<bean id="UOMService" class="com.gtech.iarc.ipallet.service.core.UOMService"
+		  p:baseDAO-ref = "baseDAO"/>
 	
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:locations="classpath:webtop-configuration.properties" />
-
-
-	<bean id="FileExplorerService" class="com.gtech.iarc.demo.web.FileExplorerService">
-		<property name="fileExplorerPath" value="${webtopdemo.fileexplorer.filePath}" />
-	</bean>
 
 	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
 		<property name="customTemplateModel">
@@ -94,10 +96,6 @@
 			</map>
 		</property>
 	</bean>
-	<!--
-			p:workspaceHelper-ref="WorkspaceHelper"/>
-			${webtop.workspace.title:WEBTOP_DEMO}
-		-->
 
 
 	<import resource="/gtech-security.xml" />

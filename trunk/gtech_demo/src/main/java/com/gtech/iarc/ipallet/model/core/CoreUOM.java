@@ -14,7 +14,7 @@ import com.gtech.iarc.base.models.core.DataObject;
  *
  */
 @Entity
-@Table(name = "USER")
+@Table(name = "CORE_UOM")
 public class CoreUOM extends DataObject implements BizConstantCode {
 
     /**

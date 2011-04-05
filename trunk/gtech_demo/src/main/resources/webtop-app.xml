@@ -13,6 +13,7 @@
 		<js>classpath:com.gtech.iarc.base.view/GroupingExplorerView.js</js>
 				                                               
 	</globalIncludes>
+
 	<services>
 		<rest springBean="UOMCodeRestService">
 			<route>/uomcode</route>

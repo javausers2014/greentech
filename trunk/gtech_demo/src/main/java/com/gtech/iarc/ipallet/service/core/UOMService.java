@@ -15,6 +15,11 @@ public class UOMService {
 		return newUOM;
 	}
 	
+	public List<CoreUOM> getUOMList(){
+		List<CoreUOM> rs = baseDAO.find("from CoreUom");
+		return rs;
+	}
+	
 	public List<CoreUOM> getUOMbyCategory(String UOMCategory){
 		List<CoreUOM> rs = baseDAO.find("from CoreUom where uomCategory=?", new String[]{UOMCategory});
 		return rs;
@@ -27,6 +32,20 @@ public class UOMService {
 		}
 		
 		return rs.get(0);
+	}
+
+	public boolean updateUOM(CoreUOM coreUOM) {
+		baseDAO.save(coreUOM);
+		return true;
+	}
+
+	public boolean deleteUOM(long uomId) {
+		baseDAO.delete(CoreUOM.class, uomId);
+		return true;
+	}
+
+	public void setBaseDAO(BaseDAO baseDAO) {
+		this.baseDAO = baseDAO;
 	}
 	
 	
