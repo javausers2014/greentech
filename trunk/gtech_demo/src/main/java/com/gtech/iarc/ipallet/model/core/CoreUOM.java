@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.gtech.iarc.base.models.core.DataObject;
+import com.gtech.iarc.base.model.core.DataObject;
 
 
 /**

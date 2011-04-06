@@ -3,17 +3,17 @@
 	<header>
 		<bar justify="left" cls="iarc-main-layout-side-border">
 			<spacer width="10px" />
-			<image src="classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech.png" />
+			<image src="classpath:com.gtech.iarc.base.css.images.menu/gtech_icon.png" />
 	
 			<fill />
 			<menu>
 				<entry id="IdOne" cls="xwt-menu-text" ctCls="classContainerOne">
 					<title><@i18nText key="ipallet.menu.code" /></title>
-					<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_32.png</icon>
+					<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_32.png</icon>
 					<menuItems>
 						<menuItem id="IdOne2" cls="classOne2" ctCls="classContainerOne2">
 							<name><@i18nText key="ipallet.menu.code.uom" /></name>	
-							<icon>classpath:com.gtech.iarc.demo.style.theme.images.menu/gtech_icon_16.png</icon>
+							<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_16.png</icon>
 							<description><@i18nText key="ipallet.menu.code.uom.description" /></description>
 							<view ref="ipallet.view.code.uom" />
 						</menuItem>

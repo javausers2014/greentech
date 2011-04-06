@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gtech.iarc.base.models.user.UserAccount;
+import com.gtech.iarc.base.model.user.UserAccount;
 import com.gtech.iarc.base.persistence.BaseDAO;
 
 /**

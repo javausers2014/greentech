@@ -12,8 +12,8 @@ import org.hibernate.metadata.ClassMetadata;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.gtech.iarc.base.models.core.IDataObject;
-import com.gtech.iarc.base.models.core.UserInfo;
+import com.gtech.iarc.base.model.core.IDataObject;
+import com.gtech.iarc.base.model.core.UserInfo;
 import com.gtech.iarc.base.persistence.BaseDAO;
 import com.gtech.iarc.base.util.DateUtil;
 

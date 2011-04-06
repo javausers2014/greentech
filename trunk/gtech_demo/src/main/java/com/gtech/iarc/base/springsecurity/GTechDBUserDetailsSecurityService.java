@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.gtech.iarc.base.models.user.UserAccount;
-import com.gtech.iarc.base.models.user.UserPermission;
+import com.gtech.iarc.base.model.user.UserAccount;
+import com.gtech.iarc.base.model.user.UserPermission;
 import com.gtech.iarc.base.service.userbio.UserAccountService;
 
 public class GTechDBUserDetailsSecurityService implements
