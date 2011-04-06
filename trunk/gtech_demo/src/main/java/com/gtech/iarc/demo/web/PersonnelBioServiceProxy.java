@@ -2,7 +2,7 @@ package com.gtech.iarc.demo.web;
 
 import java.util.List;
 
-import com.gtech.iarc.base.models.personalinfo.Personnel;
+import com.gtech.iarc.base.model.personalinfo.Personnel;
 import com.gtech.iarc.base.service.userbio.PersonnelBioService;
 
 public class PersonnelBioServiceProxy {	

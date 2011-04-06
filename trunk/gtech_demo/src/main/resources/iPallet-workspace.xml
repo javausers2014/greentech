@@ -64,9 +64,11 @@
 		<column></column>
 		<column></column>
 		<column>
+		<!-- 
 			<dashlet>
 				<view ref="ipallet.view.util.tasks" />
-			</dashlet>			
+			</dashlet>
+		-->			
 		</column>
 	</dashboard>
 	

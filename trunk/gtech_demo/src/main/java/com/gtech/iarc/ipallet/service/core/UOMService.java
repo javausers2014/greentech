@@ -1,5 +1,6 @@
 package com.gtech.iarc.ipallet.service.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.gtech.iarc.base.persistence.BaseDAO;
@@ -10,13 +11,25 @@ import com.gtech.iarc.ipallet.model.core.BizConstantCode;
 public class UOMService {
 	private BaseDAO baseDAO;
 	
+	public List<String> getUOMCategoryList(){
+		return new ArrayList<String>(){
+			private static final long serialVersionUID = 3703282933339442501L;
+				{
+					add(BizConstantCode.UOM_CATEGORY_LENGTH);
+					add(BizConstantCode.UOM_CATEGORY_PACKAGE);
+					add(BizConstantCode.UOM_CATEGORY_VOLUMN);
+					add(BizConstantCode.UOM_CATEGORY_WEIGHT);
+				}			
+		};
+	}
+	
 	public BizConstantCode createNewUOM(BizConstantCode newUOM){
 		baseDAO.save(newUOM);
 		return newUOM;
 	}
 	
 	public List<CoreUOM> getUOMList(){
-		List<CoreUOM> rs = baseDAO.find("from CoreUom");
+		List<CoreUOM> rs = baseDAO.find("from CoreUOM");
 		return rs;
 	}
 	

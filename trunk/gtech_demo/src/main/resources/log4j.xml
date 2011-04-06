@@ -22,9 +22,23 @@
 	<logger name="com.gtech.iarc">
 		<level value="DEBUG" />		
 	</logger>
+	<logger name="org.hibernate">
+		<level value="WARN" />		
+	</logger>
+	<logger name="org.springframework">
+		<level value="WARN" />		
+	</logger>
+<!-- 	
+	<logger name="com.gtech.iarc">
+		<level value="DEBUG" />		
+	</logger>	
+	 -->
+	<logger name="net.sf.json">
+		<level value="DEBUG" />		
+	</logger>	
 	
 	<logger name="com.innovations.webtop" additivity="false"/>	
-	
+		
 	<root>
 		<priority value="INFO" />
 		<appender-ref ref="CONSOLE" />

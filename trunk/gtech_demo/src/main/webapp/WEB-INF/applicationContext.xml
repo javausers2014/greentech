@@ -27,15 +27,20 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!--
-				<property name="annotatedClasses"> <list>
-				<value>rewards.internal.account.Account</value>
-				<value>rewards.internal.account.Beneficiary</value>
-				<value>rewards.internal.account.CreditCard</value>
-				<value>rewards.internal.restaurant.Restaurant</value> </list>
-				</property>
-			-->
-		<property name="packagesToScan" value="com.gtech.iarc.base.models"/>
+<!-- 
+		<property name="annotatedClasses"> 
+			<list>
+				<value>com.gtech.iarc.ipallet.model.core.CoreUOM</value>
+			 </list>
+		</property>
+ -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.gtech.iarc.base.model</value>
+				<value>com.gtech.iarc.ipallet.model.core</value>
+			</list>
+		</property>
+		
 		<!--
 				<property name="annotatedPackages"> <list>
 				<value>com.package.domain</value>
@@ -78,7 +83,7 @@
 	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" 
 		  p:personnelBioService-ref = "personnelBioService"/>		
 
-	<bean id="UOMCodeRestService" class="com.gtech.iarc.ipallet.web.UOMCodeRestService">
+	<bean id="UOMCodeRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCodeRestService">
 		<property name="uomService" ref="UOMService"/>
 	</bean>
 	
@@ -97,6 +102,7 @@
 		</property>
 	</bean>
 
-
+<!-- 
 	<import resource="/gtech-security.xml" />
+	-->
 </beans>
