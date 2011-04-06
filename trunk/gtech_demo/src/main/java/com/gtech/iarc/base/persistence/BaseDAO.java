@@ -1,6 +1,6 @@
 package com.gtech.iarc.base.persistence;
 
-import com.gtech.iarc.base.models.core.IDataObject;
+import com.gtech.iarc.base.model.core.IDataObject;
 
 /**
  * Data Access Object (DAO) interface. This is an interface used to tag our DAO
