@@ -10,10 +10,11 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.gtech.iarc.base.model.core.DataObject;
+import com.gtech.iarc.base.model.personalinfo.Personnel;
 
 @Entity
 @Table(name = "USER")
@@ -36,11 +37,15 @@ public class UserAccount extends DataObject {
 	
 	@Column(name = "PASSWORD")
 	private String password;
+//	
+//	@Transient
+//	private long personnelId;
 	
-	@Transient
-	private long personnelId;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "PERSONNEL_ID")
+	private Personnel personnelInfo;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "USER_ID")
 	private List<UserPermission> permissions = new ArrayList<UserPermission>();
 
@@ -68,13 +73,13 @@ public class UserAccount extends DataObject {
 		this.fullName = fullName;
 	}
 
-	public long getPersonnelId() {
-		return personnelId;
-	}
-
-	public void setPersonnelId(long personnelId) {
-		this.personnelId = personnelId;
-	}
+//	public long getPersonnelId() {
+//		return personnelId;
+//	}
+//
+//	public void setPersonnelId(long personnelId) {
+//		this.personnelId = personnelId;
+//	}
 
 	public List<UserPermission> getPermissions() {
 		return permissions;
@@ -90,6 +95,14 @@ public class UserAccount extends DataObject {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Personnel getPersonnelInfo() {
+		return personnelInfo;
+	}
+
+	public void setPersonnelInfo(Personnel personnelInfo) {
+		this.personnelInfo = personnelInfo;
 	}
 	
 	
