@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd			
+	http://www.springframework.org/schema/jdbc
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+            
+	<context:annotation-config />
+	<jdbc:embedded-database id="dataSource">
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_schema.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_data.sql" />
+	</jdbc:embedded-database>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:locations="classpath:webtop-configuration.properties" />
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+<!-- 
+		<property name="annotatedClasses"> 
+			<list>
+				<value>com.gtech.iarc.ipallet.model.core.CoreUOM</value>
+			 </list>
+		</property>
+ -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.gtech.iarc.base.model</value>
+				<value>com.gtech.iarc.ipallet.model.core</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.format_sql=true
+				hibernate.show_sql=true
+			</value>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--
+			Instructs the container to look for beans with @Transactional and
+			decorate them
+		-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="baseDAO" class="com.gtech.iarc.base.persistence.hibernate.BaseDAOHibernate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- Biz service bean -->		
+	<bean id="userAccountService" class="com.gtech.iarc.base.service.userbio.UserAccountService">
+		<property name="baseDAO" ref="baseDAO" />
+	</bean>
+	
+	<bean id="personnelBioService" class="com.gtech.iarc.base.service.userbio.PersonnelBioService">
+		<property name="baseDAO" ref="baseDAO" />
+	</bean>	
+	
+	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" 
+		  p:personnelBioService-ref = "personnelBioService"/>		
+	
+	<bean id="UOMService" class="com.gtech.iarc.ipallet.service.core.UOMService"
+		  p:baseDAO-ref = "baseDAO"/>
+		
+<!-- For Webtop UI framework -->
+	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
+		<property name="customTemplateModel">
+			<map>
+				<entry key="title" value="iPallet" />
+			</map>
+		</property>
+	</bean>
+
+<!-- Bean for remote service, such as RESTful, DWR and so on -->
+
+	<bean id="UOMCodeRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCodeRestService">
+		<property name="uomService" ref="UOMService"/>
+	</bean>
+	
+	<bean id="RemoteUserAccountService" class="com.gtech.iarc.ipallet.web.dwrproxy.RemoteUserAccountService">
+		<property name="userAccountService" ref="userAccountService"/>
+	</bean>
+<!-- 
+	<import resource="/gtech-security.xml" />
+	-->
+</beans>
