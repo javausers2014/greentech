@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.gtech.iarc.base.model.personalinfo.Personnel;
 import com.gtech.iarc.base.persistence.BaseDAO;
-
+@SuppressWarnings("unchecked")
 public class PersonnelBioService {
 	
 	private BaseDAO baseDAO;
@@ -140,5 +140,11 @@ public class PersonnelBioService {
 //		
 //		return p;
 //	}
+
+	
+	
+	public List<Personnel> getAllStaff() {
+		return baseDAO.find("from Personnel");
+	}
 
 }

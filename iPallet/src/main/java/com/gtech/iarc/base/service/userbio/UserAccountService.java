@@ -28,7 +28,6 @@ public class UserAccountService {
 
 	@Transactional(propagation=Propagation.SUPPORTS)
 	public List<UserAccount> getAllUsers() {
-		return baseDAO.find("from UserAccount");
-		
+		return baseDAO.find("from UserAccount");		
 	}
 }

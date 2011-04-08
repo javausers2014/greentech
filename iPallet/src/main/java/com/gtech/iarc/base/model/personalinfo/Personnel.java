@@ -30,8 +30,14 @@ public class Personnel extends DataObject {
 	@Column(name = "MiddleName")
 	private String middleName;
 	
+	@Column(name = "FullName")
+	private String fullName;
+	
 	@Column(name = "PersonnelNo")
 	private String personnelNumber;
+	
+	@Column(name = "StaffNo")
+	private String staffNo;
 	
 	@Column(name = "Phone")
 	private String phone;
@@ -108,6 +114,18 @@ public class Personnel extends DataObject {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	public String getStaffNo() {
+		return staffNo;
+	}
+	public void setStaffNo(String staffNo) {
+		this.staffNo = staffNo;
 	}
 	
 }
