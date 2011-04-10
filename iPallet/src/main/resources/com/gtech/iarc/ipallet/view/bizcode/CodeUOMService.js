@@ -32,8 +32,31 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
 			})
 		});
 
-	
-		var editor = new Ext.ux.grid.RowEditor({ saveText: 'Update'});		
+		var uomCatStore = new Ext.data.Store({
+			restful: true,
+			autoLoad: true,
+			autoSave: true,
+			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/uomcat" }),
+			reader: new Ext.data.JsonReader({
+    			totalProperty: 'total',
+    			successProperty: 'success',
+    			root: 'data'
+			},[
+				{ name: "key" },
+				{ name: "label" }
+			])
+		});
+		
+		var editor = new Ext.ux.grid.RowEditor({ 
+			saveText: '<@i18nText key="iarc.base.label.button.update"/>',
+			cancelText:'<@i18nText key="iarc.base.label.button.cancel"/>',
+			commitChangesText: '<@i18nText key="iarc.base.label.button.cancel"/>',
+    		errorText: 'Errors'
+		});		
+		var categoryCombxRenderer=function(value,metaData,record){
+	       // try record.data.teacher here
+	       return record.data.uomCategory;
+    	}
 		var grid = new Ext.grid.GridPanel({
         	iconCls: 'icon-grid',
         	frame: true,
@@ -52,8 +75,18 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
     				header: "<@i18nText key="ipallet.view.uomcode.label.category" />", 
     				width: 75, 
     				sortable: true, 
-    				dataIndex: 'uomCategory',
-		            editor: new Ext.form.ComboBox({})    				
+    				dataIndex: 'uomCategory', 
+    				//renderer:categoryCombxRenderer,
+		            editor: {
+		            	xtype:'combo', 
+                     	store: uomCatStore,
+                     	displayField: 'label',
+                     	valueField: 'key',
+                     	typeAhead: false,
+                     	triggerAction: 'all',
+                     	lazyRender: false
+                	}
+   				
     			},
     			{
 	    			header: "<@i18nText key="ipallet.view.uomcode.label.code" />", 
@@ -94,7 +127,7 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
         	tbar: [
         	"->",
         	{
-            	text: 'Add',
+            	text: '<@i18nText key="iarc.base.label.button.add"/>',
             	iconCls: 'icon-fugue-plus-circle-frame',
             	handler: function(btn, ev) {
         			var u = new grid.store.recordType({ firstName : '', lastName: '', email : '' });
@@ -103,7 +136,7 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
         			editor.startEditing(0);            			
             	}
         	}, '-', {
-            	text: 'Delete',
+            	text: '<@i18nText key="iarc.base.label.button.delete"/>',
             	iconCls: 'icon-fugue-cross-circle-frame',
             	handler: function() {
         			var rec = grid.getSelectionModel().getSelected();

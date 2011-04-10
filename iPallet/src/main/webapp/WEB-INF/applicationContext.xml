@@ -92,9 +92,11 @@
 	<bean id="UOMCodeRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCodeRestService">
 		<property name="uomService" ref="UOMService"/>
 	</bean>
-	
-	<bean id="RemoteUserAccountService" class="com.gtech.iarc.ipallet.web.dwrproxy.RemoteUserAccountService">
-		<property name="userAccountService" ref="userAccountService"/>
+	<bean id="UOMCatRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCatRestService">
+		<property name="uomService" ref="UOMService"/>
+	</bean>	
+	<bean id="RemoteStaffService" class="com.gtech.iarc.ipallet.web.dwrproxy.RemoteStaffService">
+		<property name="personnelBioService" ref="personnelBioService"/>
 	</bean>
 <!-- 
 	<import resource="/gtech-security.xml" />

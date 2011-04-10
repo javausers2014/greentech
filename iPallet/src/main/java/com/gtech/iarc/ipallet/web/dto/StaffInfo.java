@@ -1,4 +1,4 @@
-package com.gtech.iarc.ipallet.web.dwrproxy.dto;
+package com.gtech.iarc.ipallet.web.dto;
 
 import java.util.Date;
 
