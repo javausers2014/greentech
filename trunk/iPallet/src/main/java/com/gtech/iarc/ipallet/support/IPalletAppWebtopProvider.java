@@ -10,10 +10,13 @@ import com.innovations.webtop.provider.DefaultWebtopProvider;
 public class IPalletAppWebtopProvider extends DefaultWebtopProvider {
 	
 	@Override
-	public List<ResourceBundle> getResourceBundles(Locale defaultLocale) {		
-		final ResourceBundle rb = ResourceBundle.getBundle("com/gtech/iarc/ipallet/message/iPallet", defaultLocale);
-
-		return Arrays.asList(rb);
+	public List<ResourceBundle> getResourceBundles(Locale locale) {		
+		ResourceBundle baserb = ResourceBundle.getBundle("com/gtech/iarc/base/message/base", locale);
+		ResourceBundle iPalletrb = ResourceBundle.getBundle("com/gtech/iarc/ipallet/message/iPallet", locale);
+//		MergeResourceBundle mrs = new MergeResourceBundle(baserb,iPalletrb);
+//		return Arrays.asList((ResourceBundle)mrs);
+		
+		return Arrays.asList(baserb,iPalletrb);
 	}
 	
 	@Override

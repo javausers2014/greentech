@@ -4,7 +4,22 @@
 		<bar justify="left" cls="iarc-main-layout-side-border">
 			<spacer width="10px" />
 			<image src="classpath:com.gtech.iarc.base.css.images.menu/gtech_icon.png" />
-	
+			<separator />
+			<html cls="buildNumber">
+				<content>
+				<![CDATA[ <b><@i18nText key="common.text.language" /></b>: ]]>
+				</content>
+			</html>				
+			<spacer width="5px" />
+			<link url="?lang=en_UK">
+				<label><@i18nText key="common.lang.EN" /></label>
+			</link>
+			<spacer width="5px" />
+			<link url="?lang=zh_CN">
+				<label><@i18nText key="common.lang.CN" /></label>
+			</link>
+			<separator />	
+			<taskbar/>	
 			<fill />
 			<menu>
 				<entry id="IdOne" cls="xwt-menu-text" ctCls="classContainerOne">
@@ -19,23 +34,15 @@
 						</menuItem>
 					</menuItems>
 				</entry>			
-			</menu>	
-			<spacer width="10px" />
-			<separator />
-			<html cls="buildNumber">
-				<content>
-				<![CDATA[ <b><@i18nText key="common.text.language" /></b>: ]]>
-				</content>
-			</html>				
-			<spacer width="5px" />
-			<link url="?lang=en_UK">
-				<label>EN</label>
-			</link>
-			<spacer width="5px" />
-			<link url="?lang=zh_CN">
-				<label>CN</label>
-			</link>	
-			<spacer width="5px" />				
+			</menu>
+			<spacer width="20px" />	
+			<!--
+			<shutdown title="<@i18nText key='iarc.base.label.button.shutdown' />" message="<@i18nText key='iarc.base.label.button.logout' />" >
+                    <tooltip>                   
+                       <![CDATA[ <div class="toolbar-menu-tooltip"><@i18nText key='iarc.base.label.button.logout'/></div> ]]>
+                    </tooltip>
+			</shutdown>			
+			-->
 		</bar>	
 	</header>
 	

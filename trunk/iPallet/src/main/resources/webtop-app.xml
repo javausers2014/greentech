@@ -19,10 +19,13 @@
 			<route>/uomcode</route>
 			<route>/uomcode/{id}</route>
 		</rest>
-		<dwr type="spring" scriptName="RemoteUserAccountService">
-			<property key="beanName" value="RemoteUserAccountService" />
+		<rest springBean="UOMCatRestService">
+			<route>/uomcat</route>
+		</rest>		
+		<dwr type="spring" scriptName="RemoteStaffService">
+			<property key="beanName" value="RemoteStaffService" />
 			<converters>
-				<converter class="com.gtech.iarc.base.model.user.UserAccount"/>
+				<converter class="com.gtech.iarc.ipallet.web.dwrproxy.dto.StaffInfo"/>
 			</converters>
 		</dwr>			
 		

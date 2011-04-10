@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.gtech.iarc.base.model.personalinfo.Personnel;
 import com.gtech.iarc.base.service.userbio.PersonnelBioService;
-import com.gtech.iarc.ipallet.web.dwrproxy.dto.StaffInfo;
+import com.gtech.iarc.ipallet.web.dto.StaffInfo;
 
 public class RemoteStaffService {
 	
