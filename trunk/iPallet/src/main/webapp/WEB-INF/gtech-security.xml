@@ -15,11 +15,12 @@
 
 	<http auto-config="true" access-decision-manager-ref="accessDecisionManager">
 	    <intercept-url pattern='/login' filters='none'/>
+	    <intercept-url pattern='/logout' filters='none'/>
 	    <intercept-url pattern='/resource/*' filters='none'/>
     	<intercept-url pattern='/**' access='LOOK' />
 		<form-login login-page="/login" default-target-url="/"
 			authentication-failure-url="/login" />
-		<logout logout-url="/logout" logout-success-url="/login?e=logout" />
+		<logout logout-url="/logout" logout-success-url="/login" />
 	</http>
 
 	<authentication-manager>

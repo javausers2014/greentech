@@ -41,11 +41,11 @@ public class UserAccount extends DataObject {
 //	@Transient
 //	private long personnelId;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "PERSONNEL_ID")
 	private Personnel personnelInfo;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "USER_ID")
 	private List<UserPermission> permissions = new ArrayList<UserPermission>();
 
