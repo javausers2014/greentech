@@ -36,7 +36,8 @@
 				</entry>			
 			</menu>
 			<spacer width="20px" />	
-			<shutdown>
+			
+			<shutdown title="<@i18nText key='iarc.base.text.title.shutdown' />" message="<@i18nText key='iarc.base.text.confirm.logout' />" >
                     <tooltip>                   
                        <![CDATA[ <div class="toolbar-menu-tooltip"><@i18nText key='iarc.base.label.button.logout'/></div> ]]>
                     </tooltip>
