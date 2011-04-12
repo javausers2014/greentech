@@ -1,9 +1,13 @@
 Ext.ns("iPallet.Staff");
 
 iPallet.Staff.Browser = Ext.extend(Webtop.View, {
-	width: 800,
-	height: 500,
-	title: "<@i18nText key="ipallet.view.title.staffmanagement"/>",
+	maxInstance: 1,
+	
+	width: 700,
+	height: 400,
+	resizable: true,
+	
+	title: '<@i18nText key="ipallet.view.title.staffmanagement"/>',
 	iconCls: "icon-silk-folder-user",	
 	initComponent: function() {
 
@@ -29,69 +33,72 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 		});
 	
 		Ext.apply(this, {
+			layout: 'border',
+			defaults: { border: false },
 			items:[{
-				xtype: "panel",				
-				height: 400,
-				width: 600,
-				layout: "border",
-				items: [{
-					xtype: "form",
-					region: "west",
-					title: "<@i18nText key="ipallet.view.staffmanagement.label.searchcriteria"/>",
+				xtype: 'panel',				
+				width: '750',
+				height: '480',
+				region: 'center',
+				layout: 'border',
+				items: 
+				[{
+					xtype: 'form',
+					region: 'west',
+					title: '<@i18nText key="ipallet.view.staffmanagement.label.searchcriteria"/>',
 					cls: "wCls-ToolPanel",
-					width: 250,
+					width: '25%',
 					defaultType: "textfield",
 					padding: 10,
 					labelAlign: "top",
-					defaults: {
-						width: '100%'
-					},
 					items: [{
-						fieldLabel: "<@i18nText key="ipallet.view.staffmanagement.label.staffno"/>",
+						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.staffno"/>',
 						name: "staffNo"
 					},{
-						fieldLabel: "<@i18nText key="ipallet.view.staffmanagement.label.namecontains"/>",
+						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.namecontains"/>',
 						name: "nameContains"
 					},{
-						fieldLabel: "<@i18nText key="ipallet.view.staffmanagement.label.email"/> (<@i18nText key="ipallet.view.staffmanagement.label.wildcard"/>)",
+						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.email"/> (<@i18nText key="ipallet.view.staffmanagement.label.wildcard"/>)',
 						name: "EmailContains"						
 					}],
 					buttons: [
-						{text: "<@i18nText key="iarc.base.label.button.search"/>"},
-						{text: "<@i18nText key="iarc.base.label.button.clear"/>"}
+						{text: '<@i18nText key="iarc.base.label.button.search"/>'},
+						{text: '<@i18nText key="iarc.base.label.button.clear"/>'}
 					]
-				},{
+				},
+				{
 					xtype: "grid",
-					store: staffStore,					
-					colModel: new Ext.grid.ColumnModel({
+					store: staffStore,
+					region: 'center',
+					layout: 'fit',
+					colModel: new Ext.grid.ColumnModel({						
 						columns: [
 							new Ext.grid.RowNumberer(),
 							{
-								header: "<@i18nText key="ipallet.view.staffmanagement.label.staffno"/>", 
+								header: '<@i18nText key="ipallet.view.staffmanagement.label.staffno"/>', 
 								dataIndex: "staffNo",
 								sortable: true,
-								width: 80
+								width: '20%'
 							},{
-								header: "<@i18nText key="ipallet.view.staffmanagement.label.fullname"/>", 
+								header: '<@i18nText key="ipallet.view.staffmanagement.label.fullname"/>', 
 								dataIndex: "fullName",
 								sortable: true,
-								width: 300
+								width: '30%'
 							},{
-								header: "<@i18nText key="ipallet.view.staffmanagement.label.email"/>", 
+								header: '<@i18nText key="ipallet.view.staffmanagement.label.email"/>', 
 								dataIndex: "email",
 								sortable: true,
-								width: 200
+								width: '30%'
 							},{
-								header: "<@i18nText key="ipallet.view.staffmanagement.label.birthdate"/>", 
+								header: '<@i18nText key="ipallet.view.staffmanagement.label.birthdate"/>', 
 								dataIndex: "birthDate",
 								sortable: true,
-								width: 80
+								width: '20%'
 							}
 						]
 					}),
 
-					sm: new Ext.grid.RowSelectionModel({singleSelect: true}),
-					region: "center",
+					sm: new Ext.grid.RowSelectionModel({singleSelect: true}),					
 					bbar: new Ext.PagingToolbar({
 						pageSize: 25,
 						store: staffStore,
@@ -100,21 +107,20 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 						emptyMsg: '<@i18nText key="iarc.base.text.listing.empty.message"/>'
 					})					
 				}],
-				tbar: [
-					{ 
-						text: '<@i18nText key="ipallet.view.staffmanagement.action.createnewstaff"/>',
-						iconCls: "icon-silk-user-add",
-						listeners: {
-							click: function (btn, evt) {
-								new iPallet.Staff.Creation({
-									appKey: 'ipallet.hr.staff.creation',
-									className: 'iPallet.Staff.Creation'
-								}).show();
-								return;								
-							}
+				tbar: 
+				[{ 
+					text: '<@i18nText key="ipallet.view.staffmanagement.action.createnewstaff"/>',
+					iconCls: "icon-silk-user-add",
+					listeners: {
+						click: function (btn, evt) {
+							new iPallet.Staff.Creation({
+								appKey: 'ipallet.hr.staff.creation',
+								className: 'iPallet.Staff.Creation'
+							}).show();
+							return;								
 						}
 					}
-				]
+				}]
 			}]
 		});
 		this.supr().initComponent.call(this);
