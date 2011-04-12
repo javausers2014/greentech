@@ -1,4 +1,5 @@
 Ext.ns("iPallet");
+
 iPallet.CodeUOMService = Ext.extend(Webtop.View, {
 	width: 500,
 	height: 500,

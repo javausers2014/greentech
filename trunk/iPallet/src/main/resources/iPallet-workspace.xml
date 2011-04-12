@@ -22,11 +22,11 @@
 			<taskbar/>	
 			<fill />
 			<menu>
-				<entry id="IdOne" cls="xwt-menu-text" ctCls="classContainerOne">
+				<entry id="menu01" cls="xwt-menu-text" ctCls="classContainerOne">
 					<title><@i18nText key="ipallet.menu.code" /></title>
 					<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_32.png</icon>
 					<menuItems>
-						<menuItem id="IdOne2" cls="classOne2" ctCls="classContainerOne2">
+						<menuItem id="menuitem0101" cls="classOne2" ctCls="classContainerOne2">
 							<name><@i18nText key="ipallet.menu.code.uom" /></name>	
 							<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_16.png</icon>
 							<description><@i18nText key="ipallet.menu.code.uom.description" /></description>
@@ -35,11 +35,25 @@
 					</menuItems>
 				</entry>			
 			</menu>
+			<menu>
+				<entry id="menu02" cls="xwt-menu-text" ctCls="classContainerOne">
+					<title><@i18nText key="ipallet.menu.hr" /></title>
+					<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_32.png</icon>
+					<menuItems>
+						<menuItem id="menuitem0201" cls="classOne2" ctCls="classContainerOne2">
+							<name><@i18nText key="ipallet.menu.hr.staffmanagement" /></name>	
+							<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_16.png</icon>
+							<description><@i18nText key="ipallet.menu.hr.staffmanagement.description" /></description>
+							<view ref="ipallet.hr.staff.browser" />
+						</menuItem>
+					</menuItems>
+				</entry>			
+			</menu>			
 			<spacer width="20px" />	
 			
 			<shutdown title="<@i18nText key='iarc.base.text.title.shutdown' />" message="<@i18nText key='iarc.base.text.confirm.logout' />" >
                     <tooltip>                   
-                       <![CDATA[ <div class="toolbar-menu-tooltip"><@i18nText key='iarc.base.label.button.logout'/></div> ]]>
+                       <![CDATA[ <div class="toolbar-menu-tooltip"><@i18nText key='iarc.base.text.title.shutdown'/></div> ]]>
                     </tooltip>
 			</shutdown>		
 		</bar>	
