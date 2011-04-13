@@ -1,8 +1,11 @@
 package com.gtech.iarc.base.service.userbio;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.gtech.iarc.base.model.personalinfo.Personnel;
+import com.gtech.iarc.base.model.personalinfo.PersonnelSearchDTO;
 import com.gtech.iarc.base.persistence.BaseDAO;
 @SuppressWarnings("unchecked")
 public class PersonnelBioService {
@@ -146,5 +149,45 @@ public class PersonnelBioService {
 	public List<Personnel> getAllStaff() {
 		return baseDAO.find("from Personnel");
 	}
+	
+	public List<Personnel> searchStaff(PersonnelSearchDTO inSearch) {
 
+		StringBuffer hql = new StringBuffer(
+				"from Personnel as pl  where pl.id!=0 ");
+		List tmpParams = new ArrayList();
+
+		if (inSearch.getFullName() != null
+				&& inSearch.getFullName().trim().length() != 0) {
+			hql.append(" and upper(pl.fullName) like ? ");
+			tmpParams.add("%" + inSearch.getFullName().trim().toUpperCase()
+					+ "%");
+		}
+		if (inSearch.getEmail() != null
+				&& inSearch.getEmail().trim().length() != 0) {
+			hql.append(" and upper(pl.email) like ? ");
+			tmpParams.add("%" + inSearch.getEmail().trim().toUpperCase() + "%");
+		}
+
+		if (inSearch.getStaffNo() != null
+				&& inSearch.getStaffNo().length() != 0) {
+			hql.append(" and upper(pl.staffNo) like ?");
+			tmpParams.add("%" + inSearch.getStaffNo().trim().toUpperCase()
+					+ "%");
+		}
+
+		//hql.append(" order by pl.");
+		List rs = baseDAO.query("select count(*) "+hql, tmpParams.toArray());
+		int totalSize = 0;
+		if(rs!=null && !rs.isEmpty()){
+			totalSize=((Long)rs.get(0)).intValue();
+		}
+		
+		inSearch.setTotalResultSize(totalSize);
+		if(totalSize == 0){					
+			return Collections.EMPTY_LIST;
+		}
+		
+		return (List) baseDAO.query(hql.toString(), tmpParams.toArray(),
+				inSearch.getFirstPosition(), inSearch.getMaxResult());
+	}
 }

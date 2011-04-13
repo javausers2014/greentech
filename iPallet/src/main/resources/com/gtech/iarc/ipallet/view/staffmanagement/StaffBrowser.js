@@ -12,21 +12,22 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 	initComponent: function() {
 
 		var staffStore = new Ext.data.Store({
-			autoLoad: true,//{params:{start:0,limit:25}},
+			autoLoad: {params:{start:0,limit:25}},
 		 	proxy: new Ext.ux.data.DwrProxy({
 		 		apiActionToHandlerMap : {
 		 			read : {
 		 				dwrFunction : RemoteStaffService.getAllStaff
-						//,getDwrArgsFunction : function(trans) {
-						//	return [
-						//		staffStore.lastOptions.params.start,
-						//		staffStore.lastOptions.params.limit];
-						//}		 				
+						,getDwrArgsFunction : function(trans) {
+							return [
+								staffStore.lastOptions.params.start,
+								staffStore.lastOptions.params.limit];
+						}		 				
 		 			}
 		 		}
 		 	}),
 		 	reader: new Ext.data.JsonReader({
-		 		//root : 'recordsData',
+				totalProperty: 'totalSize',	
+				root : 'rawResultList',
 		 		fields : [ {name: 'id'},{name: 'staffNo'}, {name: 'fullName'}, 
 		 			{name: 'email'}, {name: 'birthDate', type:'date',dateFormat:'Y.m.d'} ]
 		 	})

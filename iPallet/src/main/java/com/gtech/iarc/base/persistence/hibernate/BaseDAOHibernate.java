@@ -244,6 +244,27 @@ public class BaseDAOHibernate extends HibernateDaoSupport implements BaseDAO {
             }
         });
     }
+    
+    /**
+     * @see com.y3technologies.persistence._DAO#query(String, String[], int)
+     */
+    public java.util.List query(final String query, final Object[] params, final int firstResult, final int maxResults) {
+        if (query == null) {
+            return null;
+        }
+
+        return (java.util.List) getHibernateTemplate().execute(new HibernateCallback() {
+            public Object doInHibernate(Session ses) throws HibernateException {
+                org.hibernate.Query hQuery = ses.createQuery(query);
+                hQuery.setFirstResult(firstResult);
+                hQuery.setMaxResults(maxResults);
+                for (int i = 0; i < params.length; i++) {
+                    hQuery.setParameter(i, params[i]);
+                }
+                return hQuery.list();
+            }
+        });
+    }
 
     /**
      * @see com.y3technologies.persistence._DAO#find(String)
