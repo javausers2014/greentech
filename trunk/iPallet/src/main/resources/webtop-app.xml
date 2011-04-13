@@ -26,6 +26,7 @@
 			<property key="beanName" value="RemoteStaffService" />
 			<converters>
 				<converter class="com.gtech.iarc.ipallet.web.dto.StaffInfo"/>
+				<converter class="com.gtech.iarc.base.web.dwr.DWRPagingReaderResponse"/>
 			</converters>
 		</dwr>			
 		

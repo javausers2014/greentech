@@ -136,6 +136,11 @@ public interface BaseDAO {
 	public java.util.List query(String query, Object[] params, int maxResults);
 
 	/**
+	 *  Limit the search to the given <tt>firstResult</tt> and <tt>maxResults</tt> 
+	 *  that performs the query for pagination.
+	 */
+	public java.util.List query(String query, Object[] params, int firstResult, int maxResults);
+	/**
 	 * Convenient finder which proxy to the HibernateTemplate.find(String) for
 	 * HQL string
 	 * 
