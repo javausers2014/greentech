@@ -19,10 +19,13 @@ public class RemoteStaffService {
 
 
 
-	public DWRPagingReaderResponse<StaffInfo> getAllStaff(int startAt,
+	public DWRPagingReaderResponse<StaffInfo> getAllStaff(String staffNo, String nameLike,String emailLike,int startAt,
 			int maxResult) {
 		PersonnelSearchDTO inSearch = new PersonnelSearchDTO();
 		inSearch.setPagingNeed(true);
+		inSearch.setStaffNo(staffNo);
+		inSearch.setFullName(nameLike);
+		inSearch.setEmail(emailLike);
 		inSearch.setFirstPosition(startAt);
 		inSearch.setMaxResult(maxResult);
 
