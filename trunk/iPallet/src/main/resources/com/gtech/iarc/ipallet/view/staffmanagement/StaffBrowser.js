@@ -10,15 +10,19 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 	title: '<@i18nText key="ipallet.view.title.staffmanagement"/>',
 	iconCls: "icon-silk-folder-user",	
 	initComponent: function() {
-
+		var view = this;
+		
 		var staffStore = new Ext.data.Store({
-			autoLoad: {params:{start:0,limit:25}},
+			autoLoad: false,
 		 	proxy: new Ext.ux.data.DwrProxy({
 		 		apiActionToHandlerMap : {
 		 			read : {
 		 				dwrFunction : RemoteStaffService.getAllStaff
 						,getDwrArgsFunction : function(trans) {
 							return [
+								searchForm.staffNo,
+								searchForm.nameContains,
+								searchForm.emailContains,
 								staffStore.lastOptions.params.start,
 								staffStore.lastOptions.params.limit];
 						}		 				
@@ -45,6 +49,7 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 				items: 
 				[{
 					xtype: 'form',
+					id: 'searchForm',
 					region: 'west',
 					title: '<@i18nText key="ipallet.view.staffmanagement.label.searchcriteria"/>',
 					cls: "wCls-ToolPanel",
@@ -60,11 +65,21 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 						name: "nameContains"
 					},{
 						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.email"/> (<@i18nText key="ipallet.view.staffmanagement.label.wildcard"/>)',
-						name: "EmailContains"						
+						name: "emailContains"						
 					}],
 					buttons: [
-						{text: '<@i18nText key="iarc.base.label.button.search"/>'},
-						{text: '<@i18nText key="iarc.base.label.button.clear"/>'}
+						{	text: '<@i18nText key="iarc.base.label.button.search"/>',
+							iconCls: 'icon-x16-search',
+							handler: function() {			
+								this.staffStore.load();
+							}
+						},
+						{text: '<@i18nText key="iarc.base.label.button.clear"/>',
+							iconCls: 'icon-x16-clear',
+							handler: function() {
+								view.resetView();
+							}
+						}
 					]
 				},
 				{
