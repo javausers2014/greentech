@@ -17,14 +17,40 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 		 	proxy: new Ext.ux.data.DwrProxy({
 		 		apiActionToHandlerMap : {
 		 			read : {
-		 				dwrFunction : RemoteStaffService.getAllStaff
+		 				dwrFunction : RemoteStaffService.searchStaff
 						,getDwrArgsFunction : function(trans) {
+							var firstResult = 0;
+							if(staffStore.lastOptions.params!=null){
+								firstResult = staffStore.lastOptions.params.start;
+							}
+							
+							var maxResult = 25;
+							if(staffStore.lastOptions.params!=null){
+								maxResult = staffStore.lastOptions.params.limit;
+							}
+							
+							var staffNoValue = ' ';
+							if(Ext.getCmp('staffNo').getValue()!=null){
+								staffNoValue = Ext.getCmp('staffNo').getValue();
+							}
+							
+							var emailValue = ' ';
+							if(Ext.getCmp('emailContains').getValue()!=null){
+								emailValue = Ext.getCmp('emailContains').getValue();
+							}
+							
+							var nameValue = ' ';
+							if(Ext.getCmp('nameContains').getValue()!=null){
+								nameValue = Ext.getCmp('nameContains').getValue();
+							}
+							
 							return [
-								searchForm.staffNo,
-								searchForm.nameContains,
-								searchForm.emailContains,
-								staffStore.lastOptions.params.start,
-								staffStore.lastOptions.params.limit];
+								staffNoValue,
+								nameValue,
+								emailValue,
+								firstResult,
+								maxResult
+							];
 						}		 				
 		 			}
 		 		}
@@ -59,19 +85,19 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 					labelAlign: "top",
 					items: [{
 						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.staffno"/>',
-						name: "staffNo"
+						id: 'staffNo'
 					},{
 						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.namecontains"/>',
-						name: "nameContains"
+						id: 'nameContains'
 					},{
 						fieldLabel: '<@i18nText key="ipallet.view.staffmanagement.label.email"/> (<@i18nText key="ipallet.view.staffmanagement.label.wildcard"/>)',
-						name: "emailContains"						
+						id: 'emailContains'						
 					}],
 					buttons: [
 						{	text: '<@i18nText key="iarc.base.label.button.search"/>',
 							iconCls: 'icon-x16-search',
 							handler: function() {			
-								this.staffStore.load();
+								staffStore.load();
 							}
 						},
 						{text: '<@i18nText key="iarc.base.label.button.clear"/>',
@@ -116,6 +142,7 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 
 					sm: new Ext.grid.RowSelectionModel({singleSelect: true}),					
 					bbar: new Ext.PagingToolbar({
+						id: 'pagingBar',
 						pageSize: 25,
 						store: staffStore,
 						displayInfo: true,

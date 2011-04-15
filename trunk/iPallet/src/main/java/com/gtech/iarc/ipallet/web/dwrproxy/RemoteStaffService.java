@@ -19,7 +19,25 @@ public class RemoteStaffService {
 
 
 
-	public DWRPagingReaderResponse<StaffInfo> getAllStaff(String staffNo, String nameLike,String emailLike,int startAt,
+	public DWRPagingReaderResponse<StaffInfo> getAllStaff(int startAt,
+			int maxResult) {
+		PersonnelSearchDTO inSearch = new PersonnelSearchDTO();
+		inSearch.setPagingNeed(true);
+		inSearch.setFirstPosition(startAt);
+		inSearch.setMaxResult(maxResult);
+
+		List<Personnel> tmp = personnelBioService.searchStaff(inSearch);
+		List<StaffInfo> rs = new ArrayList<StaffInfo>();
+		for (Personnel pl : tmp) {
+			rs.add(new StaffInfo(pl));
+		}
+
+		DWRPagingReaderResponse<StaffInfo> dwrRs = new DWRPagingReaderResponse(
+				rs, inSearch.getTotalResultSize());
+		return dwrRs;
+	}	
+	
+	public DWRPagingReaderResponse<StaffInfo> searchStaff(String staffNo, String nameLike,String emailLike,int startAt,
 			int maxResult) {
 		PersonnelSearchDTO inSearch = new PersonnelSearchDTO();
 		inSearch.setPagingNeed(true);
@@ -39,5 +57,4 @@ public class RemoteStaffService {
 				rs, inSearch.getTotalResultSize());
 		return dwrRs;
 	}	
-	
 }
