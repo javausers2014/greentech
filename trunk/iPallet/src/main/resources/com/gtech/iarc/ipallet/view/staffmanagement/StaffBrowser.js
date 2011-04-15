@@ -8,7 +8,7 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 	resizable: true,
 	
 	title: '<@i18nText key="ipallet.view.title.staffmanagement"/>',
-	iconCls: "icon-silk-folder-user",	
+	iconCls: 'icon-silk-folder-user',	
 	initComponent: function() {
 		var view = this;
 		
