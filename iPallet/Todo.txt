@@ -1,3 +1,7 @@
 08-Apr-2011:
 Staff management
 Logout button
+
+http://code.google.com/p/ext-ux-wizard/
+
+http://directwebremoting.org/dwr-demo/simple/text.html

@@ -1,146 +1,121 @@
-Ext.ns("iPallet.Staff");
+Ext.ns('iPallet.Staff');
 
 iPallet.Staff.Creation = Ext.extend(Webtop.View, {
-	title: "<@i18nText key="ipallet.view.title.staffmanagement"/>",
-	iconCls: "icon-silk-user-add",
+	title: '<@i18nText key="ipallet.view.title.staffmanagement"/>',
+	iconCls: 'icon-silk-user-add',
 	width: 500,
 	height: 420,
 	initComponent: function() {
 		var app = this;
-		var rolesDataStore = new Ext.data.ArrayStore({
+		var roleds = new Ext.data.ArrayStore({
 	        data: [
-	            ['1', 'Administrator'], 
-	            ['2', 'Data Manager'], 
-	            ['3', 'Approver'], 
-	            ['4', 'Common User'], 
-	            ['5', 'Project Owner']
+	            ['CTO', 'Chief Tech Office'], 
+	            ['CEO', 'Chief Executive Office'], 
+	            ['SNM', 'Senior Manager'], 
+	            ['DPM', 'Department Manager'], 
+	            ['OPT', 'Operator']
 	           ],
-	        fields: ['value','text'],
-	        sortInfo: {
-	            field: 'value',
-	            direction: 'ASC'
-	        }
+	        fields: ['key','label']
 	    });
-    
-	    var groupsDataStore = new Ext.data.ArrayStore({
+
+
+	    var dptds = new Ext.data.ArrayStore({
 	        data: [
-	            ['1', 'GWB Project Owner'], 
-	            ['2', 'GWB User'], 
-	            ['3', 'Asia-Pacific User']
+	            ['HR', 'Human resource'], 
+	            ['IFS', 'Infrustracure'], 
+	            ['SDV', 'Soft.Development'],
+	            ['APS', 'App. Support']
 	           ],
-	        fields: ['value','text'],
-	        sortInfo: {
-	            field: 'value',
-	            direction: 'ASC'
-	        }
+	        fields: ['key','label']
 	    });
     		
 		Ext.apply(this, {
-			layout: "border",
+			layout: 'border',
 			buttons: [{
-				text: "OK",
+				text: 'OK',
 				listeners: {
 					click: function (btn, evt) {
-						var request = {
-							name: "Zubair Hamed",
-							email: "zubair.mohammad@sg.bosch.com"
-						};
-
-						WebtopAction.call (
-							"com.innovations.webtop.kitchensink.views.usermanagement.UserManagementAction", 
-							"addUser", 
-							request, {
-							callback: function(data) {
-								console.debug (data);
-							}
-						});
+						//Adding remote call
 					}
 				}				
 			}],
-			items: [{
-				xtype: "panel",
-				region: "west",
-				width: 152,
-				height: 150,
-				items: [
-					{
-						xtype: "box",
-						autoEl: {
-							tag: "div",
-							children: [
-								{
-									tag: "img",
-									src: app.img("images/uploadphoto.png"),
-								}
-							]
+			items: [
+				{
+					xtype: 'panel',
+					region: 'west',
+					width: 200,
+					height: 200,
+					items: [
+						{
+							xtype: 'box',
+							autoEl: {
+								tag: 'div',
+								children: [
+									{
+										tag: 'img',
+										src: app.img('../images/uploadphoto.png')
+									}
+								]
+							}
 						}
-					}
-				]
-			},{
-				xtype: "tabpanel",
-				region: "center",
-				activeTab: 0,
-				items: [
-					{ 
-						title: "General",
-						xtype: "form",
+					]
+				},{
+					xtype: 'tabpanel',
+					region: 'center',
+					activeTab: 0,
+					items: [{ 
+						title: 'General',
+						xtype: 'form',
+						id:'staffForm',
 						padding: 10,						
 						labelAlign: 'top',
 						defaultType: 'textfield',
 						defaults: {
-								width: "100%"
+							width: '100%'
 						},
 						items: [
+							{ fieldLabel: 'First Name' },
+							{ fieldLabel: 'Middle' },
+							{ fieldLabel: 'Last Name' },
+							{ fieldLabel: 'Email' },
 							{
-								xtype: "combo",
-								value: "Zubair Hamed",
-								fieldLabel: "Username" 
+				            	xtype:'combo', 
+				            	fieldLabel: 'Role',
+				            	hiddenName: 'label',
+		                     	store: roleds,
+		                     	displayField: 'label',
+		                     	valueField: 'key',
+		                        typeAhead: true,
+		                        mode: 'local',
+		                     	triggerAction: 'all',
+		                     	selectOnFocus:true
 							},
-							{ fieldLabel: "First Name" },
-							{ fieldLabel: "Middle" },
-							{ fieldLabel: "Last Name" },
-							{ fieldLabel: "Email" }					
-						]						
-					},/*{ 
-						title: "Roles",
-						items: [
 							{
-								xtype: "itemselector",
-								imagePath: 'images/ux',
-								multiselects: [{
-									width: 150,
-									height: 250,
-									store: rolesDataStore,
-									displayField: 'text',
-									valueField: 'value'
-								},{
-									width: 150,
-									height: 250,
-									store: [['10','Common User']]
-								}]								
-							}
-						]
-					},{ 
-						title: "Groups",
-						items: [
+				            	xtype:'combo', 
+				            	fieldLabel: 'Department',
+				            	hiddenName: 'label',
+		                     	store: dptds,
+		                     	displayField: 'label',
+		                     	valueField: 'key',
+		                        typeAhead: true,
+		                        mode: 'local',
+		                     	triggerAction: 'all',
+		                     	selectOnFocus:true
+							},
 							{
-								xtype: "itemselector",
-								imagePath: 'images/ux',
-		            multiselects: [{
-		                width: 150,
-		                height: 250,
-		                store: groupsDataStore,
-		                displayField: 'text',
-		                valueField: 'value'
-		            },{
-		                width: 150,
-		                height: 250,
-		                store: [['10','Asia Pacific User']]
-		            }]								
+		                    	xtype:'datefield', 
+		                        fieldLabel: 'Date of Birth',
+		                        name: 'dob',
+		                        width:190,
+		                        allowBlank:false		
 							}
 						]						
-					},*/{ 
-						title: "Preferences" 
+					},
+					{ 
+						title: 'Contacts' 
+					},
+					{ 
+						title: 'Others' 
 					}
 				]				
 			}]
