@@ -150,16 +150,14 @@ iPallet.Staff.Browser = Ext.extend(Webtop.View, {
 						emptyMsg: '<@i18nText key="iarc.base.text.listing.empty.message"/>'
 					})					
 				}],
-				tbar: 
-				[{ 
+				tbar: [
+        		"->",
+				{ 
 					text: '<@i18nText key="ipallet.view.staffmanagement.action.createnewstaff"/>',
-					iconCls: "icon-silk-user-add",
+					iconCls: 'icon-fugue-plus-circle-frame',
 					listeners: {
 						click: function (btn, evt) {
-							new iPallet.Staff.Creation({
-								appKey: 'ipallet.hr.staff.creation',
-								className: 'iPallet.Staff.Creation'
-							}).show();
+							$webtop.showWindow('ipallet.hr.staff.creation', {}, null, $_wt.getWorkspaceContext().getInteractionModel());
 							return;								
 						}
 					}
