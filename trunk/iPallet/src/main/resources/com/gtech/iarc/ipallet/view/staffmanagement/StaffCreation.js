@@ -28,6 +28,33 @@ iPallet.Staff.Creation = Ext.extend(Webtop.View, {
 	           ],
 	        fields: ['key','label']
 	    });
+	    
+		function addnewstaff() {
+		  var firstName = Ext.getCmp('firstName').getValue();//dwr.util.getValue("firstName");
+		  var lastName = Ext.getCmp('lastName').getValue();//dwr.util.getValue("lastName");
+		  var email = Ext.getCmp('email').getValue();//dwr.util.getValue("email");
+		  var bdate = Ext.getCmp('birthdate').getValue();//dwr.util.getValue("birthdate");
+		  var role = Ext.getCmp('role').getValue();//dwr.util.getValue("role");
+		  var department = Ext.getCmp('dept').getValue();//dwr.util.getValue("dept");
+		  /*
+		   * private String staffNo;
+	private String fullName;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private Date birthDate;
+		   */
+		  var newStaff = {
+		  	'fullName': firstName+lastName,
+		  	'firstName':firstName,
+		  	'lastName':lastName,
+		  	'email':email,
+		  	'role':role,
+		  	'department':department,
+		  	'staffNo':role+'094'
+		  	};
+		  RemoteStaffService.addStaff(newStaff, function(){});
+		}
     		
 		Ext.apply(this, {
 			layout: 'border',
@@ -35,7 +62,7 @@ iPallet.Staff.Creation = Ext.extend(Webtop.View, {
 				text: 'OK',
 				listeners: {
 					click: function (btn, evt) {
-						//Adding remote call
+						addnewstaff();
 					}
 				}				
 			}],
@@ -74,12 +101,26 @@ iPallet.Staff.Creation = Ext.extend(Webtop.View, {
 							width: '100%'
 						},
 						items: [
-							{ fieldLabel: 'First Name' },
-							{ fieldLabel: 'Middle' },
-							{ fieldLabel: 'Last Name' },
-							{ fieldLabel: 'Email' },
+							{ 	fieldLabel: 'First Name',
+								id:'firstName',
+								allowBlank:false,
+            					blankText:"Please enter the first name"
+							},
+							{ 	fieldLabel: 'Last Name',
+								id:'lastName',
+								allowBlank:false,
+            					blankText:"Please enter the last name"
+            				},
+							{   fieldLabel: 'Email',
+								id:'email',
+								vtype:'email',
+								allowBlank:false,
+            					blankText:"Please enter valid email" 
+								
+							},
 							{
 				            	xtype:'combo', 
+				            	id:'role',
 				            	fieldLabel: 'Role',
 				            	hiddenName: 'label',
 		                     	store: roleds,
@@ -92,6 +133,7 @@ iPallet.Staff.Creation = Ext.extend(Webtop.View, {
 							},
 							{
 				            	xtype:'combo', 
+				            	id:'dept',
 				            	fieldLabel: 'Department',
 				            	hiddenName: 'label',
 		                     	store: dptds,
@@ -104,6 +146,7 @@ iPallet.Staff.Creation = Ext.extend(Webtop.View, {
 							},
 							{
 		                    	xtype:'datefield', 
+		                    	id:'birthdate',
 		                        fieldLabel: 'Date of Birth',
 		                        name: 'dob',
 		                        width:190,

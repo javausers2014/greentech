@@ -8,7 +8,7 @@ import com.gtech.iarc.base.model.personalinfo.PersonnelSearchDTO;
 import com.gtech.iarc.base.service.userbio.PersonnelBioService;
 import com.gtech.iarc.base.web.dwr.DWRPagingReaderResponse;
 import com.gtech.iarc.ipallet.web.dto.StaffInfo;
-
+@SuppressWarnings("unchecked")
 public class RemoteStaffService {
 	
 	private PersonnelBioService personnelBioService;
@@ -17,8 +17,10 @@ public class RemoteStaffService {
 		this.personnelBioService = personnelBioService;
 	}
 
-
-
+	public void addStaff(StaffInfo newstaff){
+		personnelBioService.addPersonnel(newstaff.generatePersonnel());
+	}
+	
 	public DWRPagingReaderResponse<StaffInfo> getAllStaff(int startAt,
 			int maxResult) {
 		PersonnelSearchDTO inSearch = new PersonnelSearchDTO();
@@ -37,6 +39,7 @@ public class RemoteStaffService {
 		return dwrRs;
 	}	
 	
+
 	public DWRPagingReaderResponse<StaffInfo> searchStaff(String staffNo, String nameLike,String emailLike,int startAt,
 			int maxResult) {
 		PersonnelSearchDTO inSearch = new PersonnelSearchDTO();

@@ -49,7 +49,7 @@ public class Personnel extends DataObject {
 	private String mobile;
 	
 	@Column(name = "BirthDate")
-	private Date birthddate;
+	private Date birthDate;
 	
 	@Column(name = "Email")
 	private String email;
@@ -103,11 +103,11 @@ public class Personnel extends DataObject {
 		this.mobile = mobile;
 	}
 
-	public Date getBirthddate() {
-		return birthddate;
+	public Date getBirthDate() {
+		return birthDate;
 	}
-	public void setBirthddate(Date birthddate) {
-		this.birthddate = birthddate;
+	public void setBirthDate(Date birthddate) {
+		this.birthDate = birthddate;
 	}
 	public String getEmail() {
 		return email;

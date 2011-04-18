@@ -18,6 +18,10 @@ public class StaffInfo implements InfoTransferObject {
 	private String email;
 	private Date birthDate;
 	
+	public StaffInfo(){
+		
+	}
+	
 	public StaffInfo(Personnel personnel){
 		this.setId(personnel.getId());
 		this.setFullName(personnel.getFullName());
@@ -25,9 +29,19 @@ public class StaffInfo implements InfoTransferObject {
 		this.setEmail(personnel.getEmail());
 		this.setFirstName(personnel.getFirstName());
 		this.setLastName(personnel.getLastName());
-		this.setBirthDate(personnel.getBirthddate());
+		this.setBirthDate(personnel.getBirthDate());
 	}
 
+	public Personnel generatePersonnel(){
+		Personnel personnel = new Personnel();
+		personnel.setFullName(this.getFullName());
+		personnel.setStaffNo(this.getStaffNo());
+		personnel.setEmail(this.getEmail());
+		personnel.setFirstName(this.getFirstName());
+		personnel.setLastName(this.getLastName());
+		personnel.setBirthDate(this.getBirthDate());		
+		return personnel;
+	}
 	public long getId() {
 		return id;
 	}
