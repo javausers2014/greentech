@@ -121,7 +121,7 @@ public class BaseDAOHibernate extends HibernateDaoSupport implements BaseDAO {
         ClassMetadata metadata = getClassMeta(dataobject.getClass());
         
         Object id = metadata.getIdentifier(dataobject, org.hibernate.EntityMode.POJO);
-        createdOrModifiedByDate(dataobject, id);
+       
         if (metadata.isVersioned() && id != null) {
             getHibernateTemplate().update(dataobject, LockMode.READ);
         } else {
@@ -344,24 +344,24 @@ public class BaseDAOHibernate extends HibernateDaoSupport implements BaseDAO {
         }
     }
     
-    protected void createdOrModifiedByDate(Object object, Object key) {
-        if (IDataObject.class.isAssignableFrom(object.getClass())) {
-            IDataObject dataobject = (IDataObject) object;
-            java.sql.Timestamp now = new java.sql.Timestamp(DateUtil.getTodayDateInMillisInSeconds());
-
-            if (dataobject.hasMember("createdBy") && key == null) {
-                if (UserProfileInfo.getUserId() != null) {
-                    dataobject.setMemberValue("createdBy", UserProfileInfo.getUserId());
-                }
-                dataobject.setMemberValue("createdDate", now);
-            } else
-            if (dataobject.hasMember("modifiedBy")) {
-                if (UserProfileInfo.getUserId() != null) {
-                    dataobject.setMemberValue("modifiedBy", UserProfileInfo.getUserId());
-                }
-                dataobject.setMemberValue("modifiedDate", now);
-            }
-            dataobject.nullEmptyString();
-        }
-    }
+//    protected void createdOrModifiedByDate(Object object, Object key) {
+//        if (IDataObject.class.isAssignableFrom(object.getClass())) {
+//            IDataObject dataobject = (IDataObject) object;
+//            java.sql.Timestamp now = new java.sql.Timestamp(DateUtil.getTodayDateInMillisInSeconds());
+//
+//            if (dataobject.hasMember("createdBy") && key == null) {
+//                if (UserProfileInfo.getUserId() != null) {
+//                    dataobject.setMemberValue("createdBy", UserProfileInfo.getUserId());
+//                }
+//                dataobject.setMemberValue("createdDate", now);
+//            } else
+//            if (dataobject.hasMember("modifiedBy")) {
+//                if (UserProfileInfo.getUserId() != null) {
+//                    dataobject.setMemberValue("modifiedBy", UserProfileInfo.getUserId());
+//                }
+//                dataobject.setMemberValue("modifiedDate", now);
+//            }
+//            dataobject.nullEmptyString();
+//        }
+//    }
 }
