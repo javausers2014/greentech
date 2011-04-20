@@ -13,12 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.gtech.iarc.base.model.core.DataObject;
+import com.gtech.iarc.base.model.core.BaseObject;
 import com.gtech.iarc.base.model.personalinfo.Personnel;
 
 @Entity
 @Table(name = "USER")
-public class UserAccount extends DataObject {
+public class UserAccount extends BaseObject {
 	
 	/**
 	 * 

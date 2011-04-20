@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gtech.iarc.base.persistence.BaseDAO;
+import com.gtech.iarc.base.persistence.BaseRepository;
 import com.gtech.iarc.base.persistence.exception.DuplicatedDomainDataException;
 import com.gtech.iarc.ipallet.model.core.CoreUOM;
 import com.gtech.iarc.ipallet.model.core.BizConstantCode;
+
 @SuppressWarnings("unchecked")
 public class UOMService {
-	private BaseDAO baseDAO;
+	private BaseRepository baseRepository;
 	
 	public List<String> getUOMCategoryList(){
 		return new ArrayList<String>(){
@@ -23,23 +25,23 @@ public class UOMService {
 		};
 	}
 	
-	public BizConstantCode createNewUOM(BizConstantCode newUOM){
-		baseDAO.save(newUOM);
+	public BizConstantCode createNewUOM(CoreUOM newUOM){
+		baseRepository.save(newUOM);
 		return newUOM;
 	}
 	
 	public List<CoreUOM> getUOMList(){
-		List<CoreUOM> rs = baseDAO.find("from CoreUOM");
+		List<CoreUOM> rs = baseRepository.find("from CoreUOM");
 		return rs;
 	}
 	
 	public List<CoreUOM> getUOMbyCategory(String UOMCategory){
-		List<CoreUOM> rs = baseDAO.find("from CoreUom where uomCategory=?", new String[]{UOMCategory});
+		List<CoreUOM> rs = baseRepository.find("from CoreUom where uomCategory=?", new String[]{UOMCategory});
 		return rs;
 	}
 	
 	public CoreUOM getUOM(String uomCode){
-		List<CoreUOM> rs = baseDAO.find("from CoreUom where uomCode=?", new String[]{uomCode});
+		List<CoreUOM> rs = baseRepository.find("from CoreUom where uomCode=?", new String[]{uomCode});
 		if(rs.size()>1){
 			throw new DuplicatedDomainDataException("Duplicated UOM with code: "+uomCode);
 		}
@@ -48,18 +50,17 @@ public class UOMService {
 	}
 
 	public boolean updateUOM(CoreUOM coreUOM) {
-		baseDAO.save(coreUOM);
+		baseRepository.save(coreUOM);
 		return true;
 	}
 
 	public boolean deleteUOM(long uomId) {
-		baseDAO.delete(CoreUOM.class, uomId);
+		baseRepository.delete(CoreUOM.class, uomId);
 		return true;
 	}
 
-	public void setBaseDAO(BaseDAO baseDAO) {
-		this.baseDAO = baseDAO;
+	public void setBaseRepository(BaseRepository baseRepository) {
+		this.baseRepository = baseRepository;
 	}
-	
 	
 }

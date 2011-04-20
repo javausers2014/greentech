@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.gtech.iarc.base.model.core.DataObject;
+import com.gtech.iarc.base.model.core.BaseObject;
 
 @Entity
 @Table(name = "Personnel")
-public class Personnel extends DataObject {
+public class Personnel extends BaseObject {
 	
 	/**
 	 * 
@@ -19,7 +19,7 @@ public class Personnel extends DataObject {
 	private static final long serialVersionUID = 6134133644198179906L;
 	@Id
 	@Column(name = "ID")
-	private Long id;
+	private long id;
 	
 	@Column(name = "FirstName")
 	private String firstName;
@@ -54,11 +54,11 @@ public class Personnel extends DataObject {
 	@Column(name = "Email")
 	private String email;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

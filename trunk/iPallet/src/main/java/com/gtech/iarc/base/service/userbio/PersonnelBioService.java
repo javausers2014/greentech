@@ -9,27 +9,28 @@ import org.apache.commons.lang.StringUtils;
 import com.gtech.iarc.base.model.personalinfo.Personnel;
 import com.gtech.iarc.base.model.personalinfo.PersonnelSearchDTO;
 import com.gtech.iarc.base.persistence.BaseDAO;
+import com.gtech.iarc.base.persistence.BaseRepository;
 @SuppressWarnings("unchecked")
 public class PersonnelBioService {
 	
-	private BaseDAO baseDAO;
-
-	public void setBaseDAO(BaseDAO baseDAO) {
-		this.baseDAO = baseDAO;
-	}
+	private BaseRepository baseRepository;
 	
+	public void setBaseRepository(BaseRepository baseRepository) {
+		this.baseRepository = baseRepository;
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Personnel> searchByName(String nameLike) {
 		if(nameLike!=null && nameLike.trim().length()>0){
-			return baseDAO.find("from Personnel pl where pl.firstName like ? or pl.lastName like ? or pl.middleName like ?", 
+			return baseRepository.find("from Personnel pl where pl.firstName like ? or pl.lastName like ? or pl.middleName like ?", 
 					new String[]{"%"+nameLike+"%","%"+nameLike+"%","%"+nameLike+"%"});
 		}else{
-			return baseDAO.find("from Personnel pl ");
+			return baseRepository.find("from Personnel pl ");
 		}
 	}
 	
 	public void addPersonnel(Personnel p) {
-		baseDAO.save(p);
+		baseRepository.save(p);
 	}
 	
 
@@ -46,7 +47,7 @@ public class PersonnelBioService {
 	}
 	
 	public void deletePersonnel(long id){
-		baseDAO.delete(Personnel.class, id);
+		baseRepository.delete(Personnel.class, id);
 	}
 	
 	public void updateAllPersonnel(List<Personnel> ps) {
@@ -56,7 +57,7 @@ public class PersonnelBioService {
 	}	
 	
 	public void updatePersonnel(Personnel newP){
-		baseDAO.save(newP);
+		baseRepository.save(newP);
 	}
 //	private void setupPersonnelList() {
 //		List<Personnel> personnels = new ArrayList<Personnel>();
@@ -149,7 +150,7 @@ public class PersonnelBioService {
 	
 	
 	public List<Personnel> getAllStaff() {
-		return baseDAO.find("from Personnel");
+		return baseRepository.find("from Personnel");
 	}
 	
 	public List<Personnel> searchStaff(PersonnelSearchDTO inSearch) {
@@ -176,7 +177,7 @@ public class PersonnelBioService {
 		}
 
 		//hql.append(" order by pl.");
-		List rs = baseDAO.query("select count(*) "+hql, tmpParams.toArray());
+		List rs = baseRepository.query("select count(*) "+hql, tmpParams.toArray());
 		int totalSize = 0;
 		if(rs!=null && !rs.isEmpty()){
 			totalSize=((Long)rs.get(0)).intValue();
@@ -187,7 +188,7 @@ public class PersonnelBioService {
 			return Collections.EMPTY_LIST;
 		}
 		
-		return (List) baseDAO.query(hql.toString(), tmpParams.toArray(),
+		return (List) baseRepository.query(hql.toString(), tmpParams.toArray(),
 				inSearch.getFirstPosition(), inSearch.getMaxResult());
 	}
 }

@@ -5,15 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.gtech.iarc.base.model.core.DataObject;
+import com.gtech.iarc.base.model.core.BaseObject;
 import com.gtech.iarc.base.model.security.Permission;
 
 @Entity
 @Table(name = "USER_PERMISSIONS")
-public class UserPermission extends DataObject {
+public class UserPermission extends BaseObject {
 	
 	/**
 	 * 

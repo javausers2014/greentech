@@ -63,20 +63,18 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<!-- Biz service bean -->		
-	<bean id="userAccountService" class="com.gtech.iarc.base.service.userbio.UserAccountService">
-		<property name="baseDAO" ref="baseDAO" />
-	</bean>
-	
-	<bean id="personnelBioService" class="com.gtech.iarc.base.service.userbio.PersonnelBioService">
-		<property name="baseDAO" ref="baseDAO" />
+	<bean id="baseRepository" class="com.gtech.iarc.base.persistence.hibernate.BaseObjectHibernateRepository">
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>	
 	
-	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" 
-		  p:personnelBioService-ref = "personnelBioService"/>		
+	<!-- Biz service bean -->		
+	<bean id="userAccountService" class="com.gtech.iarc.base.service.userbio.UserAccountService" p:baseRepository-ref ="baseRepository" />
 	
-	<bean id="UOMService" class="com.gtech.iarc.ipallet.service.core.UOMService"
-		  p:baseDAO-ref = "baseDAO"/>
+	<bean id="personnelBioService" class="com.gtech.iarc.base.service.userbio.PersonnelBioService" p:baseRepository-ref ="baseRepository" />
+	
+	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" p:personnelBioService-ref = "personnelBioService"/>		
+	
+	<bean id="UOMService" class="com.gtech.iarc.ipallet.service.core.UOMService" p:baseRepository-ref = "baseRepository"/>
 		
 <!-- For Webtop UI framework -->
 	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
