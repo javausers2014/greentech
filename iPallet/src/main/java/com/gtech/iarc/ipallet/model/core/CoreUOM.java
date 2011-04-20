@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.gtech.iarc.base.model.core.DataObject;
+import com.gtech.iarc.base.model.core.BaseObject;
 
 
 /**
@@ -15,7 +15,7 @@ import com.gtech.iarc.base.model.core.DataObject;
  */
 @Entity
 @Table(name = "CORE_UOM")
-public class CoreUOM extends DataObject implements BizConstantCode {
+public class CoreUOM extends BaseObject implements BizConstantCode {
 
     /**
 	 * 
