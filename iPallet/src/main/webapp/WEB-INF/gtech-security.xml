@@ -14,13 +14,13 @@
 		access-decision-manager-ref="accessDecisionManager"/>
 
 	<http auto-config="true" access-decision-manager-ref="accessDecisionManager">
-	    <intercept-url pattern='/login' filters='none'/>
-	    <intercept-url pattern='/logout' filters='none'/>
-	    <intercept-url pattern='/resource/*' filters='none'/>
+	    <intercept-url pattern='/authenticate' filters='none'/>
+	    <intercept-url pattern='/services/*' filters='none'/>
+	    <intercept-url pattern='/resource/*'  access='LOOK' />
     	<intercept-url pattern='/**' access='LOOK' />
-		<form-login login-page="/login" default-target-url="/"
-			authentication-failure-url="/login" />
-		<logout logout-url="/logout" logout-success-url="/login" />
+		<form-login login-page="/authenticate" default-target-url="/"
+			authentication-failure-url="/authenticate" />
+		<logout logout-url="/authenticate" logout-success-url="/authenticate" />
 	</http>
 
 	<authentication-manager>

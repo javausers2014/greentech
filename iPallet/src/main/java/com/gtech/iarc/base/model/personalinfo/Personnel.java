@@ -34,7 +34,7 @@ public class Personnel extends BaseObject {
 	private String fullName;
 	
 	@Column(name = "PersonnelNo")
-	private String personnelNumber;
+	private String personnelNumber="PN-0098";
 	
 	@Column(name = "StaffNo")
 	private String staffNo;
@@ -49,7 +49,7 @@ public class Personnel extends BaseObject {
 	private String mobile;
 	
 	@Column(name = "BirthDate")
-	private Date birthDate;
+	private Date birthDate = new Date();
 	
 	@Column(name = "Email")
 	private String email;

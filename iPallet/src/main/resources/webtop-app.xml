@@ -15,14 +15,14 @@
 	</globalIncludes>
 
 	<services>
-		<rest springBean="UOMCodeRestService">
+		<rest id="uomRS" springBean="UOMCodeRestService">
 			<route>/uomcode</route>
 			<route>/uomcode/{id}</route>
 		</rest>
-		<rest springBean="UOMCatRestService">
+		<rest id="uomCatRS" springBean="UOMCatRestService">
 			<route>/uomcat</route>
 		</rest>		
-		<dwr type="spring" scriptName="RemoteStaffService">
+		<dwr id="staffRS" type="spring" scriptName="RemoteStaffService">
 			<property key="beanName" value="RemoteStaffService" />
 			<converters>
 				<converter class="com.gtech.iarc.ipallet.web.dto.StaffInfo"/>
