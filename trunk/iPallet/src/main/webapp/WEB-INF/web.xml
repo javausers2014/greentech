@@ -20,16 +20,16 @@
 	</context-param>	
 	
 	<servlet>
-		<servlet-name>Webtop</servlet-name>
-		<servlet-class>com.innovations.webtop.web.context.WebtopDispatcherServlet</servlet-class>
+		<servlet-name>GTech</servlet-name>
+		<servlet-class>com.gtech.iarc.base.web.context.GTechDispatcherServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>Webtop</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>GTech</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Spring Security 
+	<!-- Spring Security   -->
 
 	<filter>
     	<filter-name>springSecurityFilterChain</filter-name>
@@ -39,6 +39,6 @@
     	<filter-name>springSecurityFilterChain</filter-name>
     	<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	  -->
+	
 </web-app>
  
