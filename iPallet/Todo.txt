@@ -1,7 +1,19 @@
 08-Apr-2011:
 Staff management
-Logout button
+Logout button--> Logout URL
+MVC merged!
+
 
 http://code.google.com/p/ext-ux-wizard/
+: Create new Product Wizard:
+1, Prod general info
+2, Owner Info
+3, UOM
+4, Pick Rules
+
+** Configable Wizard**
+Backed decide hw many steps needed. And each step tied to which view, and state/parameters between each steps.
+
 
 http://directwebremoting.org/dwr-demo/simple/text.html
+
