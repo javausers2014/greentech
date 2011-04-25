@@ -28,7 +28,7 @@
 					<menuItems>
 						<menuItem id="menuitem0101" cls="classOne2" ctCls="classContainerOne2">
 							<name><@i18nText key="ipallet.menu.code.uom" /></name>	
-							<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_16.png</icon>
+							<icon>classpath:com.gtech.iarc.ipallet.view.bizcode.images/uom.jpg</icon>
 							<description><@i18nText key="ipallet.menu.code.uom.description" /></description>
 							<view ref="ipallet.view.code.uom" />
 						</menuItem>
@@ -42,7 +42,7 @@
 					<menuItems>
 						<menuItem id="menuitem0201" cls="classOne2" ctCls="classContainerOne2">
 							<name><@i18nText key="ipallet.menu.hr.staffmanagement" /></name>	
-							<icon>classpath:com.gtech.iarc.base.css.images.menu/gtech_icon_16.png</icon>
+							<icon>classpath:com.gtech.iarc.ipallet.view.staffmanagement.images/staffmgm.png</icon>
 							<description><@i18nText key="ipallet.menu.hr.staffmanagement.description" /></description>
 							<view ref="ipallet.hr.staff.browser" />
 						</menuItem>
@@ -50,7 +50,6 @@
 				</entry>			
 			</menu>			
 			<spacer width="20px" />	
-			
 			<shutdown title="<@i18nText key='iarc.base.text.title.shutdown'/>" 
 				message="<@i18nText key='iarc.base.text.confirm.logout' />" 
 				logoutURL="shutdown" >
