@@ -2,6 +2,8 @@ package com.gtech.iarc.ipallet.model.core;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -23,6 +25,7 @@ public class CoreUOM extends BaseObject implements BizConstantCode {
 	private static final long serialVersionUID = -1775728873267072297L;
 	@Id
 	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	   
 	@Column(name = "NAME")
