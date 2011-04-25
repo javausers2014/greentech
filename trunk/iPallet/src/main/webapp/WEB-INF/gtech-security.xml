@@ -20,7 +20,7 @@
     	<intercept-url pattern='/**' access='LOOK' />
 		<form-login login-page="/authenticate" default-target-url="/"
 			authentication-failure-url="/authenticate" />
-		<logout logout-url="/authenticate" logout-success-url="/authenticate" />
+		<logout logout-url="/shutdown" logout-success-url="/authenticate" />
 	</http>
 
 	<authentication-manager>
