@@ -96,6 +96,6 @@
 	<bean id="RemoteStaffService" class="com.gtech.iarc.ipallet.web.dwrproxy.RemoteStaffService">
 		<property name="personnelBioService" ref="personnelBioService"/>
 	</bean>
-
-	<import resource="/gtech-security.xml" />
+<!--
+	<import resource="/gtech-security.xml" />-->
 </beans>

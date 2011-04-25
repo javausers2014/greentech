@@ -3,14 +3,14 @@ Ext.ns("iPallet");
 iPallet.CodeUOMService = Ext.extend(Webtop.View, {
 	width: 500,
 	height: 500,
-	title: "<@i18nText key="ipallet.view.title.uomcode"/>",
+	title: "<@i18nText key='ipallet.view.title.uomcode'/>",
 	iconCls: "icon-silk-folder-user",		
 	initComponent: function() {
 
 		var store = new Ext.data.Store({
 			restful: true,
 			autoLoad: true,
-			autoSave: true,
+			autoSave: false,
 			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/uomcode" }),
 			reader: new Ext.data.JsonReader({
     			totalProperty: 'total',
@@ -54,6 +54,7 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
 			commitChangesText: '<@i18nText key="iarc.base.label.button.cancel"/>',
     		errorText: 'Errors'
 		});		
+		
 		var categoryCombxRenderer=function(value,metaData,record){
 	       // try record.data.teacher here
 	       return record.data.uomCategory;
@@ -66,14 +67,14 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
         	plugins: [editor],
         	columns : [
     			{
-    				header: "<@i18nText key="ipallet.view.uomcode.label.name" />", 
+    				header: "<@i18nText key='ipallet.view.uomcode.label.name'/>", 
     			 	width: 100, 
     			 	sortable: true, 
     			 	dataIndex: 'uomName', 
     			 	editor: new Ext.form.TextField({})
     			 },
     			{
-    				header: "<@i18nText key="ipallet.view.uomcode.label.category" />", 
+    				header: "<@i18nText key='ipallet.view.uomcode.label.category'/>", 
     				width: 75, 
     				sortable: true, 
     				dataIndex: 'uomCategory', 
@@ -90,14 +91,14 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
    				
     			},
     			{
-	    			header: "<@i18nText key="ipallet.view.uomcode.label.code" />", 
+	    			header: "<@i18nText key='ipallet.view.uomcode.label.code'/>", 
 	    			width: 50, 
 	    			sortable: true, 
 	    			dataIndex: 'uomCode', 
 	    			editor: new Ext.form.TextField({})
     			},
     			{
-	    			header: "<@i18nText key="ipallet.view.uomcode.label.factor" />", 
+	    			header: "<@i18nText key='ipallet.view.uomcode.label.factor'/>", 
 	    			width: 50, 
 	    			sortable: true, 
 	    			dataIndex: 'factor', 
@@ -105,14 +106,14 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
     			},
     			{
     				xtype:'checkcolumn',
-	    			header: "<@i18nText key="ipallet.view.uomcode.label.active" />", 
+	    			header: "<@i18nText key='ipallet.view.uomcode.label.active'/>", 
 	    			width: 50,  
 	    			dataIndex: 'active',
 	    			editor: new Ext.form.Checkbox({})
     			},
     			{
 	    			xtype:'checkcolumn',
-	    			header: "<@i18nText key="ipallet.view.uomcode.label.base" />", 
+	    			header: "<@i18nText key='ipallet.view.uomcode.label.base'/>", 
 	    			width: 50, 
 	    			dataIndex: 'calculateBase', 
 	    			editor: new Ext.form.Checkbox({})
@@ -132,7 +133,17 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
             	iconCls: 'icon-fugue-plus-circle-frame',
             	handler: function(btn, ev) {
         			var u = new grid.store.recordType({ firstName : '', lastName: '', email : '' });
-        			editor.stopEditing();
+        			
+        			editor.on('canceledit', function(rowEditor){
+					    var record = grid.store.getAt(rowEditor.rowIndex);
+					    if(record.phantom) {
+					        grid.store.removeAt(rowEditor.rowIndex);
+					        grid.getView().refresh();
+					    }
+					    return true;
+					}, grid);
+					
+        			editor.stopEditing();        			
         			grid.store.insert(0, u);
         			editor.startEditing(0);            			
             	}
