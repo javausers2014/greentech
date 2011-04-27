@@ -10,6 +10,6 @@ public class GTechDispatcherServlet extends DispatcherServlet {
 
 	@Override
 	public String getContextConfigLocation() {
-		return "classpath:com/innovations/webtop/spring/web.xml classpath:gtechweb.xml";
+		return "classpath:com/innovations/webtop/spring/web.xml";// classpath:gtechweb.xml";
 	}
 }

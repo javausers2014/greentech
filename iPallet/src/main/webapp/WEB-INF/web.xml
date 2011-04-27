@@ -28,7 +28,18 @@
 		<servlet-name>GTech</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	<!--
+	<servlet>
+		<servlet-name>Webtop</servlet-name>
+		<servlet-class>com.innovations.webtop.web.context.WebtopDispatcherServlet</servlet-class>
+	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name>Webtop</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	-->	
+	<!-- http://www.coderanch.com/t/366340/Servlets/java/servlet-mapping-url-pattern-vs -->
 	<!-- Spring Security   -->
 <!--
 	<filter>
