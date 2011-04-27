@@ -97,5 +97,6 @@
 		<property name="personnelBioService" ref="personnelBioService"/>
 	</bean>
 <!--
-	<import resource="/gtech-security.xml" />-->
+	<import resource="/gtech-security.xml" />
+	-->
 </beans>

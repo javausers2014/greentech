@@ -10,7 +10,7 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
 		var store = new Ext.data.Store({
 			restful: true,
 			autoLoad: true,
-			autoSave: false,
+			autoSave: true,
 			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/uomcode" }),
 			reader: new Ext.data.JsonReader({
     			totalProperty: 'total',
@@ -33,20 +33,29 @@ iPallet.CodeUOMService = Ext.extend(Webtop.View, {
 			})
 		});
 
-		var uomCatStore = new Ext.data.Store({
-			restful: true,
-			autoLoad: true,
-			autoSave: true,
-			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/uomcat" }),
-			reader: new Ext.data.JsonReader({
-    			totalProperty: 'total',
-    			successProperty: 'success',
-    			root: 'data'
-			},[
-				{ name: "key" },
-				{ name: "label" }
-			])
+//		var uomCatStore = new Ext.data.Store({
+//			restful: true,
+//			autoLoad: true,
+//			autoSave: true,
+//			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/uomcat" }),
+//			reader: new Ext.data.JsonReader({
+//    			totalProperty: 'total',
+//    			successProperty: 'success',
+//    			root: 'data'
+//			},[
+//				{ name: "key" },
+//				{ name: "label" }
+//			])
+//		});
+		var uomCatStore = 		new Ext.data.ArrayStore({
+			fields: ['key', 'label'],
+			data: [							
+				['A', 'Any'],
+				['B', 'January']
+			]
 		});
+		
+
 		
 		var editor = new Ext.ux.grid.RowEditor({ 
 			saveText: '<@i18nText key="iarc.base.label.button.update"/>',

@@ -15,8 +15,6 @@
 
 	<http auto-config="true" access-decision-manager-ref="accessDecisionManager">
 	    <intercept-url pattern='/authenticate' filters='none'/>
-	    <intercept-url pattern='/services/*' filters='none'/>
-	    <intercept-url pattern='/resource/*'  access='LOOK' />
     	<intercept-url pattern='/**' access='LOOK' />
 		<form-login login-page="/authenticate" default-target-url="/"
 			authentication-failure-url="/authenticate" />

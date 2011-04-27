@@ -63,7 +63,9 @@ public class UOMCodeRestService extends RestfulResource {
 			String content = IOUtils.toString(entity.getStream());
 			JSONObject data = JSONObject.fromObject(content).getJSONObject("data");
 			CoreUOM newUOM = (CoreUOM)JSONObject.toBean(data, CoreUOM.class);
-			
+			if (newUOM.getUomCategory()==null || newUOM.getUomCategory().trim().length()==0){
+				return new StringRepresentation("");
+			}
 			Map<String, Object> response = new HashMap<String, Object>();
 			if (newUOM.getId() == 0) {
 				CoreUOM addedUOM = (CoreUOM) uomService.createNewUOM(newUOM);
