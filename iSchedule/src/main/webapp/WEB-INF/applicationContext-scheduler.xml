@@ -1,0 +1,98 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="taskGroupDAO" 
+	   class="com.y3technologies.scheduler.persistence.hibernate.TaskGroupDAOHibernate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="taskDetailDAO" 
+	   class="com.y3technologies.scheduler.persistence.hibernate.TaskDetailDAOHibernate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="taskConfigDAO" 
+	   class="com.y3technologies.scheduler.persistence.hibernate.TaskConfigDAOHibernate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- Schedule services beans-->
+	<bean id="abstractTxDefinition" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" lazy-init="true">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<!-- Scheduler-service -->
+	<bean id="schedulerServiceManager" parent="abstractTxDefinition">
+		<property name="target">
+			<bean class="com.y3technologies.scheduler.service.SchedulerServiceManagerImpl">
+				<property name="taskConfigDAO"><ref local="taskConfigDAO"/></property>
+				<property name="taskDetailDAO"><ref local="taskDetailDAO"/></property>
+				<property name="taskGroupDAO"><ref local="taskGroupDAO"/></property>
+				<property name="dao"><ref bean="dao"/></property>
+				<property name="y3Scheduler"><ref local="y3Scheduler"/></property>
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+		       <prop key="activ*">PROPAGATION_REQUIRED</prop>
+		       <prop key="trigg*">PROPAGATION_REQUIRED</prop>
+		       <prop key="pause*">PROPAGATION_REQUIRED</prop>
+		       <prop key="resum*">PROPAGATION_REQUIRED</prop>
+		       <prop key="delet*">PROPAGATION_REQUIRED</prop>
+		       <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- JobHistoryManager-service -->
+	<bean id="y3Scheduler" parent="abstractTxDefinition">
+		<property name="target">
+			<bean class="com.y3technologies.scheduler.core.Y3Scheduler"
+				singleton="true"  destroy-method="destroy">
+				<property name="scheduler"><ref local="springScheduler"/></property>
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+		       <prop key="*">PROPAGATION_REQUIRED</prop>
+		       <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>	
+	</bean>
+	
+	<bean id="springScheduler" depends-on="y3ScheduleServiceDelegator"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" 
+		destroy-method="destroy">
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="configLocation">
+			<value>classpath:y3_quartz.properties</value>
+		</property>
+		<!--	
+		<property name="jobListeners">
+			<list><ref bean="y3JobListener"/></list>
+		</property>
+		<property name="schedulerListeners">
+			<list><ref bean="y3SchedulerListener"/></list>
+		</property>	
+		-->
+	</bean>
+	
+	<bean id="jobServiceUtil" class="com.y3technologies.scheduler.core.Y3ScheduleExpressionUtil" singleton="true" />
+	
+	<bean id="y3ScheduleServiceDelegator" class="com.y3technologies.scheduler.core.Y3ScheduleServiceDelegator">
+	</bean>
+</beans>
