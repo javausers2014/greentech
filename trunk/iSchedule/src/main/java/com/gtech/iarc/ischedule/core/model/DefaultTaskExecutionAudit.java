@@ -4,7 +4,6 @@ package com.gtech.iarc.ischedule.core.model;
 
 import java.sql.Timestamp;
 
-import com.gtech.iarc.ischedule.core.TaskExecutionAudit;
 
 /**
  * @author ZHIDAO
