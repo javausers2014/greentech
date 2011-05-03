@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.quartz.SchedulerException;
 
-import com.gtech.iarc.ischedule.core.TaskScheduleRequirementContext;
-import com.gtech.iarc.ischedule.core.TaskExecutionDetail;
-import com.gtech.iarc.ischedule.core.TaskScheduleDateTimeInfo;
-import com.gtech.iarc.ischedule.core.ScheduleConstants;
+import com.gtech.iarc.ischedule.ScheduleConstants;
+import com.gtech.iarc.ischedule.core.model.TaskExecutionDetail;
+import com.gtech.iarc.ischedule.core.model.TaskScheduleDateTimeInfo;
+import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
 
 /**
  * 

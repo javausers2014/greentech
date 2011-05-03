@@ -9,8 +9,8 @@ import org.hibernate.criterion.Example;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.gtech.iarc.ischedule.core.TaskExecutionDetail;
 import com.gtech.iarc.ischedule.core.model.DefaultTaskExecutionDetail;
+import com.gtech.iarc.ischedule.core.model.TaskExecutionDetail;
 import com.gtech.iarc.ischedule.persistence.TaskDetailDAO;
 
 /**

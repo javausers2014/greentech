@@ -12,8 +12,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.gtech.iarc.ischedule.core.TaskExecutionAudit;
 import com.gtech.iarc.ischedule.core.model.DefaultTaskExecutionAudit;
+import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
 import com.gtech.iarc.ischedule.persistence.TaskAuditDAO;
 
 

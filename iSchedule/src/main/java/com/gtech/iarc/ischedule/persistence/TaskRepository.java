@@ -2,9 +2,9 @@ package com.gtech.iarc.ischedule.persistence;
 
 import java.util.List;
 
-import com.gtech.iarc.ischedule.core.TaskExecutionAudit;
-import com.gtech.iarc.ischedule.core.TaskExecutionDetail;
-import com.gtech.iarc.ischedule.core.TaskScheduleRequirementContext;
+import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
+import com.gtech.iarc.ischedule.core.model.TaskExecutionDetail;
+import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
 
 public interface TaskRepository {
 	

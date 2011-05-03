@@ -1,5 +1,5 @@
 // Copyright(c) 2011 gTech, All Rights Reserved.
-package com.gtech.iarc.ischedule.core;
+package com.gtech.iarc.ischedule.core.model;
 
 import java.io.Serializable;
 import java.sql.Blob;

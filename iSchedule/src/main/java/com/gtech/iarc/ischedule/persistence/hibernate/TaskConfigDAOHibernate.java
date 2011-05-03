@@ -11,8 +11,8 @@ import org.hibernate.criterion.Example;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.gtech.iarc.ischedule.core.TaskScheduleRequirementContext;
 import com.gtech.iarc.ischedule.core.model.DefaultTaskScheduleRequirementContext;
+import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
 import com.gtech.iarc.ischedule.persistence.TaskConfigDAO;
 
 

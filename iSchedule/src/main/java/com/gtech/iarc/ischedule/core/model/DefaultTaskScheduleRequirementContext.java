@@ -13,8 +13,6 @@ import java.util.Date;
 import org.apache.commons.lang.SerializationUtils;
 import org.hibernate.Hibernate;
 
-import com.gtech.iarc.ischedule.core.TaskScheduleRequirementContext;
-import com.gtech.iarc.ischedule.core.TaskExecutionDetail;
 
 
 /**
