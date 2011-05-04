@@ -58,10 +58,6 @@
 			decorate them
 		-->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="baseDAO" class="com.gtech.iarc.base.persistence.hibernate.BaseDAOHibernate">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
 	
 	<bean id="baseRepository" class="com.gtech.iarc.base.persistence.hibernate.BaseObjectHibernateRepository">
 		<property name="sessionFactory" ref="sessionFactory"/>
