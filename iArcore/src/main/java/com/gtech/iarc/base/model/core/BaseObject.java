@@ -16,8 +16,8 @@ public abstract class BaseObject implements Serializable {
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this);
 	}
-
-	public abstract long getId();
-
-	public abstract void setId(long id);
+//
+//	public abstract Long getId();
+//
+//	public abstract void setId(Long id);
 }
