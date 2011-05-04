@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd			
+	http://www.springframework.org/schema/jdbc
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+            
+	<context:annotation-config />
+	<jdbc:embedded-database id="dataSource">
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_schema.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_data.sql" />
+	</jdbc:embedded-database>
+	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:locations="classpath:webtop-configuration.properties" />
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+<!-- 
+		<property name="annotatedClasses"> 
+			<list>
+				<value>com.gtech.iarc.ipallet.model.core.CoreUOM</value>
+			 </list>
+		</property>
+ -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.gtech.iarc.base.model</value>
+				<value>com.gtech.iarc.ipallet.model.core</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<value>
+				hibernate.format_sql=true
+				hibernate.show_sql=true
+			</value>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!--
+			Instructs the container to look for beans with @Transactional and
+			decorate them
+		-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<bean id="baseRepository" class="com.gtech.iarc.base.persistence.hibernate.BaseObjectHibernateRepository">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>		
+	<bean id="taskGroupDAO" 
+	   class="com.y3technologies.scheduler.persistence.hibernate.TaskGroupDAOHibernate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="taskDetailDAO" 
+	   class="com.y3technologies.scheduler.persistence.hibernate.TaskDetailDAOHibernate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="taskConfigDAO" 
+	   class="com.y3technologies.scheduler.persistence.hibernate.TaskConfigDAOHibernate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- Schedule services beans-->
+	<bean id="abstractTxDefinition" abstract="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" lazy-init="true">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+	</bean>
+	
+	<!-- Scheduler-service -->
+	<bean id="schedulerServiceManager" parent="abstractTxDefinition">
+		<property name="target">
+			<bean class="com.y3technologies.scheduler.service.SchedulerServiceManagerImpl">
+				<property name="taskConfigDAO"><ref local="taskConfigDAO"/></property>
+				<property name="taskDetailDAO"><ref local="taskDetailDAO"/></property>
+				<property name="taskGroupDAO"><ref local="taskGroupDAO"/></property>
+				<property name="dao"><ref bean="dao"/></property>
+				<property name="y3Scheduler"><ref local="y3Scheduler"/></property>
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+		       <prop key="activ*">PROPAGATION_REQUIRED</prop>
+		       <prop key="trigg*">PROPAGATION_REQUIRED</prop>
+		       <prop key="pause*">PROPAGATION_REQUIRED</prop>
+		       <prop key="resum*">PROPAGATION_REQUIRED</prop>
+		       <prop key="delet*">PROPAGATION_REQUIRED</prop>
+		       <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- JobHistoryManager-service -->
+	<bean id="y3Scheduler" parent="abstractTxDefinition">
+		<property name="target">
+			<bean class="com.y3technologies.scheduler.core.Y3Scheduler"
+				singleton="true"  destroy-method="destroy">
+				<property name="scheduler"><ref local="springScheduler"/></property>
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+		       <prop key="*">PROPAGATION_REQUIRED</prop>
+		       <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>	
+	</bean>
+	
+	<bean id="springScheduler" depends-on="y3ScheduleServiceDelegator"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" 
+		destroy-method="destroy">
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="configLocation">
+			<value>classpath:y3_quartz.properties</value>
+		</property>
+		<!--	
+		<property name="jobListeners">
+			<list><ref bean="y3JobListener"/></list>
+		</property>
+		<property name="schedulerListeners">
+			<list><ref bean="y3SchedulerListener"/></list>
+		</property>	
+		-->
+	</bean>
+	
+	<bean id="jobServiceUtil" class="com.y3technologies.scheduler.core.Y3ScheduleExpressionUtil" singleton="true" />
+	
+	<bean id="y3ScheduleServiceDelegator" class="com.y3technologies.scheduler.core.Y3ScheduleServiceDelegator">
+	</bean>
+</beans>
