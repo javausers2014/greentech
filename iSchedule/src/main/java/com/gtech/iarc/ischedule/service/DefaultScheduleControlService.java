@@ -8,7 +8,6 @@ import org.quartz.SchedulerException;
 
 import com.gtech.iarc.ischedule.core.AbstractSpringBeanTask;
 import com.gtech.iarc.ischedule.core.SchedulerControl;
-import com.gtech.iarc.ischedule.core.model.DefaultTaskExecutionAudit;
 import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
 import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
 import com.gtech.iarc.ischedule.repository.TaskRepository;
@@ -122,7 +121,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	public void pauseActiveTask(TaskScheduleRequirementContext taskToBePaused)
 			throws SchedulerException {
 
-		TaskExecutionAudit jobAudit = new DefaultTaskExecutionAudit();
+		TaskExecutionAudit jobAudit = new TaskExecutionAudit();
 		jobAudit.setTaskId(taskToBePaused.getId());
 
 		jobAudit.setStatus(taskToBePaused.getStatus());
@@ -154,7 +153,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	public void resumePausedTask(TaskScheduleRequirementContext pausedTask)
 			throws SchedulerException {
 
-		TaskExecutionAudit jobAudit = new DefaultTaskExecutionAudit();
+		TaskExecutionAudit jobAudit = new TaskExecutionAudit();
 		jobAudit.setTaskId(pausedTask.getId());
 		jobAudit.setStatus(pausedTask.getStatus());
 		jobAudit.setJobLog("Resume Paused Task");

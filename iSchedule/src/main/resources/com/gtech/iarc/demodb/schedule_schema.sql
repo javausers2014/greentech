@@ -1,9 +1,8 @@
-drop table USER if exists;
-drop table PERMISSION if exists;
-drop table USER_PERMISSIONS if exists;
-drop table PERSONNEL if exists;
-drop table CORE_UOM if exists;
-create table USER (ID integer identity primary key, USERNAME varchar(50) not null,FULLNAME varchar(50) not null, PERSONNEL_ID integer, PASSWORD varchar(100) not null,  unique(USERNAME));
+drop table TASK_EXE_DETAIL if exists;
+drop table TASK_EXE_DETAIL if exists;
+drop table TASK_EXE_DETAIL if exists;
+
+create table TASK_EXE_DETAIL (ID integer identity primary key, USERNAME varchar(50) not null,FULLNAME varchar(50) not null, PERSONNEL_ID integer, PASSWORD varchar(100) not null,  unique(USERNAME));
 	
 create table PERMISSION (ID integer identity primary key, PERMISSION varchar(300) not null, PERMISSION_DESC varchar(50) not null, unique(PERMISSION));
 create table USER_PERMISSIONS (ID integer identity primary key, PERMISSION_ID integer not null, USER_ID integer not null);
