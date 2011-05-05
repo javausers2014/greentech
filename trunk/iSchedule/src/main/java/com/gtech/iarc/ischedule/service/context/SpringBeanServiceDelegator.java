@@ -2,9 +2,6 @@
 
 package com.gtech.iarc.ischedule.service.context;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.quartz.JobExecutionContext;
@@ -46,15 +43,13 @@ public class SpringBeanServiceDelegator implements ApplicationContextAware {
      * @return
      */
     @SuppressWarnings("unchecked")
-	public static AbstractSpringBeanTask getTaskInstance(String jobName, String jobId,
-            String className) {
+	public static AbstractSpringBeanTask getTaskInstance(String className) {
 
         try {
             Class jobClass = Class.forName(className);
-            Class[] classArray = { String.class, String.class };
-            Constructor jobConstructor = jobClass.getConstructor(classArray);
-            Object[] objArray = { jobName, jobId };
-            return (AbstractSpringBeanTask) jobConstructor.newInstance(objArray);
+//            Class[] classArray = { String.class, String.class };
+//            Constructor jobConstructor = jobClass.getConstructor(classArray);
+            return (AbstractSpringBeanTask) jobClass.newInstance();
         } catch (ClassNotFoundException e) {
             log.error("ClassNotFoundException in Validating Job Class :"
                     + className, e);
@@ -70,13 +65,6 @@ public class SpringBeanServiceDelegator implements ApplicationContextAware {
             throw new RuntimeException(
                     "SecurityException in Validating Job Class :" + className,
                     e);
-        } catch (NoSuchMethodException e) {
-            log.error("NoSuchMethodException in Validating Job Class :"
-                    + className, e);
-            e.printStackTrace();
-            throw new RuntimeException(
-                    "NoSuchMethodException in Validating Job Class :"
-                            + className, e);
         } catch (IllegalArgumentException e) {
             log.error("IllegalArgumentException in Validating Job Class :"
                     + className, e);
@@ -98,14 +86,7 @@ public class SpringBeanServiceDelegator implements ApplicationContextAware {
             throw new RuntimeException(
                     "IllegalAccessException in Validating Job Class :"
                             + className, e);
-        } catch (InvocationTargetException e) {
-            log.error("InvocationTargetException in Validating Job Class :"
-                    + className, e);
-            e.printStackTrace();
-            throw new RuntimeException(
-                    "InvocationTargetException in Validating Job Class :"
-                            + className, e);
-        }
+        } 
 
     }
 

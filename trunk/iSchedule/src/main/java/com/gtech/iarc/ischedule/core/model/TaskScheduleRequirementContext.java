@@ -1,87 +1,66 @@
-// Copyright(c) 2011 gTech, All Rights Reserved.
 package com.gtech.iarc.ischedule.core.model;
 
 import java.io.Serializable;
-import java.sql.Blob;
+import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * 
- * @author ZHIDAO
- * @revision $Id: IArcTaskConfig.java 7412 2007-09-21 17:31:17Z zhidao $
- */
-public interface TaskScheduleRequirementContext extends TaskBase{
+public interface TaskScheduleRequirementContext extends Serializable{
 
-	public String getTaskScheduleMode();
+	public abstract long getId();
 
-	public void setTaskScheduleMode(String taskScheduleMode);
+	public abstract void setId(long id);
 
-    public String getParamterJspURL();
+	public abstract int getPriority();
 
-	public void setParamterJspURL(String paramterJspURL);
-	
-	public Object getParameterObject();
+	public abstract void setPriority(int priority);
 
-	public void setParameterObject(Serializable parameterObject);
+	public abstract String getStatus();
 
-	public TaskExecutionDetail getArcTaskDetail();
+	public abstract void setStatus(String status);
 
-	public void setArcTaskDetail(TaskExecutionDetail taskDetail);
+	public abstract Date getStartDate();
 
-	public String getDescription();
+	public abstract void setStartDate(Date startDate);
 
-	public void setDescription(String description);
+	public abstract Date getEndDate();
 
-	public Date getEndDate();
+	public abstract void setEndDate(Date endDate);
 
-	public String getTaskSchedule();
+	public abstract String getTaskScheduleMode();
 
-	public Long getTaskDetailId();
+	public abstract void setTaskScheduleMode(String taskScheduleMode);
 
+	public abstract String getJobScheduledCode();
 
-//	public Blob getParameterObjectInBlob();
-//
-//	public void setParameterObjectInBlob(Blob blob);
+	public abstract void setJobScheduledCode(String jobScheduledCode);
 
-	public Long getPriority();
-	
-	public Date getStartDate();
+	public abstract String getDescription();
 
-	public String getStatus();
+	public abstract void setDescription(String description);
 
-	public void setEndDate(Date endDate);
+	public abstract TaskExecutionDetail getTaskExecutionDetail();
 
-	public void setTaskSchedule(String taskSchedule);
+	public abstract void setTaskExecutionDetail(
+			TaskExecutionDetail taskExecutionDetail);
 
-	public void setTaskDetailId(Long taskDetailId);
+	public abstract String getNotifyEmail();
 
-	public void setPriority(Long priority);
+	public abstract void setNotifyEmail(String notifyEmail);
 
-	public void setStartDate(Date startDate);
+	public abstract Boolean getActiveInd();
 
-	public void setStatus(String status);
+	public abstract void setActiveInd(Boolean activeInd);
 
-	public String getTaskScheduleName();
+	public abstract Object getParameterObject();
 
-	public void setTaskScheduleName(String taskScheduleName);
+	public abstract void setParameterObject(Serializable parameterObject);
 
-	public String getJobCronExpression();
-	public void setJobCronExpression(String jobCronExpression);
+	public abstract String getCreatedBy();
 
-	public String getEmailId();
-	public void setEmailId(String emailId);
-	
-	public String getDisplayEndTime();
-	public void setDisplayEndTime(String displayEndTime);
+	public abstract void setCreatedBy(String createdBy);
 
+	public abstract Timestamp getCreatedDate();
 
-	public String getDisplayStartTime();
+	public abstract void setCreatedDate(Timestamp createdDate);
 
-	public void setDisplayStartTime(String displayStartTime);
-
-	public String getDisplayPriority();
-
-	public void setDisplayPriority(String displayPriority);
-	public Long getId();
-	public void setId(Long id);
 }

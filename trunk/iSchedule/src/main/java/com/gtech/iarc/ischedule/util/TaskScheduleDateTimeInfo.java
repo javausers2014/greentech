@@ -1,17 +1,12 @@
 // Copyright(c) 2011 gTech, All Rights Reserved.
-package com.gtech.iarc.ischedule.core.model;
-
-import java.sql.Timestamp;
-
+package com.gtech.iarc.ischedule.util;
 
 
 /**
  * 
  * @author ZHIDAO
- * @revision $Id: ArcTaskScheduleInfo.java 6647 2007-08-21 15:11:13Z zhidao $
  */
-public class DefaultTaskScheduleDateTimeInfo implements TaskScheduleDateTimeInfo {
-
+public class TaskScheduleDateTimeInfo {
 	
 	private String jobPeriodInterval;
     private String jobAdhocRunDate;
@@ -27,10 +22,7 @@ public class DefaultTaskScheduleDateTimeInfo implements TaskScheduleDateTimeInfo
     private String jobYearlyTime;
     private String jobCronExpression;
     private String jobRadio1;
-    private String createdBy;
-    private String modifiedBy;
-    private Timestamp createdDate;
-    private Timestamp modifiedDate;
+
     
 	public String getJobPeriodInterval() {
 		return jobPeriodInterval;
@@ -116,29 +108,5 @@ public class DefaultTaskScheduleDateTimeInfo implements TaskScheduleDateTimeInfo
 	public void setJobRadio1(String jobRadio1) {
 		this.jobRadio1 = jobRadio1;
 	}
-	public String getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
-	public Timestamp getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
-	}
-	public Timestamp getModifiedDate() {
-		return modifiedDate;
-	}
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-    
+   
 }
