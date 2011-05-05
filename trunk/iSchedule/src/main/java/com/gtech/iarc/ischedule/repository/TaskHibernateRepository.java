@@ -11,9 +11,6 @@ import org.hibernate.criterion.Example;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.gtech.iarc.ischedule.core.model.DefaultTaskExecutionAudit;
-import com.gtech.iarc.ischedule.core.model.DefaultTaskExecutionDetail;
-import com.gtech.iarc.ischedule.core.model.DefaultTaskScheduleRequirementContext;
 import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
 import com.gtech.iarc.ischedule.core.model.TaskExecutionDetail;
 import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
@@ -27,7 +24,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
                 "taskAuditId must not be null or 0");
         }
 
-        return (TaskExecutionAudit) getHibernateTemplate().get(DefaultTaskExecutionAudit.class,
+        return (TaskExecutionAudit) getHibernateTemplate().get(TaskExecutionAudit.class,
             taskAuditIdlong);
     }
 
@@ -72,7 +69,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
             throw new IllegalArgumentException("jobId must not be null or 0");
         }
 
-        return (TaskScheduleRequirementContext) getHibernateTemplate().get(DefaultTaskScheduleRequirementContext.class, taskConfigId);
+        return (TaskScheduleRequirementContext) getHibernateTemplate().get(TaskScheduleRequirementContext.class, taskConfigId);
     }
 
     /**
@@ -107,7 +104,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
                             .enableLike();
                             //.excludeProperty("parameterObjectInBlob");
 
-                        List results = ses.createCriteria(DefaultTaskScheduleRequirementContext.class).add(example)
+                        List results = ses.createCriteria(TaskScheduleRequirementContext.class).add(example)
                                           .list();
 
                         return results;
@@ -118,7 +115,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
 
     /**
      * 
-     * @see com.Arctechnologies.scheduler.persistence.TaskConfigDAO#insertArcTaskConfig(com.DefaultTaskScheduleRequirementContext.scheduler.model.ArcTaskConfig)
+     * @see com.Arctechnologies.scheduler.persistence.TaskConfigDAO#insertArcTaskConfig(com.TaskScheduleRequirementContext.scheduler.model.ArcTaskConfig)
      * @param taskConfig
      */
     public void insertArcTaskConfig(TaskScheduleRequirementContext taskConfig) {
@@ -130,7 +127,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
 
     /**
      * 
-     * @see com.Arctechnologies.scheduler.persistence.TaskConfigDAO#removeArcTaskConfig(com.DefaultTaskScheduleRequirementContext.scheduler.model.ArcTaskConfig)
+     * @see com.Arctechnologies.scheduler.persistence.TaskConfigDAO#removeArcTaskConfig(com.TaskScheduleRequirementContext.scheduler.model.ArcTaskConfig)
      * @param taskConfig
      */
     public void removeArcTaskConfig(TaskScheduleRequirementContext taskConfig) {
@@ -156,7 +153,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
      * @param jobSheduledName  
      * @return ArcJob
      */
-    public DefaultTaskScheduleRequirementContext getArcTaskConfig(String jobSheduledName) {
+    public TaskScheduleRequirementContext getArcTaskConfig(String jobSheduledName) {
         
         if (jobSheduledName!=null && jobSheduledName.trim().length()>0) {
             
@@ -167,7 +164,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
                 return null;
             }
             
-            return (DefaultTaskScheduleRequirementContext)rs.iterator().next();
+            return (TaskScheduleRequirementContext)rs.iterator().next();
         }else{
             return null;
         }        
@@ -250,7 +247,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
 
     /**
      * 
-     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#findTaskDetail(com.DefaultTaskExecutionDetail.scheduler.model.Y3TaskDetail)
+     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#findTaskDetail(com.TaskExecutionDetail.scheduler.model.Y3TaskDetail)
      * @param taskDetail
      * @return
      */
@@ -262,7 +259,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
                         Example example = Example.create(taskDetail).excludeZeroes() // exclude zero valued properties
                             .ignoreCase(); // perform case insensitive string comparisons
 
-                        List results = ses.createCriteria(DefaultTaskExecutionDetail.class)
+                        List results = ses.createCriteria(TaskExecutionDetail.class)
                                           .add(example).list();
 
                         return results;
@@ -274,7 +271,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
 
     /**
      * 
-     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#insertTaskDetail(com.DefaultTaskExecutionDetail.scheduler.model.Y3TaskDetail)
+     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#insertTaskDetail(com.TaskExecutionDetail.scheduler.model.Y3TaskDetail)
      * @param taskDetail
      */
     public void insertTaskDetail(TaskExecutionDetail taskDetail){
@@ -285,7 +282,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
 
     /**
      * 
-     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#removeTaskDetail(com.DefaultTaskExecutionDetail.scheduler.model.Y3TaskDetail)
+     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#removeTaskDetail(com.TaskExecutionDetail.scheduler.model.Y3TaskDetail)
      * @param taskDetail
      */
     public void removeTaskDetail(TaskExecutionDetail taskDetail){
@@ -296,7 +293,7 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements Task
 
     /**
      * 
-     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#updateTaskDetail(com.DefaultTaskExecutionDetail.scheduler.model.Y3TaskDetail)
+     * @see com.y3technologies.scheduler.persistence.TaskDetailDAO#updateTaskDetail(com.TaskExecutionDetail.scheduler.model.Y3TaskDetail)
      * @param taskDetail
      */
     public void updateTaskDetail(TaskExecutionDetail taskDetail){

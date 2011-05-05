@@ -1,59 +1,168 @@
 // Copyright(c) 2011 gTech, All Rights Reserved.
+
 package com.gtech.iarc.ischedule.core.model;
 
-import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.gtech.iarc.base.model.core.BaseObject;
 
 /**
- * Define which class could be triggered by schedule trigger. Trigger will create 
- * NEW instance base on <code>getTaskDetailJavaClass()</code>. The class of <code>getTaskDetailJavaClass()</code>
- * should implement interface <code>org.quartz.Job</code>
- *  
  * @author ZHIDAO
- * @revision $Id: IArcTaskDetail.java 6647 2007-08-21 15:11:13Z zhidao $
  */
-public interface TaskExecutionDetail extends Serializable{
+@Entity
+@Table(name = "TASK_EXE_DETAIL")
+public class TaskExecutionDetail extends BaseObject {
 	
-	public static final String TASK_CATEGORY_REPORT="REPORT";
-	public static final String TASK_CATEGORY_INTEGRATION="INTEGRATION";
-	public static final String TASK_CATEGORY_APPAUTO="APP_AUTO";
 	
-	public String getTaskDetailCategory();
-
-	public void setTaskDetailCategory(String taskDetailCategory);
-
-	public String getTaskDetailJavaClass();
-
-	public String getTaskDetailDesc();
-
-	public String getTaskDetailCode();
-
-	public String getParameterJsp();
-
-	public void setTaskDetailJavaClass(String taskDetailJavaClass);
-
-	public void setTaskDetailDesc(String jobTypeDesc);
-
-	public Long getId();
-	public void setId(Long id);
-
-	public void setTaskDetailCode(String jobTypeShortName);
-
-	public void setParameterJsp(String parameterJsp);
-
-	public String getTaskGroupCode();
-
-	public void setTaskGroupCode(String taskGroupCode);
-
-	public String getTaskObjectClass();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3318043902640447328L;
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
-	public void setTaskObjectClass(String taskObjectClass);
+	@Column(name = "CODE")
+	private String taskDetailCode;
+	
+	@Column(name = "DESC")
+	private String taskDetailDesc;
+	
+	@Column(name = "CLASSNAME")
+	private String taskDetailJavaClass;
+	
+	@Column(name = "CATEGORY")
+	private String taskDetailCategory;
+	
+	private String parameterJsp;
+	
+	@Column(name = "ARGUMENT_CLASS")
+	private String taskObjectClass;
+	
+	@Column(name = "GROUP_CODE")
+	private String taskGroupCode;
+	
+	private String taskObjectCode;
+	private String role;
+	
+	@Column(name = "ACTIVE")
+	private Boolean activeInd;
+	
+	@Column(name = "CREATED_BY")
+	private String createdBy;
 
-	public String getTaskObjectCode();
+	@Column(name = "CREATED_DATE")
+	private Date createdDate;
+	
+	public Long getId() {
+		return id;
+	}
 
-	public void setTaskObjectCode(String taskObjectCode);
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	public String getRole();
+	public String getTaskDetailCode() {
+		return taskDetailCode;
+	}
 
-	public void setRole(String role);
+	public void setTaskDetailCode(String taskDetailShortName) {
+		this.taskDetailCode = taskDetailShortName;
+	}
 
+	public String getTaskDetailDesc() {
+		return taskDetailDesc;
+	}
+
+	public void setTaskDetailDesc(String taskDetailFullName) {
+		this.taskDetailDesc = taskDetailFullName;
+	}
+
+	public String getTaskDetailJavaClass() {
+		return taskDetailJavaClass;
+	}
+
+	public void setTaskDetailJavaClass(String taskDetailJavaClass) {
+		this.taskDetailJavaClass = taskDetailJavaClass;
+	}
+
+	public String getTaskDetailCategory() {
+		return taskDetailCategory;
+	}
+
+	public void setTaskDetailCategory(String taskDetailCategory) {
+		this.taskDetailCategory = taskDetailCategory;
+	}
+
+	public String getParameterJsp() {
+		return parameterJsp;
+	}
+
+	public void setParameterJsp(String parameterJsp) {
+		this.parameterJsp = parameterJsp;
+	}
+
+	public String getTaskObjectClass() {
+		return taskObjectClass;
+	}
+
+	public void setTaskObjectClass(String taskObjectClass) {
+		this.taskObjectClass = taskObjectClass;
+	}
+
+	public String getTaskGroupCode() {
+		return taskGroupCode;
+	}
+
+	public void setTaskGroupCode(String taskGroupCode) {
+		this.taskGroupCode = taskGroupCode;
+	}
+
+	public String getTaskObjectCode() {
+		return taskObjectCode;
+	}
+
+	public void setTaskObjectCode(String taskObjectCode) {
+		this.taskObjectCode = taskObjectCode;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Boolean getActiveInd() {
+		return activeInd;
+	}
+
+	public void setActiveInd(Boolean activeInd) {
+		this.activeInd = activeInd;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 }

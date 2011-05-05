@@ -1,76 +1,105 @@
 // Copyright(c) 2011 gTech, All Rights Reserved.
+
 package com.gtech.iarc.ischedule.core.model;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.gtech.iarc.base.model.core.BaseObject;
+
+
 /**
- * 
  * @author ZHIDAO
+ * @revision $Id$
  */
-public interface TaskExecutionAudit extends Serializable{
-
-	public Long getId();
-	public void setId(Long id);
-
+@Entity
+@Table(name = "TASK_EXE_AUDIT")
+public class TaskExecutionAudit extends BaseObject{
 	/**
-	 * @return Returns the jobTypeId.
+	 * 
 	 */
-	public Long getTaskId();
+	private static final long serialVersionUID = -1535716246793732557L;
 
-	/**
-	 * @return Returns the jobLog.
-	 */
-	public String getJobLog();
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)	
+	private Long id;
+	
+	@Column(name = "TASK_EXE_ID")
+    private Long taskId;
+	
+	@Column(name = "WHEN_START")
+    private Date exeStartDate;
+	
+	@Column(name = "WHEN_COMPLETE")
+    private Date completeDate;
+	
+	@Column(name = "STATUS")
+    private String status;	
+    
+    @Column(name = "JOB_LOG")
+    private String jobLog;
+    
+	@Column(name = "CREATED_BY")
+	private String createdBy;
 
-	/**
-	 * @return Returns the requestedBy.
-	 */
-	public String getRequestedBy();
+	@Column(name = "CREATED_DATE")
+	private Date createdDate;
 
-	/**
-	 * @return Returns the status.
-	 */
-	public String getStatus();
+	public Long getTaskId() {
+		return taskId;
+	}
+	public void setTaskId(Long taskId) {
+		this.taskId = taskId;
+	}
+	public Date getExeStartDate() {
+		return exeStartDate;
+	}
+	public void setExeStartDate(Date exeStartDate) {
+		this.exeStartDate = exeStartDate;
+	}
+	public Date getCompleteDate() {
+		return completeDate;
+	}
+	public void setCompleteDate(Date completeDate) {
+		this.completeDate = completeDate;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getJobLog() {
+		return jobLog;
+	}
+	public void setJobLog(String jobLog) {
+		this.jobLog = jobLog;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 
-
-	/**
-	 * @param jobId The jobId to set.
-	 */
-	public void setTaskId(Long jobId);
-
-	/**
-	 * @param jobLog The jobLog to set.
-	 */
-	public void setJobLog(String jobLog);
-
-	/**
-	 * @param requestedBy The requestedBy to set.
-	 */
-	public void setRequestedBy(String requestedBy);
-
-	/**
-	 * @param status The status to set.
-	 */
-	public void setStatus(String status);
-
-	/**
-	 * @return Returns the completeDate.
-	 */
-	public Timestamp getCompleteDate();
-
-	/**
-	 * @return Returns the exeStartDate.
-	 */
-	public Timestamp getExeStartDate();
-
-	/**
-	 * @param completeDate The completeDate to set.
-	 */
-	public void setCompleteDate(Timestamp completeDate);
-
-	/**
-	 * @param exeStartDate The exeStartDate to set.
-	 */
-	public void setExeStartDate(Timestamp exeStartDate);
-
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;		
+	} 
+    
 }

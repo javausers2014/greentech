@@ -1,66 +1,254 @@
+// Copyright(c) 2011 gTech, All Rights Reserved.
 package com.gtech.iarc.ischedule.core.model;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Date;
 
-public interface TaskScheduleRequirementContext extends Serializable{
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-	public abstract long getId();
+import org.apache.commons.lang.SerializationUtils;
+import org.hibernate.Hibernate;
 
-	public abstract void setId(long id);
+import com.gtech.iarc.base.model.core.BaseObject;
 
-	public abstract int getPriority();
+/**
+ * @author ZHIDAO
+ */
+public class TaskScheduleRequirementContext extends BaseObject{
 
-	public abstract void setPriority(int priority);
+    
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5938085808975996287L;
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
+	@Column(name = "PRIORITY")
+    private int priority;
+	
+	@Column(name = "STATUS")
+    private String status;
+	
+	@Column(name = "START_DATE")
+    private Date startDate;
+	
+	@Column(name = "END_DATE")
+    private Date endDate;
+	
+	@Column(name = "MODE")
+    private String taskScheduleMode;
+	
+	@Column(name = "JOB_CODE")
+    private String jobScheduledCode;
+	
+	@Column(name = "DESC")
+    private String description;
+	
+	@ManyToOne
+	@JoinColumn(name = "TASK_DETAIL_ID")
+    private TaskExecutionDetail taskExecutionDetail;   
+	
+	@Column(name = "EMAIL")
+    private String notifyEmail; 
+	
+	@Column(name = "ACTIVE")
+	private Boolean activeInd;
+	
+	@Column(name = "CREATED_BY")
+    private String createdBy;
+	
+	@Column(name = "CREATED_DATE")
+    private Date createdDate;
+    
+    private byte[] binFile;       
+    
+    public byte[] getBinFile() {
+        return binFile;
+    }
+    
+    public void setBinFile(byte[] binFile) {
+        this.binFile = binFile;
+    }  
+    
+    public Object getParameterObject() {
+        byte[] byteClass = this.getBinFile();  
+        if(byteClass==null) return null;
+        return SerializationUtils.deserialize(byteClass);
+    }    
+    
+    public void setParameterObject(Serializable parameterObject) {
+    	this.binFile = SerializationUtils.serialize( parameterObject);
+    }
+    
+    public void setBlobFile(Blob blobFile) {
+        this.binFile = this.toByteArray(blobFile);
+    }
+    /** Don't invoke this. Used by Hibernate only. */
+    public Blob getBlobFile() {
+        return Hibernate.createBlob(this.binFile);
+    }
 
-	public abstract String getStatus();
+    private byte[] toByteArray(Blob fromBlob) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            byte[] buf = new byte[4000];
+            InputStream is = fromBlob.getBinaryStream();
+            try {
+                for (;;) {
+                    int dataSize = is.read(buf);
+                    if (dataSize == -1)
+                        break;
+                    baos.write(buf, 0, dataSize);
+                }
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException ex) {
+                    }
+                }
+            }
+            return baos.toByteArray();
 
-	public abstract void setStatus(String status);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (baos != null) {
+                try {
+                    baos.close();
+                } catch (IOException ex) {
+                }
+            }
+        }
+    }
 
-	public abstract Date getStartDate();
+// public Blob getParameterObjectInBlob() {
+//     return ConvertUtils.convertSerializableObjectToBlob(parameterObject);
+// }
+//
+// public void setParameterObjectInBlob(Blob blob) {
+//     this.parameterObject = ConvertUtils.convertBlobToObject(blob);
+// }    
+    
+    
 
-	public abstract void setStartDate(Date startDate);
+	public long getId() {
+		return id;
+	}
 
-	public abstract Date getEndDate();
+	public void setId(long id) {
+		this.id = id;
+	}
 
-	public abstract void setEndDate(Date endDate);
+	public int getPriority() {
+		return priority;
+	}
 
-	public abstract String getTaskScheduleMode();
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
 
-	public abstract void setTaskScheduleMode(String taskScheduleMode);
+	public String getStatus() {
+		return status;
+	}
 
-	public abstract String getJobScheduledCode();
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
-	public abstract void setJobScheduledCode(String jobScheduledCode);
+	public Date getStartDate() {
+		return startDate;
+	}
 
-	public abstract String getDescription();
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 
-	public abstract void setDescription(String description);
+	public Date getEndDate() {
+		return endDate;
+	}
 
-	public abstract TaskExecutionDetail getTaskExecutionDetail();
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
-	public abstract void setTaskExecutionDetail(
-			TaskExecutionDetail taskExecutionDetail);
+	public String getTaskScheduleMode() {
+		return taskScheduleMode;
+	}
 
-	public abstract String getNotifyEmail();
+	public void setTaskScheduleMode(String taskScheduleMode) {
+		this.taskScheduleMode = taskScheduleMode;
+	}
 
-	public abstract void setNotifyEmail(String notifyEmail);
+	public String getJobScheduledCode() {
+		return jobScheduledCode;
+	}
 
-	public abstract Boolean getActiveInd();
+	public void setJobScheduledCode(String jobScheduledCode) {
+		this.jobScheduledCode = jobScheduledCode;
+	}
 
-	public abstract void setActiveInd(Boolean activeInd);
+	public String getDescription() {
+		return description;
+	}
 
-	public abstract Object getParameterObject();
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-	public abstract void setParameterObject(Serializable parameterObject);
+	public TaskExecutionDetail getTaskExecutionDetail() {
+		return taskExecutionDetail;
+	}
 
-	public abstract String getCreatedBy();
+	public void setTaskExecutionDetail(TaskExecutionDetail taskExecutionDetail) {
+		this.taskExecutionDetail = taskExecutionDetail;
+	}
 
-	public abstract void setCreatedBy(String createdBy);
+	public String getNotifyEmail() {
+		return notifyEmail;
+	}
 
-	public abstract Timestamp getCreatedDate();
+	public void setNotifyEmail(String notifyEmail) {
+		this.notifyEmail = notifyEmail;
+	}
 
-	public abstract void setCreatedDate(Timestamp createdDate);
+	public Boolean getActiveInd() {
+		return activeInd;
+	}
+
+	public void setActiveInd(Boolean activeInd) {
+		this.activeInd = activeInd;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 
 }
