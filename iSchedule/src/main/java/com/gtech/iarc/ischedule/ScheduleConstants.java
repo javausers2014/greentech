@@ -3,7 +3,6 @@ package com.gtech.iarc.ischedule;
 
 /**
  * @author ZHIDAO
- * @revision $Id$
  */
 public interface ScheduleConstants {
    
@@ -16,9 +15,13 @@ public interface ScheduleConstants {
     public static final String JOB_STATUS_COMPLETEWITHERROR = "COMPLETED_ERROR";
 
     public static final String JOB_STATUS_WORKINGINPROCESS = "WIP";
+    
+    public static final String JOB_STATUS_DELETED = "DELETED";
 
     public static final String SCHEDULER_USERNAME = "Arc_Scheduler";
-
+    
+    public static final String DEFAULT_JOB_GROUP = "GTECH_SCHEDULER_GRP";
+    
     public static final String DEFAULT_JOB_LISTENER = "DEFAULT_JOB_LISTENER";
     
     public static final String SCHEDULE_MODE_PERIODINTERVAL = "PERIOD_INTVL";

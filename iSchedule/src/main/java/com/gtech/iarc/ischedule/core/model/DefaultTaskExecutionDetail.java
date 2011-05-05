@@ -4,9 +4,18 @@ package com.gtech.iarc.ischedule.core.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author ZHIDAO
  */
+@Entity
+@Table(name = "TASK_EXE_DETAIL")
 public class DefaultTaskExecutionDetail implements TaskExecutionDetail {
 	
 	
@@ -14,20 +23,45 @@ public class DefaultTaskExecutionDetail implements TaskExecutionDetail {
 	 * 
 	 */
 	private static final long serialVersionUID = 3318043902640447328L;
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	@Column(name = "CODE")
 	private String taskDetailCode;
+	
+	@Column(name = "DESC")
 	private String taskDetailDesc;
+	
+	@Column(name = "CLASSNAME")
 	private String taskDetailJavaClass;
+	
+	@Column(name = "CATEGORY")
 	private String taskDetailCategory;
+	
 	private String parameterJsp;
+	
+	@Column(name = "ARGUMENT_CLASS")
 	private String taskObjectClass;
+	
+	@Column(name = "GROUP_CODE")
 	private String taskGroupCode;
+	
 	private String taskObjectCode;
 	private String role;
+	
+	@Column(name = "ACTIVE")
 	private Boolean activeInd;
+	
+	@Column(name = "CREATED_BY")
 	private String createdBy;
-	private String modifiedBy;
+
+	@Column(name = "CREATED_DATE")
 	private Timestamp createdDate;
+	
+	private String modifiedBy;
+	
 	private Timestamp modifiedDate;	
 
 	public Long getId() {

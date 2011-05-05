@@ -1,5 +1,5 @@
 // Copyright(c) 2011 gTech, All Rights Reserved.
-package com.gtech.iarc.ischedule.core;
+package com.gtech.iarc.ischedule.util;
 
 import java.io.InputStream;
 import java.sql.Date;
@@ -12,7 +12,6 @@ import java.util.StringTokenizer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.gtech.iarc.ischedule.core.model.TaskScheduleDateTimeInfo;
 
 
 /**

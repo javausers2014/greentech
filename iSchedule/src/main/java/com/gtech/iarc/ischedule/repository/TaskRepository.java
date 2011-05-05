@@ -1,4 +1,4 @@
-package com.gtech.iarc.ischedule.persistence;
+package com.gtech.iarc.ischedule.repository;
 
 import java.util.List;
 

@@ -1,12 +1,13 @@
 // Copyright(c) 2011 gTech, All Rights Reserved.
 package com.gtech.iarc.ischedule.core.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 /**
  * 
  * @author ZHIDAO
  */
-public interface TaskExecutionAudit extends TaskBase{
+public interface TaskExecutionAudit extends Serializable{
 
 	public Long getId();
 	public void setId(Long id);

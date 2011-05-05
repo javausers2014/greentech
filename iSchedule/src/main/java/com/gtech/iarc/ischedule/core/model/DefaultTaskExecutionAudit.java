@@ -4,6 +4,13 @@ package com.gtech.iarc.ischedule.core.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.gtech.iarc.base.model.core.BaseObject;
 
 
@@ -11,6 +18,8 @@ import com.gtech.iarc.base.model.core.BaseObject;
  * @author ZHIDAO
  * @revision $Id$
  */
+@Entity
+@Table(name = "TASK_EXE_AUDIT")
 public class DefaultTaskExecutionAudit extends BaseObject implements TaskExecutionAudit {
 	/**
 	 * 
@@ -18,16 +27,38 @@ public class DefaultTaskExecutionAudit extends BaseObject implements TaskExecuti
 	private static final long serialVersionUID = -1535716246793732557L;
 
 	//private Long taskAuditId;
+	@Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private Long id;
+	
+	@Column(name = "TASK_EXE_ID")
     private Long taskId;
+	
+	@Column(name = "WHEN_START")
     private Timestamp exeStartDate;
+	
+	@Column(name = "WHEN_COMPLETE")
     private Timestamp completeDate;
+	
+	@Column(name = "STATUS")
     private String status;
+	
+	
     private String requestedBy;
+    
+    @Column(name = "JOB_LOG")
     private String jobLog;
+    
+    
 	private Boolean activeInd;
-    private String createdBy;
-    private Timestamp createdDate;    
+    
+	@Column(name = "CREATED_BY")
+	private String createdBy;
+
+	@Column(name = "CREATED_DATE")
+	private Timestamp createdDate;
+
     private String modifiedBy;
     private Timestamp modifiedDate;
 //	public Long getTaskAuditId() {

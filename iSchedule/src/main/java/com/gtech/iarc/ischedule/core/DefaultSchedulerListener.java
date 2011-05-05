@@ -15,7 +15,7 @@ import com.gtech.iarc.ischedule.ScheduleConstants;
 import com.gtech.iarc.ischedule.core.model.DefaultTaskExecutionAudit;
 import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
 import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
-import com.gtech.iarc.ischedule.persistence.TaskRepository;
+import com.gtech.iarc.ischedule.repository.TaskRepository;
 
 
 
@@ -126,7 +126,7 @@ public class DefaultSchedulerListener implements SchedulerListener {
 //            jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
 //            jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
             jobAudit.setTaskId(job.getId());
-            jobAudit.setRequestedBy(job.getModifiedBy());
+            //jobAudit.setRequestedBy(job.getModifiedBy());
             jobAudit.setStatus(ScheduleConstants.JOB_STATUS_PAUSED);
 
             taskRepository.insertTaskAudit(jobAudit);
@@ -155,7 +155,7 @@ public class DefaultSchedulerListener implements SchedulerListener {
 //            jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
 //            jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
             jobAudit.setTaskId(job.getId());
-            jobAudit.setRequestedBy(job.getModifiedBy());
+            //jobAudit.setRequestedBy(job.getModifiedBy());
             jobAudit.setStatus(ScheduleConstants.JOB_STATUS_ACTIVE);
 
             taskRepository.insertTaskAudit(jobAudit);
@@ -186,8 +186,8 @@ public class DefaultSchedulerListener implements SchedulerListener {
 //            jobAudit.setInactBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
 //            jobAudit.setInactDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
             jobAudit.setTaskId(job.getId());
-            jobAudit.setRequestedBy(job.getModifiedBy());
-            //jobAudit.setStatus(ArcSchedulerConstants.DELETED_JOB_STATUS);
+            //jobAudit.setRequestedBy(job.getModifiedBy());
+            jobAudit.setStatus(ScheduleConstants.JOB_STATUS_DELETED);
 
             taskRepository.insertTaskAudit(jobAudit);
         } catch (Exception e) {
@@ -228,8 +228,8 @@ public class DefaultSchedulerListener implements SchedulerListener {
     public void triggerFinalized(Trigger trigger) {
         try {
         	TaskScheduleRequirementContext job = taskRepository.getArcTaskConfig(trigger.getJobName());
-            job.setModifiedBy(ScheduleConstants.SCHEDULER_USERNAME);
-            job.setModifiedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
+//            job.setModifiedBy(ScheduleConstants.SCHEDULER_USERNAME);
+//            job.setModifiedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
             job.setStatus(ScheduleConstants.JOB_STATUS_COMPLETE);
             taskRepository.updateArcTaskConfig(job);
 
@@ -239,7 +239,7 @@ public class DefaultSchedulerListener implements SchedulerListener {
 //            jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
 //            jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
             jobAudit.setTaskId(job.getId());
-            jobAudit.setRequestedBy(job.getModifiedBy());
+            jobAudit.setRequestedBy(ScheduleConstants.SCHEDULER_USERNAME);
 
             if (isJobCompletedWithError(Long.valueOf(trigger
                     .getJobGroup()))) {

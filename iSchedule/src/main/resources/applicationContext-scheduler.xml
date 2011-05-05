@@ -16,8 +16,8 @@
             
 	<context:annotation-config />
 	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_schema.sql" />
-		<jdbc:script location="classpath:com/gtech/iarc/demodb/demo_data.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/schedule_schema.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/demodb/schedule_data.sql" />
 	</jdbc:embedded-database>
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
