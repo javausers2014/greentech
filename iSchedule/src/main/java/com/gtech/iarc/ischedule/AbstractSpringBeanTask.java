@@ -3,7 +3,7 @@ package com.gtech.iarc.ischedule;
 import org.quartz.JobExecutionContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.gtech.iarc.ischedule.service.context.SpringBeanServiceDelegator;
+import com.gtech.iarc.ischedule.context.SpringBeanServiceDelegator;
 
 /**
  * Abstract class defining all APIs and common functions needed for executing scheduled task by the scheduler.<br>
