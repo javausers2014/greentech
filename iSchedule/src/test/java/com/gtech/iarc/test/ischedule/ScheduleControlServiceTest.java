@@ -1,3 +1,5 @@
+package com.gtech.iarc.test.ischedule;
+
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -6,40 +8,27 @@ import junit.framework.TestCase;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.junit.Before;
 import org.quartz.SchedulerException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.y3technologies.ewms.common.view.ScheduleJobView;
-import com.y3technologies.model.IDataObject;
-import com.y3technologies.persistence._DAO;
-import com.y3technologies.scheduler.core.Y3SchedulerConstants;
-import com.y3technologies.scheduler.model.IY3TaskConfig;
-import com.y3technologies.scheduler.model.IY3TaskDetail;
-import com.y3technologies.scheduler.model.IY3TaskGroup;
-import com.y3technologies.scheduler.model.IY3TaskScheduleInfo;
-import com.y3technologies.scheduler.model.Y3TaskConfig;
-import com.y3technologies.scheduler.model.Y3TaskDetail;
-import com.y3technologies.scheduler.model.Y3TaskGroup;
-import com.y3technologies.scheduler.model.Y3TaskScheduleInfo;
-import com.y3technologies.scheduler.service.SchedulerServiceManager;
-import com.y3technologies.testhelper.ViewObjectHelper;
+import com.gtech.iarc.base.model.core.IDataObject;
+import com.gtech.iarc.test.ScheduleTest;
 
 /**
  * 
  * @author ZHIDAO
- * @revision $Id: SchedulerServiceManagerTest.java 6688 2007-08-23 05:57:41Z
- *           zhidao $
  */
-public class SchedulerServiceManagerTest extends TestCase {
-
+public class ScheduleControlServiceTest extends ScheduleTest{
+	
     protected static Log log = LogFactory
-            .getLog(SchedulerServiceManagerTest.class);
+            .getLog(ScheduleControlServiceTest.class);
 
     public static final String CREATED_BY = "UNITTEST";
 
     public static final String MODIFIED_BY = "UNITTEST";
 
-    protected static ClassPathXmlApplicationContext ctx = null;
+
 
     private ScheduleJobView scheduleJobView;
 
@@ -48,15 +37,10 @@ public class SchedulerServiceManagerTest extends TestCase {
     SchedulerServiceManager schedulerServiceManager;
 
 //    private DefaultListableBeanFactory beanFactory;
-    
-    protected String[] APPLICATION_CONTEXTS = { "/applicationContext.xml",
-            "/applicationContext-base.xml","/applicationContext-billing.xml",
-            "/applicationContext-audit.xml","/applicationContext-scheduler.xml",
-            "/y3-scheduler-beans.xml" };
 
-    public SchedulerServiceManagerTest() {
-        ctx = (ctx == null) ? new ClassPathXmlApplicationContext(
-                APPLICATION_CONTEXTS) : ctx;
+
+    public ScheduleControlServiceTest() {
+
     }
 
     private IY3TaskConfig prepareUnitTestOneTimeTaskConfig(
@@ -94,7 +78,7 @@ public class SchedulerServiceManagerTest extends TestCase {
         taskConfig.setTaskSchedule("DAILY;10:09");
         taskConfig.setTaskScheduleMode("DAILY");
         taskConfig.setJobCronExpression("0 09 10 ? * *");
-        taskConfig.setCreatedBy(SchedulerServiceManagerTest.CREATED_BY);
+        taskConfig.setCreatedBy(ScheduleControlServiceTest.CREATED_BY);
         viewObject.bindDataObject("y3TaskConfig", (IDataObject) taskConfig);
 
         taskConfig = scheduleJobView.prepareTaskConfig(viewObject);
@@ -111,20 +95,20 @@ public class SchedulerServiceManagerTest extends TestCase {
                 new Object[] { "UNITTESTONLY" });
         dao.executeUpdate(
                 "delete from Y3TaskConfig conf where conf.createdBy=?",
-                new Object[] { SchedulerServiceManagerTest.CREATED_BY });
+                new Object[] { ScheduleControlServiceTest.CREATED_BY });
         dao
                 .executeUpdate(
                         "delete from Y3UserProfileBean userProfole where userProfole.createdBy=?",
-                        new Object[] { SchedulerServiceManagerTest.CREATED_BY });
+                        new Object[] { ScheduleControlServiceTest.CREATED_BY });
         dao
                 .executeUpdate(
                         "delete from Y3UserRoleBean userRole where userRole.createdBy=?",
                         new Object[] { "UNITTEST" });
         dao.executeUpdate("delete from Y3UserBean user where user.createdBy=?",
-                new Object[] { SchedulerServiceManagerTest.CREATED_BY });
+                new Object[] { ScheduleControlServiceTest.CREATED_BY });
         dao.executeUpdate(
                 "delete from Y3ProfileValueBean profV where profV.createdBy=?",
-                new Object[] { SchedulerServiceManagerTest.CREATED_BY });
+                new Object[] { ScheduleControlServiceTest.CREATED_BY });
 
     }
 
@@ -158,7 +142,7 @@ public class SchedulerServiceManagerTest extends TestCase {
         taskGrp.setActiveInd(Boolean.TRUE);
         taskGrp.setTaskGroupFullName("Unit Test Task Group");
         taskGrp.setTaskGroupShortName("UNITTESTONLY");
-        taskGrp.setCreatedBy(SchedulerServiceManagerTest.CREATED_BY);
+        taskGrp.setCreatedBy(ScheduleControlServiceTest.CREATED_BY);
         dao.save(taskGrp);
         return taskGrp;
     }
@@ -178,7 +162,7 @@ public class SchedulerServiceManagerTest extends TestCase {
         viewTaskDetail.setTaskObjectClass("you.should.not.find.this.class");
 
         viewTaskDetail.setActiveInd(Boolean.TRUE);
-        viewTaskDetail.setCreatedBy(SchedulerServiceManagerTest.CREATED_BY);
+        viewTaskDetail.setCreatedBy(ScheduleControlServiceTest.CREATED_BY);
         viewTaskDetail.setCreatedDate(new Timestamp((new Date()).getTime()));
 
         dao.save(viewTaskDetail);
@@ -200,7 +184,7 @@ public class SchedulerServiceManagerTest extends TestCase {
         viewTaskDetail.setTaskObjectClass("you.should.not.find.this.class");
 
         viewTaskDetail.setActiveInd(Boolean.TRUE);
-        viewTaskDetail.setCreatedBy(SchedulerServiceManagerTest.CREATED_BY);
+        viewTaskDetail.setCreatedBy(ScheduleControlServiceTest.CREATED_BY);
         viewTaskDetail.setCreatedDate(new Timestamp((new Date()).getTime()));
 
         dao.save(viewTaskDetail);
