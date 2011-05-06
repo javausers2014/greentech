@@ -3,11 +3,10 @@ package com.gtech.iarc.ipallet.service.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gtech.iarc.base.persistence.BaseDAO;
 import com.gtech.iarc.base.persistence.BaseRepository;
 import com.gtech.iarc.base.persistence.exception.DuplicatedDomainDataException;
-import com.gtech.iarc.ipallet.model.core.CoreUOM;
 import com.gtech.iarc.ipallet.model.core.BizConstantCode;
+import com.gtech.iarc.ipallet.model.core.CoreUOM;
 
 @SuppressWarnings("unchecked")
 public class UOMService {
