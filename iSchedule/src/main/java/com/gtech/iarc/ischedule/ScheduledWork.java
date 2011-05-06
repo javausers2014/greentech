@@ -1,4 +1,4 @@
-package com.gtech.iarc.ischedule.core;
+package com.gtech.iarc.ischedule;
 
 import org.quartz.JobExecutionContext;
 

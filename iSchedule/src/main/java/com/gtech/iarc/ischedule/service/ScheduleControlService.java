@@ -3,8 +3,7 @@ package com.gtech.iarc.ischedule.service;
 
 import org.quartz.SchedulerException;
 
-import com.gtech.iarc.ischedule.ScheduleConstants;
-import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
+import com.gtech.iarc.ischedule.service.core.model.TaskSchedule;
 
 /**
  * 
@@ -39,7 +38,7 @@ public interface ScheduleControlService extends ScheduleConstants {
 	 * @param taskConfig
 	 * @see com.SchedulerControl.scheduler.core.ArcScheduler#activateJob(com.y3technologies.scheduler.core.Y3AbstractTask)
 	 */
-	public void activateTask(TaskScheduleRequirementContext taskConfig,
+	public void activateTask(TaskSchedule taskConfig,
 			String cronExpression);
 
 	/**
@@ -52,7 +51,7 @@ public interface ScheduleControlService extends ScheduleConstants {
 	 * @throws SchedulerException
 	 * @see com.SchedulerControl.scheduler.core.ArcScheduler#activateJob(com.Arctechnologies.scheduler.core.ArcAbstractTask)
 	 */
-	public void deleteTask(TaskScheduleRequirementContext taskConfig)
+	public void deleteTask(TaskSchedule taskConfig)
 			throws SchedulerException;
 
 	/**
@@ -64,7 +63,7 @@ public interface ScheduleControlService extends ScheduleConstants {
 	 * @param activeTask
 	 * @throws SchedulerException
 	 */
-	public void pauseActiveTask(TaskScheduleRequirementContext activeTask)
+	public void pauseActiveTask(TaskSchedule activeTask)
 			throws SchedulerException;
 
 	/**
@@ -77,7 +76,7 @@ public interface ScheduleControlService extends ScheduleConstants {
 	 * @param pausedTask
 	 * @throws SchedulerException
 	 */
-	public void resumePausedTask(TaskScheduleRequirementContext pausedTask)
+	public void resumePausedTask(TaskSchedule pausedTask)
 			throws SchedulerException;
 
 	/**
@@ -87,7 +86,7 @@ public interface ScheduleControlService extends ScheduleConstants {
 	 * "parameter object" changing. Can ask user to suspend/delete old one and
 	 * create a new one.
 	 */
-	public void reScheduleTask(TaskScheduleRequirementContext reTask,
+	public void reScheduleTask(TaskSchedule reTask,
 			String cronExpression);
 
 }
