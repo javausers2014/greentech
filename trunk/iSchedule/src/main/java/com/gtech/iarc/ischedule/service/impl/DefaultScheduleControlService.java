@@ -1,4 +1,4 @@
-package com.gtech.iarc.ischedule.service;
+package com.gtech.iarc.ischedule.service.impl;
 
 import java.text.ParseException;
 
@@ -6,12 +6,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.quartz.SchedulerException;
 
-import com.gtech.iarc.ischedule.core.AbstractSpringBeanTask;
-import com.gtech.iarc.ischedule.core.SchedulerControl;
-import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
-import com.gtech.iarc.ischedule.core.model.TaskScheduleRequirementContext;
-import com.gtech.iarc.ischedule.repository.TaskRepository;
+import com.gtech.iarc.ischedule.AbstractSpringBeanTask;
+import com.gtech.iarc.ischedule.service.ScheduleControlService;
 import com.gtech.iarc.ischedule.service.context.SpringBeanServiceDelegator;
+import com.gtech.iarc.ischedule.service.core.SchedulerControl;
+import com.gtech.iarc.ischedule.service.core.model.TaskExecutionAudit;
+import com.gtech.iarc.ischedule.service.core.model.TaskSchedule;
+import com.gtech.iarc.ischedule.service.repository.TaskRepository;
 
 /**
  * 
@@ -41,7 +42,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	 * @see com.ScheduleControlService.scheduler.service.SchedulerServiceManager#activateTask(com.y3technologies.scheduler.model.Y3TaskConfig)
 	 * @param activeJob
 	 */
-	public void activateTask(TaskScheduleRequirementContext taskToBeScheduled,
+	public void activateTask(TaskSchedule taskToBeScheduled,
 			String cronExpression) {
 		if (null == taskToBeScheduled) {
 			log.warn("Can't Activate a NULL Job!");
@@ -55,7 +56,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 			taskToBeScheduled.setActiveInd(Boolean.TRUE);
 			taskToBeScheduled.setStatus(JOB_STATUS_ACTIVE);
 
-			taskRepository.insertArcTaskConfig(taskToBeScheduled);
+			taskRepository.addNewTaskSchedule(taskToBeScheduled);
 
 			String className = taskToBeScheduled.getTaskExecutionDetail()
 					.getTaskDetailJavaClass();
@@ -94,12 +95,12 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	 * @param deleteTask
 	 * @throws SchedulerException
 	 */
-	public void deleteTask(TaskScheduleRequirementContext taskToBeDeleted)
+	public void deleteTask(TaskSchedule taskToBeDeleted)
 			throws SchedulerException {
 		if (null == taskToBeDeleted) {
 			return;
 		}
-		taskRepository.removeArcTaskConfig(taskToBeDeleted);
+		taskRepository.deleteTaskSchedule(taskToBeDeleted.getId());
 		String taskGroup = taskToBeDeleted.getTaskExecutionDetail()
 				.getTaskGroupCode() == null ? DEFAULT_JOB_GROUP
 				: taskToBeDeleted.getTaskExecutionDetail().getTaskGroupCode();
@@ -118,7 +119,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	 * @param pauseTask
 	 * @throws SchedulerException
 	 */
-	public void pauseActiveTask(TaskScheduleRequirementContext taskToBePaused)
+	public void pauseActiveTask(TaskSchedule taskToBePaused)
 			throws SchedulerException {
 
 		TaskExecutionAudit jobAudit = new TaskExecutionAudit();
@@ -130,7 +131,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 
 		taskToBePaused.setStatus(JOB_STATUS_PAUSED);
 
-		taskRepository.updateArcTaskConfig(taskToBePaused);
+		taskRepository.updateTaskSchedule(taskToBePaused);
 		// dao.save(jobAudit);
 		String taskGroup = taskToBePaused.getTaskExecutionDetail()
 				.getTaskGroupCode() == null ? DEFAULT_JOB_GROUP
@@ -150,7 +151,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	 * @param pauseTask
 	 * @throws SchedulerException
 	 */
-	public void resumePausedTask(TaskScheduleRequirementContext pausedTask)
+	public void resumePausedTask(TaskSchedule pausedTask)
 			throws SchedulerException {
 
 		TaskExecutionAudit jobAudit = new TaskExecutionAudit();
@@ -160,7 +161,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 
 		pausedTask.setStatus(JOB_STATUS_ACTIVE);
 
-		taskRepository.updateArcTaskConfig(pausedTask);
+		taskRepository.updateTaskSchedule(pausedTask);
 		// dao.save(jobAudit);
 		String taskGroup = pausedTask.getTaskExecutionDetail()
 				.getTaskGroupCode() == null ? DEFAULT_JOB_GROUP : pausedTask
@@ -176,7 +177,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 	 * @throws SchedulerException
 	 * 
 	 */
-	public void reScheduleTask(TaskScheduleRequirementContext reTask,
+	public void reScheduleTask(TaskSchedule reTask,
 			String cronExpression) {
 
 		// Long taskDetailId = task.getTaskDetailId();
@@ -184,7 +185,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 			reTask.setActiveInd(Boolean.TRUE);
 			reTask.setStatus(JOB_STATUS_ACTIVE);
 
-			taskRepository.updateArcTaskConfig(reTask);
+			taskRepository.updateTaskSchedule(reTask);
 
 			schedulerControl.rescheduleJob(reTask.getJobScheduledCode(), reTask
 					.getTaskExecutionDetail().getTaskGroupCode(), reTask

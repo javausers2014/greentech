@@ -6,7 +6,6 @@ import java.util.Date;
 
 import org.quartz.JobExecutionContext;
 
-import com.gtech.iarc.ischedule.core.ScheduledWork;
 import com.gtech.iarc.ischedule.service.ScheduleControlService;
 
 /**

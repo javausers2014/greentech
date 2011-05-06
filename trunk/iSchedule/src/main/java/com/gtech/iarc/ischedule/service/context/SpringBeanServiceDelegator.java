@@ -8,8 +8,8 @@ import org.quartz.JobExecutionContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import com.gtech.iarc.ischedule.core.AbstractSpringBeanTask;
-import com.gtech.iarc.ischedule.core.ScheduledWork;
+import com.gtech.iarc.ischedule.AbstractSpringBeanTask;
+import com.gtech.iarc.ischedule.ScheduledWork;
 
 /**
  * The root delegator <li>Load any biz service class managed by Spring context.<br>
