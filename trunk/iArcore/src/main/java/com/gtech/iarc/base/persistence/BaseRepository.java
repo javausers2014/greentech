@@ -1,5 +1,7 @@
 package com.gtech.iarc.base.persistence;
 
+import java.util.List;
+
 import com.gtech.iarc.base.model.core.BaseObject;
 
 /**
@@ -182,6 +184,7 @@ public interface BaseRepository {
 	 */
 	public int executeUpdate(String query, Object[] params);
 
+	public List findByExample(final Class sampleCls, final BaseObject sample);
 	/**
 	 * Return true if the given dataobject of POJO type has been persisted.
 	 * 
