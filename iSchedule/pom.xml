@@ -13,21 +13,22 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<iarcore.version>0.1-SNAPSHOT</iarcore.version>			
 		<quarzt.version>1.8.5</quarzt.version>
+		<junit.version>4.7</junit.version>
 	</properties>  
   
 	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>	
+		
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>${quarzt.version}</version>
 		</dependency>
-	
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>		
 		
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
