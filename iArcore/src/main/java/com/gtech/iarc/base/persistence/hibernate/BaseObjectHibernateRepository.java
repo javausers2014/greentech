@@ -1,9 +1,13 @@
 package com.gtech.iarc.base.persistence.hibernate;
 
+
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Example;
 import org.hibernate.metadata.ClassMetadata;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -32,14 +36,14 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence.DAO#getDataObjects(IDataObject)
      */
-    public java.util.List getBaseObjects(final BaseObject dataobject) {
-        java.util.List results = (java.util.List) getHibernateTemplate().execute(new HibernateCallback() {
+    public List getBaseObjects(final BaseObject dataobject) {
+        List results = (List) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session ses) throws HibernateException {
                 org.hibernate.criterion.Example example = org.hibernate.criterion.Example.create(dataobject)
                     .excludeZeroes()                        // exclude zero valued properties
                     .ignoreCase()                           // perform case insensitive string comparisons
                     .enableLike();                          // allow enable like using %
-                java.util.List results = ses.createCriteria(dataobject.getClass()).add(example).list();
+                List results = ses.createCriteria(dataobject.getClass()).add(example).list();
                 return results;
             }
         });
@@ -54,7 +58,7 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence._DAO#getAllBaseObjects(Class)
      */
-    public java.util.List getAllBaseObjects(Class clazz) {
+    public List getAllBaseObjects(Class clazz) {
         getHibernateTemplate().setCacheQueries(true);
         return getHibernateTemplate().loadAll(clazz);
     }
@@ -114,12 +118,12 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence._DAO#query(String)
      */
-	public java.util.List query(final String query) {
+	public List query(final String query) {
         if (query == null) {
             return null;
         }
         
-        return (java.util.List) getHibernateTemplate().execute(new HibernateCallback() {
+        return (List) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session ses) throws HibernateException {
                 org.hibernate.Query hQuery = ses.createQuery(query);
                 return hQuery.list();
@@ -130,12 +134,12 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence._DAO#query(String, String[])
      */
-    public java.util.List query(final String query, final Object[] params) {
+    public List query(final String query, final Object[] params) {
         if (query == null) {
             return null;
         }
 
-        return (java.util.List) getHibernateTemplate().execute(new HibernateCallback() {
+        return (List) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session ses) throws HibernateException {
                 org.hibernate.Query hQuery = ses.createQuery(query);
                 for (int i = 0; i < params.length; i++) {
@@ -149,12 +153,12 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence._DAO#query(String, String[], int)
      */
-    public java.util.List query(final String query, final Object[] params, final int maxResults) {
+    public List query(final String query, final Object[] params, final int maxResults) {
         if (query == null) {
             return null;
         }
 
-        return (java.util.List) getHibernateTemplate().execute(new HibernateCallback() {
+        return (List) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session ses) throws HibernateException {
                 org.hibernate.Query hQuery = ses.createQuery(query);
                 hQuery.setMaxResults(maxResults);
@@ -169,12 +173,12 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence._DAO#query(String, String[], int)
      */
-    public java.util.List query(final String query, final Object[] params, final int firstResult, final int maxResults) {
+    public List query(final String query, final Object[] params, final int firstResult, final int maxResults) {
         if (query == null) {
             return null;
         }
 
-        return (java.util.List) getHibernateTemplate().execute(new HibernateCallback() {
+        return (List) getHibernateTemplate().execute(new HibernateCallback() {
             public Object doInHibernate(Session ses) throws HibernateException {
                 org.hibernate.Query hQuery = ses.createQuery(query);
                 hQuery.setFirstResult(firstResult);
@@ -190,21 +194,21 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
     /**
      * @see com.y3technologies.persistence._DAO#find(String)
      */
-    public java.util.List find(String query) {
+    public List find(String query) {
         return getHibernateTemplate().find(query);
     }
     
     /**
      * @see com.y3technologies.persistence._DAO#find(String, Object)
      */
-    public java.util.List find(String query, Object param) {
+    public List find(String query, Object param) {
         return getHibernateTemplate().find(query, param);
     }
     
     /**
      * @see com.y3technologies.persistence._DAO#find(String, Object[])
      */
-    public java.util.List find(String query, Object[] params) {
+    public List find(String query, Object[] params) {
         return getHibernateTemplate().find(query, params);
     }
     
@@ -225,7 +229,27 @@ public class BaseObjectHibernateRepository extends HibernateDaoSupport implement
         return classMeta;
     }
 
+	public List findByExample(final Class sampleCls, final BaseObject sample) {
+		List rs = (List) getHibernateTemplate().execute(
+				new HibernateCallback() {
+					public Object doInHibernate(Session ses)
+							throws HibernateException {
+						Example example = Example.create(sample)
+								.excludeZeroes() // exclude zero valued
+													// properties
+								.ignoreCase() // perform case insensitive string
+												// comparisons
+								.enableLike();
+						// .excludeProperty("parameterObjectInBlob");
 
+						List results = ses.createCriteria(sampleCls).add(
+								example).list();
+
+						return results;
+					}
+				});
+		return rs;
+	}
 //    protected void createdOrModifiedByDate(Object object, Object key) {
 //        if (IDataObject.class.isAssignableFrom(object.getClass())) {
 //            IDataObject dataobject = (IDataObject) object;
