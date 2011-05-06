@@ -3,7 +3,7 @@ package com.gtech.iarc.ischedule.service;
 
 import org.quartz.SchedulerException;
 
-import com.gtech.iarc.ischedule.service.core.model.TaskSchedule;
+import com.gtech.iarc.ischedule.core.model.TaskSchedule;
 
 /**
  * 
