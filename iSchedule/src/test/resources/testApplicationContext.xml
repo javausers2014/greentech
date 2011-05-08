@@ -16,13 +16,11 @@
             
 	<context:annotation-config />
 	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:com/gtech/iarc/demodb/schedule_schema.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/db/scheduler/schedule_schema.sql" />
+		<jdbc:script location="classpath:com/gtech/iarc/db/scheduler/tables_hsqldb.sql" />
 		<jdbc:script location="classpath:com/gtech/iarc/testdb/schedule_test_data.sql" />
 	</jdbc:embedded-database>
-	
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		p:locations="classpath:webtop-configuration.properties" />
-	
+
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -35,8 +33,7 @@
  -->
 		<property name="packagesToScan">
 			<list>
-				<value>com.gtech.iarc.base.model</value>
-				<value>com.gtech.iarc.ipallet.model.core</value>
+				<value>com.gtech.iarc.ischedule.core.model</value>
 			</list>
 		</property>
 
@@ -62,5 +59,6 @@
 	<bean id="baseRepository" class="com.gtech.iarc.base.persistence.hibernate.BaseObjectHibernateRepository">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>	
-
+	
+	<bean id="simpleTestScheduledWork" class="com.gtech.iarc.test.ischedule.support.executor.SimpleTestScheduledWork"/>
 </beans>

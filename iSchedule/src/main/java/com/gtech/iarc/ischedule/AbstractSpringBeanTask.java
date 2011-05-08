@@ -46,6 +46,8 @@ public abstract class AbstractSpringBeanTask extends QuartzJobBean {
     protected void executeInternal(JobExecutionContext context) {      
         SpringBeanServiceDelegator.processScheduleJob(context, this.getProxyBeanName());
     }
+    
+    public AbstractSpringBeanTask() {}
 //
 //    protected String taskName;
 //

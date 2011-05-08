@@ -1,16 +1,13 @@
 package com.gtech.iarc.ischedule.repository;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.gtech.iarc.base.persistence.BaseRepository;
 import com.gtech.iarc.ischedule.core.model.TaskExecutionDetail;
 import com.gtech.iarc.ischedule.core.model.TaskSchedule;
 
 @SuppressWarnings("unchecked")
-public class TaskHibernateRepository extends HibernateDaoSupport implements
+public class TaskHibernateRepository implements
 		TaskRepository {
 	
 	private BaseRepository baseRepository;
@@ -99,17 +96,10 @@ public class TaskHibernateRepository extends HibernateDaoSupport implements
 	}
 
 	public List findTaskDetail(String taskGroupId) {
-		List jtypes = new ArrayList();
 
-		if ((!taskGroupId.equals(null)) && (!taskGroupId.equals(" "))) {
-			jtypes = getHibernateTemplate().find(
-					"FROM Y3TaskDetail JT WHERE JT.taskGroupId=?",
-					Long.valueOf(taskGroupId));
-
-			return jtypes;
-		}
-
-		return jtypes;
+		return baseRepository.find(
+				"FROM TaskExecutionDetail JT WHERE taskGroupCode=?",
+				Long.valueOf(taskGroupId));
 	}
 
 	public List findSimilarTaskExecutionDetail(final TaskExecutionDetail taskExecutionDetail) {

@@ -21,7 +21,7 @@ public class TaskScheduleDateTimeInfo {
     private String jobYearlyMonth;
     private String jobYearlyTime;
     private String jobCronExpression;
-    private String jobRadio1;
+//    private String jobRadio1;
 
     
 	public String getJobPeriodInterval() {
@@ -102,11 +102,11 @@ public class TaskScheduleDateTimeInfo {
 	public void setJobCronExpression(String jobCronExpression) {
 		this.jobCronExpression = jobCronExpression;
 	}
-	public String getJobRadio1() {
-		return jobRadio1;
-	}
-	public void setJobRadio1(String jobRadio1) {
-		this.jobRadio1 = jobRadio1;
-	}
+//	public String getJobRadio1() {
+//		return jobRadio1;
+//	}
+//	public void setJobRadio1(String jobRadio1) {
+//		this.jobRadio1 = jobRadio1;
+//	}
    
 }

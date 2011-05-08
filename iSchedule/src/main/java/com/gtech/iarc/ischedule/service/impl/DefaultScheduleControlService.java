@@ -70,7 +70,7 @@ public class DefaultScheduleControlService implements ScheduleControlService {
 					.getTaskGroupCode() == null ? DEFAULT_JOB_GROUP
 					: taskToBeScheduled.getTaskExecutionDetail()
 							.getTaskGroupCode();
-
+  
 			schedulerControl.activateJob(scheduleActiveJob.getClass(),
 					taskToBeScheduled.getJobScheduledCode(), taskGroup,
 					taskToBeScheduled.getStartDate(), taskToBeScheduled

@@ -101,7 +101,7 @@ public class SpringBeanServiceDelegator implements ApplicationContextAware {
 
     	if(proxyBeanName==null||proxyBeanName.trim().length()==0){
     		log.warn("The proxy bean for running schedule job is NULL/Empty");
-    		return;
+    		throw new RuntimeException("The proxy bean for running schedule job is NULL/Empty");
     	}
         ScheduledWork sManager = null;
 		try {
@@ -110,7 +110,7 @@ public class SpringBeanServiceDelegator implements ApplicationContextAware {
 			sManager = (ScheduledWork) serviceBean;
 		} catch (Exception ex) {
 			log.error("Loading spring bean for schedule failed.", ex);
-			return;
+			throw new RuntimeException("Loading spring bean for schedule failed.", ex);
 		}
 
         log.debug("Class : " + sManager.getClass().getName()
