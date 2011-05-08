@@ -14,7 +14,7 @@ public abstract class ScheduleTest {
 	
 	protected void testEnvSetup(){
         ctx = (ctx == null) ? new ClassPathXmlApplicationContext(
-		"/testApplicationContext.xml") : ctx;
+		"/testApplicationContext.xml","/scheduler-quartz.xml") : ctx;
 	}
 	
 	

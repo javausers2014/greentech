@@ -80,69 +80,69 @@ public class TaskSchedule extends BaseObject{
 	@Column(name = "CREATED_DATE")
     private Date createdDate;
 	
-    private byte[] binFile;       
-    
-    public byte[] getBinFile() {
-        return binFile;
-    }
-    
-    public void setBinFile(byte[] binFile) {
-        this.binFile = binFile;
-    }  
-    
-    public Object getParameterObject() {
-        byte[] byteClass = this.getBinFile();  
-        if(byteClass==null) return null;
-        return SerializationUtils.deserialize(byteClass);
-    }    
-    
-    public void setParameterObject(Serializable parameterObject) {
-    	this.binFile = SerializationUtils.serialize( parameterObject);
-    }
-    
-    public void setBlobFile(Blob blobFile) {
-        this.binFile = this.toByteArray(blobFile);
-    }
-    /** Don't invoke this. Used by Hibernate only. */
-    public Blob getBlobFile() {
-        return Hibernate.createBlob(this.binFile);
-    }
-
-    private byte[] toByteArray(Blob fromBlob) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            byte[] buf = new byte[4000];
-            InputStream is = fromBlob.getBinaryStream();
-            try {
-                for (;;) {
-                    int dataSize = is.read(buf);
-                    if (dataSize == -1)
-                        break;
-                    baos.write(buf, 0, dataSize);
-                }
-            } finally {
-                if (is != null) {
-                    try {
-                        is.close();
-                    } catch (IOException ex) {
-                    }
-                }
-            }
-            return baos.toByteArray();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (baos != null) {
-                try {
-                    baos.close();
-                } catch (IOException ex) {
-                }
-            }
-        }
-    }
+//    private byte[] binFile;       
+//    
+//    public byte[] getBinFile() {
+//        return binFile;
+//    }
+//    
+//    public void setBinFile(byte[] binFile) {
+//        this.binFile = binFile;
+//    }  
+//    
+//    public Object getParameterObject() {
+//        byte[] byteClass = this.getBinFile();  
+//        if(byteClass==null) return null;
+//        return SerializationUtils.deserialize(byteClass);
+//    }    
+//    
+//    public void setParameterObject(Serializable parameterObject) {
+//    	this.binFile = SerializationUtils.serialize( parameterObject);
+//    }
+//    
+//    public void setBlobFile(Blob blobFile) {
+//        this.binFile = this.toByteArray(blobFile);
+//    }
+//    /** Don't invoke this. Used by Hibernate only. */
+//    public Blob getBlobFile() {
+//        return Hibernate.createBlob(this.binFile);
+//    }
+//
+//    private byte[] toByteArray(Blob fromBlob) {
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        try {
+//            byte[] buf = new byte[4000];
+//            InputStream is = fromBlob.getBinaryStream();
+//            try {
+//                for (;;) {
+//                    int dataSize = is.read(buf);
+//                    if (dataSize == -1)
+//                        break;
+//                    baos.write(buf, 0, dataSize);
+//                }
+//            } finally {
+//                if (is != null) {
+//                    try {
+//                        is.close();
+//                    } catch (IOException ex) {
+//                    }
+//                }
+//            }
+//            return baos.toByteArray();
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//            if (baos != null) {
+//                try {
+//                    baos.close();
+//                } catch (IOException ex) {
+//                }
+//            }
+//        }
+//    }
 
 // public Blob getParameterObjectInBlob() {
 //     return ConvertUtils.convertSerializableObjectToBlob(parameterObject);

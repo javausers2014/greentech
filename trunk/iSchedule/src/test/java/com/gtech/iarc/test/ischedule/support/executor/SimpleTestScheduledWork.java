@@ -6,8 +6,7 @@ public class SimpleTestScheduledWork extends AbstractScheduledWork{
 
 	@Override
 	public void doItNow(String scheduledName) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Spring Bean Job has been activated!");		
 	}
 
 }

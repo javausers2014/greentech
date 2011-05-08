@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
+
+	<bean id="taskHibernateRepository" class="com.gtech.iarc.ischedule.repository.TaskHibernateRepository">
+		<property name="baseRepository" ref="baseRepository"/>
+	</bean>
+
+	<bean id="scheduleControlService" class="com.gtech.iarc.ischedule.service.impl.DefaultScheduleControlService">
+		<property name="schedulerControl" ref="schedulerControl"/>
+		<property name="taskRepository" ref="taskHibernateRepository"/>
+	</bean>
+
+	<bean id="schedulerControl" class="com.gtech.iarc.ischedule.core.SchedulerControl">
+		<property name="scheduler" ref="scheduler"/>
+	</bean>
+	
+		
+	<bean id="scheduler" depends-on="springBeanServiceDelegator"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" 
+		destroy-method="destroy">
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="configLocation">
+			<value>classpath:com/gtech/iarc/iarcquartz.properties</value>
+		</property>
+		<!--	
+		<property name="jobListeners">
+			<list><ref bean="y3JobListener"/></list>
+		</property>
+		<property name="schedulerListeners">
+			<list><ref bean="y3SchedulerListener"/></list>
+		</property>	
+		-->
+	</bean>
+		
+	<bean id="springBeanServiceDelegator" class="com.gtech.iarc.ischedule.context.SpringBeanServiceDelegator" />
+</beans>
