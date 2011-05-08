@@ -34,15 +34,16 @@
 		<property name="configLocation">
 			<value>classpath:com/gtech/iarc/iarcquartz.properties</value>
 		</property>
-		<!--	
+			
 		<property name="jobListeners">
-			<list><ref bean="y3JobListener"/></list>
+			<list><ref bean="jobListener"/></list>
 		</property>
+		<!--
 		<property name="schedulerListeners">
 			<list><ref bean="y3SchedulerListener"/></list>
 		</property>	
 		-->
 	</bean>
-		
+	<bean id="jobListener" class="com.gtech.iarc.ischedule.core.DefaultJobListener" />
 	<bean id="springBeanServiceDelegator" class="com.gtech.iarc.ischedule.context.SpringBeanServiceDelegator" />
 </beans>
