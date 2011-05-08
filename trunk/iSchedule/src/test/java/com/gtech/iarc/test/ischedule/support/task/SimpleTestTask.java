@@ -9,7 +9,7 @@ public class SimpleTestTask extends AbstractSpringBeanTask{
 	
 	@Override
 	public String getProxyBeanName() {
-		return "SimpleTestScheduledWork";
+		return "simpleTestScheduledWork";
 	}
 
 }
