@@ -10,7 +10,7 @@ public class GTechServer {
 	private static final int MAX_IDLE_TIME = 1000 * 60 * 60;
 	private static final int SO_LINGER_TIME = -1;
 	private static final String WAR_PATH = "src/main/webapp";
-	private static final String CONTEXT_PATH = "/iarc";
+	private static final String CONTEXT_PATH = "/";
 
 	public static void main(String[] args) throws Exception {
 		Server server = new Server();

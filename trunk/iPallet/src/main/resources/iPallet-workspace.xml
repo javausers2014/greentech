@@ -3,7 +3,9 @@
 	<header>
 		<bar justify="left" cls="iarc-main-layout-side-border">
 			<spacer width="10px" />
+			<!--
 			<image src="classpath:com.gtech.iarc.base.css.images.menu/gtech_icon.png" />
+			-->
 			<separator />
 			<html cls="buildNumber">
 				<content>
@@ -59,7 +61,7 @@
 			</shutdown>		
 		</bar>	
 	</header>
-	
+	<!--
 	<footer>
 		<bar id="iarc-main-footer" justify="left" cls="iarc-main-footerbar iarc-main-layout-side-border iarc-main-layout-side-border-transparent">
 			<fill />
@@ -79,18 +81,16 @@
 			</html>
 			<fill />
 		</bar>
-	</footer>				
-	<dashboard columns="4">
-		<column></column>
-		<column></column>
-		<column></column>
+	</footer>	
+	-->			
+	<dashboard columns="3">
 		<column>
-		<!-- 
 			<dashlet>
-				<view ref="ipallet.view.util.tasks" />
-			</dashlet>
-		-->			
+				<view ref="ipallet.report.stocklet" />
+			</dashlet>			
 		</column>
+		<column></column>
+		<column></column>
 	</dashboard>
 	
 </workspace>
