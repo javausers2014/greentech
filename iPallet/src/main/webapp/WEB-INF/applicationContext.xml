@@ -76,7 +76,7 @@
 	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
 		<property name="customTemplateModel">
 			<map>
-				<entry key="title" value="iPallet" />
+				<entry key="title" value="ReplacedByAppContxt" />
 			</map>
 		</property>
 	</bean>

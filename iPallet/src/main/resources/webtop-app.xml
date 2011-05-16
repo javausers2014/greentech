@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <webtop>
-	<name>GTech[iArc]</name>
+	<name>Sample</name>
 
 	<globalIncludes>
 		<css>classpath:com.innovations.webtop.iconsets/silk.css</css>
@@ -37,6 +37,7 @@
 		<view id="ipallet.view.code.uom" src="com.gtech.iarc.ipallet.view.bizcode/CodeUOMService.js" jsClass="iPallet.CodeUOMService" />
 		<view id="ipallet.hr.staff.browser" src="com.gtech.iarc.ipallet.view.staffmanagement/StaffBrowser.js" jsClass="iPallet.Staff.Browser" />
 		<view id="ipallet.hr.staff.creation" src="com.gtech.iarc.ipallet.view.staffmanagement/StaffCreation.js" jsClass="iPallet.Staff.Creation" />
+		<view id="ipallet.report.stocklet" src="com.gtech.iarc.ipallet.view.report/CurrentStockByThreshold.js" jsClass="iPallet.Report.StockThreshold" />
 		
 	<!-- Biz Util windows -->	
 		<!-- 
