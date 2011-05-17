@@ -71,7 +71,9 @@
 	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" p:personnelBioService-ref = "personnelBioService"/>		
 	
 	<bean id="UOMService" class="com.gtech.iarc.ipallet.service.core.UOMService" p:baseRepository-ref = "baseRepository"/>
-		
+	
+	<bean id="TpService" class="com.gtech.iarc.ipallet.service.tp.TPService" p:baseRepository-ref = "baseRepository"/>
+	
 <!-- For Webtop UI framework -->
 	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
 		<property name="customTemplateModel">
@@ -89,6 +91,9 @@
 	<bean id="UOMCatRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCatRestService">
 		<property name="uomService" ref="UOMService"/>
 	</bean>	
+	<bean id="OwnerRestService" class="com.gtech.iarc.ipallet.web.restful.OwnerRestService">
+		<property name="TpService" ref="TpService"/>
+	</bean>		
 	<bean id="RemoteStaffService" class="com.gtech.iarc.ipallet.web.dwrproxy.RemoteStaffService">
 		<property name="personnelBioService" ref="personnelBioService"/>
 	</bean>

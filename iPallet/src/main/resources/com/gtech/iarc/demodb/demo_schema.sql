@@ -3,6 +3,10 @@ drop table PERMISSION if exists;
 drop table USER_PERMISSIONS if exists;
 drop table PERSONNEL if exists;
 drop table CORE_UOM if exists;
+drop table TP is exists;
+
+create table TP (ID integer identity primary key, TYPE varchar(50) not null, FULLNAME varchar(50) not null, CODE varchar(50) not null, USEACCOUNT varchar(50) , CATEGORY varchar(50) not null, BIZ_START_DATE date, unique(code));
+
 create table USER (ID integer identity primary key, USERNAME varchar(50) not null,FULLNAME varchar(50) not null, PERSONNEL_ID integer, PASSWORD varchar(100) not null,  unique(USERNAME));
 	
 create table PERMISSION (ID integer identity primary key, PERMISSION varchar(300) not null, PERMISSION_DESC varchar(50) not null, unique(PERMISSION));

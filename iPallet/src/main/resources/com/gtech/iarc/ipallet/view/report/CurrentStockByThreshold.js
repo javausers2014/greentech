@@ -7,33 +7,32 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 	title: "Current Stock",
 	initComponent: function() {		
 		
-//		var ownerStore = new Ext.data.Store({
-//			restful: true,
-//			autoLoad: true,
-//			autoSave: true,
-//			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/owner" }),
-//			reader: new Ext.data.JsonReader({
-//    			totalProperty: 'total',
-//    			successProperty: 'success',
-//    			idProperty: 'id',
-//    			root: 'data',
-//				messageProperty: 'message'
-//			},[
-//				{ name: "fullname" },
-//				{ name: "code" }
-//			])
-//		});
+		var ownerStore = new Ext.data.Store({
+			restful: true,
+			autoLoad: true,
+			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/owner" }),
+			reader: new Ext.data.JsonReader({
+    			totalProperty: 'total',
+    			successProperty: 'success',
+    			idProperty: 'id',
+    			root: 'data',
+				messageProperty: 'message'
+			},[
+				{ name: "fullname" },
+				{ name: "code" }
+			])
+		});
 
-		var ownerStore = new Ext.data.JsonStore({
-	        fields:['fullname', 'code'],
-	        data: [
-	            {fullname:'Philip Elc', code: 'PHLP'},
-	            {fullname:'Dell Inc', code: 'DELL'},
-	            {fullname:'IBM', code: 'IBM'},
-	            {fullname:'Seagate', code: 'SGT'},
-	            {fullname:'Leica', code: 'LEC'}
-	        ]
-	    });
+//		var ownerStore = new Ext.data.JsonStore({
+//	        fields:['fullname', 'code'],
+//	        data: [
+//	            {fullname:'Philip Elc', code: 'PHLP'},
+//	            {fullname:'Dell Inc', code: 'DELL'},
+//	            {fullname:'IBM', code: 'IBM'},
+//	            {fullname:'Seagate', code: 'SGT'},
+//	            {fullname:'Leica', code: 'LEC'}
+//	        ]
+//	    });
 		
 		
 		
@@ -62,11 +61,11 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 
 	    function generateData(owner){
 		    var data_phlp = [
-	            {owner: 'PHLP', product:'IRON', uom: 'UNT',qty:3430,safeqty:0,alarmqty:0,warnqty:3430,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:3200,tolerance:200},
-	            {owner: 'PHLP', product:'ePOT', uom: 'UNT',qty:1235,safeqty:1235,alarmqty:0,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'false',threshold:500,tolerance:50},
-	            {owner: 'PHLP', product:'BULB', uom: 'BOX',qty:5789,safeqty:0,alarmqty:5789,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'true',threshold:6000,tolerance:300},
-	            {owner: 'PHLP', product:'COOKER', uom: 'UNT',qty:298,safeqty:0,alarmqty:0,warnqty:298,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:280,tolerance:'20'},
-	            {owner: 'PHLP', product:'LIGHT', uom: 'UNT',qty:211,safeqty:0,alarmqty:0,warnqty:0,hlqty:211,warning:'false',highlight:'true',alarm:'false',threshold:200,tolerance:'10'}
+	            {owner: 'PHILIPS', product:'IRON', uom: 'UNT',qty:3430,safeqty:0,alarmqty:0,warnqty:3430,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:3200,tolerance:200},
+	            {owner: 'PHILIPS', product:'ePOT', uom: 'UNT',qty:1235,safeqty:1235,alarmqty:0,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'false',threshold:500,tolerance:50},
+	            {owner: 'PHILIPS', product:'BULB', uom: 'BOX',qty:5789,safeqty:0,alarmqty:5789,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'true',threshold:6000,tolerance:300},
+	            {owner: 'PHILIPS', product:'COOKER', uom: 'UNT',qty:298,safeqty:0,alarmqty:0,warnqty:298,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:280,tolerance:'20'},
+	            {owner: 'PHILIPS', product:'LIGHT', uom: 'UNT',qty:211,safeqty:0,alarmqty:0,warnqty:0,hlqty:211,warning:'false',highlight:'true',alarm:'false',threshold:200,tolerance:'10'}
 	        ];
 	         var data_dell =[
 	            {owner: 'DELL', product:'HDD', uom: 'UNT',qty:1430,safeqty:1430,alarmqty:0,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'false',threshold:1000,tolerance:100},
@@ -78,22 +77,22 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 	        if(owner=='DELL'){
 	        	return data_dell;
 	        }else{
-	        	return data_phlp;
+	        	return data_PHILIPS;
 	        }
 		    
 		}
 		var prodStore = new Ext.data.JsonStore({
 	        fields:['owner', 'product', 'uom','qty','safeqty','alarmqty','warnqty','hlqty','warning','highlight','alarm','threshold','tolerance'],
-	        data: generateData('PHLP')
+	        data: generateData('PHILIPS')
 	    });	    
 		var prodStore1 = new Ext.data.JsonStore({
 	        fields:['owner', 'product', 'uom','qty','safeqty','alarmqty','warnqty','hlqty','warning','highlight','alarm','threshold','tolerance'],
 	        data: [
-	            {owner: 'PHLP', product:'IRON', uom: 'UNT',qty:3430,safeqty:0,alarmqty:0,warnqty:3430,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:3200,tolerance:200},
-	            {owner: 'PHLP', product:'ePOT', uom: 'UNT',qty:1235,safeqty:1235,alarmqty:0,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'false',threshold:500,tolerance:50},
-	            {owner: 'PHLP', product:'BULB', uom: 'BOX',qty:5789,safeqty:0,alarmqty:5789,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'true',threshold:6000,tolerance:300},
-	            {owner: 'PHLP', product:'COOKER', uom: 'UNT',qty:298,safeqty:0,alarmqty:0,warnqty:298,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:280,tolerance:'20'},
-	            {owner: 'PHLP', product:'LIGHT', uom: 'UNT',qty:211,safeqty:0,alarmqty:0,warnqty:0,hlqty:211,warning:'false',highlight:'true',alarm:'false',threshold:200,tolerance:'10'}
+	            {owner: 'PHILIPS', product:'IRON', uom: 'UNT',qty:3430,safeqty:0,alarmqty:0,warnqty:3430,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:3200,tolerance:200},
+	            {owner: 'PHILIPS', product:'ePOT', uom: 'UNT',qty:1235,safeqty:1235,alarmqty:0,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'false',threshold:500,tolerance:50},
+	            {owner: 'PHILIPS', product:'BULB', uom: 'BOX',qty:5789,safeqty:0,alarmqty:5789,warnqty:0,hlqty:0,warning:'false',highlight:'false',alarm:'true',threshold:6000,tolerance:300},
+	            {owner: 'PHILIPS', product:'COOKER', uom: 'UNT',qty:298,safeqty:0,alarmqty:0,warnqty:298,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:280,tolerance:'20'},
+	            {owner: 'PHILIPS', product:'LIGHT', uom: 'UNT',qty:211,safeqty:0,alarmqty:0,warnqty:0,hlqty:211,warning:'false',highlight:'true',alarm:'false',threshold:200,tolerance:'10'}
 	        ]
 	    });
 
@@ -115,6 +114,7 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
         	tbar:[
         		{
 	            	xtype:'combo', 
+	            	id:'ownerselect',
                  	store: ownerStore,
                  	mode: 'local',
                  	displayField: 'fullname',
@@ -189,10 +189,7 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 			            ]
 				}]
 				
-		});
-				
-
-	    
+		});	    
 		this.supr().initComponent.call(this);
 	}
 });
