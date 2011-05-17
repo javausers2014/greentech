@@ -21,7 +21,10 @@
 		</rest>
 		<rest id="uomCatRS" springBean="UOMCatRestService">
 			<route>/uomcat</route>
-		</rest>		
+		</rest>	
+		<rest id="ownerRS" springBean="OwnerRestService">
+			<route>/owner</route>
+		</rest>				
 		<dwr id="staffRS" type="spring" scriptName="RemoteStaffService">
 			<property key="beanName" value="RemoteStaffService" />
 			<converters>

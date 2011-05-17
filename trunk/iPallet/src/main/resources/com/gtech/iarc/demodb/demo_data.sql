@@ -45,3 +45,7 @@ insert into CORE_UOM (NAME,CATEGORY,CODE,ACTIVE,BASE,FACTOR) values ('Meter','LE
 insert into CORE_UOM (NAME,CATEGORY,CODE,ACTIVE,BASE,FACTOR) values ('Milimeter','LENGTH','MM', 'true', 'true', '1.00');
 insert into CORE_UOM (NAME,CATEGORY,CODE,ACTIVE,BASE,FACTOR) values ('Centimeter','LENGTH','CM', 'true', 'false', '10.00');
 insert into CORE_UOM (NAME,CATEGORY,CODE,ACTIVE,BASE,FACTOR) values ('KiloMeter','LENGTH','KM', 'true', 'false', '1000000.00');
+
+insert into TP (TYPE, FULLNAME, CODE, USEACCOUNT, CATEGORY, BIZ_START_DATE) values ('OWNER','Philips Electrics Pte Ltd','PHILIPS','','COMPANY','1999-09-17');
+insert into TP (TYPE, FULLNAME, CODE, USEACCOUNT, CATEGORY, BIZ_START_DATE) values ('OWNER','Dell Computers Ltd','DELL','','COMPANY','2001-01-14');
+insert into TP (TYPE, FULLNAME, CODE, USEACCOUNT, CATEGORY, BIZ_START_DATE) values ('OWNER','Motorola Electronics Ltd','Moto','','COMPANY','1990-11-24');

@@ -7,10 +7,10 @@ import com.gtech.iarc.base.persistence.BaseRepository;
 import com.gtech.iarc.base.persistence.exception.DuplicatedDomainDataException;
 import com.gtech.iarc.ipallet.model.core.BizConstantCode;
 import com.gtech.iarc.ipallet.model.core.CoreUOM;
+import com.gtech.iarc.ipallet.service.base.BaseService;
 
 @SuppressWarnings("unchecked")
-public class UOMService {
-	private BaseRepository baseRepository;
+public class UOMService extends BaseService{
 	
 	public List<String> getUOMCategoryList(){
 		return new ArrayList<String>(){
@@ -57,9 +57,4 @@ public class UOMService {
 		baseRepository.delete(CoreUOM.class, uomId);
 		return true;
 	}
-
-	public void setBaseRepository(BaseRepository baseRepository) {
-		this.baseRepository = baseRepository;
-	}
-	
 }
