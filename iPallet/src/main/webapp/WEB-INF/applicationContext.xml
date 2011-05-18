@@ -36,7 +36,7 @@
 		<property name="packagesToScan">
 			<list>
 				<value>com.gtech.iarc.base.model</value>
-				<value>com.gtech.iarc.ipallet.model.core</value>
+				<value>com.gtech.iarc.ipallet.model.*</value>
 			</list>
 		</property>
 
