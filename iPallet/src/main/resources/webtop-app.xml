@@ -24,7 +24,12 @@
 		</rest>	
 		<rest id="ownerRS" springBean="OwnerRestService">
 			<route>/owner</route>
-		</rest>				
+		</rest>		
+		<rest id="prodRS" springBean="ProductRestService">
+			<route>/product</route>
+			<route>/product/owner/{ownercode}</route>
+		</rest>		
+					
 		<dwr id="staffRS" type="spring" scriptName="RemoteStaffService">
 			<property key="beanName" value="RemoteStaffService" />
 			<converters>

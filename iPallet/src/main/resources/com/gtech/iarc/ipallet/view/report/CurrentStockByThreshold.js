@@ -27,9 +27,9 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 
 //		var prodStore = new Ext.data.Store({
 //			restful: true,
-//			autoLoad: true,
+//			autoLoad: false,
 //			autoSave: true,
-//			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/stock" }),
+//			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/stock/owner" + getOwnerSelection() }),
 //			reader: new Ext.data.JsonReader({
 //    			totalProperty: 'total',
 //    			successProperty: 'success',
@@ -47,6 +47,9 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 //			])
 //		});
 
+		function getOwnerSelection(){
+			
+		}
 	    function generateData(owner){
 		    var data_PHILIPS = [
 	            {ownerfullname: 'Philips Electrics Pte Ltd', product:'IRON', uom: 'UNT',qty:3430,safeqty:0,alarmqty:0,warnqty:3430,hlqty:0,warning:'true',highlight:'false',alarm:'false',threshold:3200,tolerance:200},
