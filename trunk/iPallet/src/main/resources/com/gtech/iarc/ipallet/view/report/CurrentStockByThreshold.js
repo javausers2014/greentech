@@ -25,27 +25,33 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 		});
 
 
-//		var prodStore = new Ext.data.Store({
-//			restful: true,
-//			autoLoad: false,
-//			autoSave: true,
-//			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/stock/owner" + getOwnerSelection() }),
-//			reader: new Ext.data.JsonReader({
-//    			totalProperty: 'total',
-//    			successProperty: 'success',
-//    			idProperty: 'id',
-//    			root: 'data',
-//				messageProperty: 'message'
-//			},[
-//				{ name: "product" },
-//				{ name: "uom" },
-//				{ name: "basicquantity" },
-//				{ name: "diffquantity" },
-//				{ name: "warning", type: 'boolean' },
-//				{ name: "highlight", type: 'boolean' },
-//				{ name: "alarm", type: 'boolean' }
-//			])
-//		});
+		var prodStore = new Ext.data.Store({
+			restful: true,
+			autoLoad: false,
+			autoSave: false,
+			//proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/stock/owner" + getOwnerSelection() }),
+			reader: new Ext.data.JsonReader({
+    			totalProperty: 'total',
+    			successProperty: 'success',
+    			idProperty: 'id',
+    			root: 'data',
+				messageProperty: 'message'
+			},[
+				{ name: "ownerfullname"},
+				{ name: "product" },
+				{ name: "uom" },
+				{ name: "qty"},
+				{ name: "safeqty" },
+				{ name: "alarmqty" },
+				{ name: "warnqty" },
+				{ name: "hlqty" },
+				{ name: "warning", type: 'boolean' },
+				{ name: "highlight", type: 'boolean' },
+				{ name: "alarm", type: 'boolean' },
+				{ name: "threshold" },
+				{ name: "tolerance" }
+			])
+		});
 
 		function getOwnerSelection(){
 			
@@ -112,8 +118,12 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
                	    listeners: {
 					    select: function(combo, record, index) {
 					    	var mainchart = Ext.getCmp('mainChart');
-					    	mainchart.store.loadData(generateData(combo.getValue()));	
-					    	mainchart.yAxis.title = record.get('fullName');
+					    	
+					    	mainchart.store.proxy = new Ext.data.HttpProxy({ url: XWT_BASE_PATH + "/services/rest/stock/owner/" + combo.getValue() });
+					    	mainchart.store.load();
+					    	
+//					    	mainchart.store.loadData(generateData(combo.getValue()));	
+//					    	mainchart.yAxis.title = record.get('fullName');
 					    },
 					    afterrender:function(combo) {
 					    	combo.store.load();
@@ -141,7 +151,7 @@ iPallet.Report.StockThreshold = Ext.extend(Webtop.View, {
 					width: '400',
 					height: '200',
 					id:'mainChart',
-		            store: prodStore2,
+		            store: prodStore,
 		            region:'center',
 		            xField: 'product',
 		            yAxis: new Ext.chart.NumericAxis({
