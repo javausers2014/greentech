@@ -25,9 +25,9 @@
 		<rest id="ownerRS" springBean="OwnerRestService">
 			<route>/owner</route>
 		</rest>		
-		<rest id="prodRS" springBean="ProductRestService">
-			<route>/product</route>
-			<route>/product/owner/{ownercode}</route>
+		<rest id="ownerProdRS" springBean="OwnerProductRestService">
+			<route>/products/{owner}</route><!--
+			<get method="getOwnerProducts"/>-->
 		</rest>		
 					
 		<dwr id="staffRS" type="spring" scriptName="RemoteStaffService">
