@@ -1,5 +1,6 @@
 package com.gtech.iarc.ipallet.web.restful;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,13 @@ public class OwnerProductRestService extends RestfulResource {
 	@Override
 	public Representation get() {
 		Representation entity = getRequestEntity();
-		String content = IOUtils.toString(entity.getStream());
+		String content = "";
+		try {
+			content = IOUtils.toString(entity.getStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		String ownerCode = (String)JSONObject.fromObject(content).get("data");
 		
@@ -31,13 +38,12 @@ public class OwnerProductRestService extends RestfulResource {
 		
 		Map<String, Object> response = new HashMap<String, Object>();
 		response.put("success", true);
-		response.put("total", tmp.size());
-		response.put("data", tmp);
+//		response.put("total", tmp.size());
+//		response.put("data", tmp);
 		String jasonString = JSONObject.fromObject(response).toString();
 		
 		return new StringRepresentation(jasonString);
 	}
 	
-	private 
 }
 
