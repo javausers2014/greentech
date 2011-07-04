@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>info.gtech.solutions</groupId>
+	<artifactId>iPonC-framework</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>iPonC Framework</name>
+
+	<developers>
+		<developer>
+			<name>Xu Zhidao</name>
+			<id>--</id>
+			<email>--</email>
+		</developer>
+	</developers>	
+
+   <build>
+      <plugins>
+         <!--
+		    Generates the MtBkLfRg-metrics.xml.
+         -->
+         <plugin>
+            <groupId>com.agilejava.docbkx</groupId>
+            <artifactId>docbkx-fop-support</artifactId>
+            <version>2.0.8</version>
+            <configuration>
+               <sourceDirectory>src/docbkx/resources/</sourceDirectory>
+               <targetDirectory>target/fonts/</targetDirectory>
+               <ansi>true</ansi>
+            </configuration>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>generate</goal>
+                  </goals>
+                  <phase>package</phase>
+               </execution>
+            </executions>
+         </plugin>
+         <!--
+            Generates PDF documentation. 
+         -->
+         <plugin>
+            <groupId>com.agilejava.docbkx</groupId>
+            <artifactId>docbkx-maven-plugin</artifactId>
+            <version>2.0.8</version>
+            <configuration>
+               <!-- Relative to ${basedir}/src/docbkx -->
+               <includes>*_cn.xml</includes>
+               <imgSrcPath>src/docbkx/</imgSrcPath>
+               <draftMode>true</draftMode>
+               <draftWatermarkImage>src/docbkx/resources/draft.png</draftWatermarkImage>
+               <xincludeSupported>true</xincludeSupported>
+               <foCustomization>src/docbkx/docbook-fo.xsl</foCustomization>
+               <titleFontFamily>MetaBookLF-Roman</titleFontFamily>
+               <bodyFontFamily>MetaBookLF-Roman</bodyFontFamily>
+               <!-- Use innovations font -->
+               <fonts>
+                  <font>
+                     <name>MetaBookLF-Roman</name>
+                     <style>normal</style>
+                     <weight>normal</weight>
+                     <embedFile>${basedir}/src/docbkx/resources/MtBkLfRg.ttf</embedFile>
+                     <metricsFile>${basedir}/target/fonts/MtBkLfRg-metrics.xml</metricsFile>
+                  </font>
+                  <font>
+                     <name>MetaBookLF-Roman</name>
+                     <style>normal</style>
+                     <weight>bold</weight>
+                     <embedFile>${basedir}/src/docbkx/resources/MtBdLfRg.TTF</embedFile>
+                     <metricsFile>${basedir}/target/fonts/MtBdLfRg-metrics.xml</metricsFile>
+                  </font>
+                  <font>
+                     <name>MetaBookLF-Roman</name>
+                     <style>italic</style>
+                     <weight>normal</weight>
+                     <embedFile>${basedir}/src/docbkx/resources/MtBkLfIt.TTF</embedFile>
+                     <metricsFile>${basedir}/target/fonts/MtBkLfIt-metrics.xml</metricsFile>
+                  </font>
+               </fonts>
+               <entities>
+                  <entity>
+                     <name>version</name>
+                     <value>${version}</value>
+                  </entity>
+               </entities>
+            </configuration>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>generate-pdf</goal>
+                  </goals>
+                  <phase>package</phase>
+               </execution>
+            </executions>
+            <dependencies>
+               <dependency>
+                  <groupId>org.docbook</groupId>
+                  <artifactId>docbook-xml</artifactId>
+                  <version>4.4</version>
+                  <scope>runtime</scope>
+               </dependency>
+            </dependencies>
+         </plugin>
+
+      </plugins>
+   </build>
+</project>
