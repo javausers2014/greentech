@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter>
+	<title>Introduction</title>
+
+	<sect1><title>What is Webtop?</title>
+		<para>Webtop is a cross-browser Web UI framework for building rich, web-based applications. It composed by two parts, server context based on Spring Framework and client side javascript library built on Sencha's Ext javascript Library. Webtop provides: 
+		<itemizedlist>
+			<listitem><para>Rich set of widgets (based on Sencha's Ext Javascript Library i.e. ext JS)</para></listitem>
+			<listitem><para>Support of multiple view modes &amp; Navigation menus, etc</para></listitem>
+			<listitem><para>Local UI intercommunication, Server Push</para></listitem>
+			<listitem><para>Remoting (service invocation)</para></listitem>
+			<listitem><para>Support of reusable modules, Plug-ins</para></listitem>
+			<listitem><para>Security integration, Internationalization</para></listitem>
+			<listitem><para>JMX support (for administration)</para></listitem>
+		</itemizedlist>With benifits from Spring Framework, Webtop server context could easily adopt business service and client-server remoting technologies, such as DWR and Restlet. So that on the client side, extJS UI widget could easily invoke remote service with supports provided by Webtop javascript library.
+		<figure id="figure.intro_arch" pgwide="1">
+			<title>Architecture</title>
+			<mediaobject>
+				<imageobject><imagedata align="center" fileref="images/webtop-comp.png" format="PNG" scalefit="0" /></imageobject>
+			</mediaobject>
+		</figure>
+		</para>
+	</sect1>
+	
+	<sect1>
+		<title>UI delivered by Webtop</title>
+		<sect2><title>Typic Webtop UI Components</title>
+			<para>Webtop client JS library provides customized widgets trying to simulate the characteristics of desktop OS within client's browser. The basic components will be shown as the following figure.<figure id="figure.intro_compts" pgwide="1">
+			<title>Webtop View Components</title>
+			<mediaobject>
+				<imageobject><imagedata align="center" fileref="images/webtop-compnts.png" format="PNG" scalefit="1" width="80%"/></imageobject>
+			</mediaobject>
+		</figure></para>
+		</sect2>
+		<sect2><title>Webtop UI Rendering Patterns</title>
+		<para>Users would have desktop-like experience when using application built on Webtop. There are three patterns of UI rendering supported by Webtop.
+		<itemizedlist>
+			<listitem><para><emphasis role="bold">Desktop View</emphasis> This is more friendly rendering pattern. Application UI will be rendered like Desktop operation environment and multi contents could be delivered to user at the same time.<figure id="figure.intro_deskview" pgwide="1">
+			<title>Desktop View</title>
+			<mediaobject>
+				<imageobject><imagedata align="center" fileref="images/webtop-dview.png" format="PNG" scalefit="1" width="80%"/></imageobject>
+			</mediaobject>
+		</figure></para></listitem>		
+			<listitem>
+				<para><emphasis role="bold">Traditional View:</emphasis> For application using tranditional view pattern, webtop will render only one response for request at one time on browser.<figure id="figure.intro_tradview" pgwide="1">
+			<title>Traditional View</title>
+			<mediaobject>
+				<imageobject><imagedata align="center" fileref="images/webtop-tview.png" format="PNG" scalefit="1" width="80%"/></imageobject>
+			</mediaobject>
+		</figure></para>
+			</listitem>
+			<listitem><para><emphasis role="bold">Isolated View</emphasis> This view pattern is mainly for deliver the "quoted" contents requested from other server.<figure id="figure.intro_isolview" pgwide="1">
+			<title>Isolated View</title>
+			<mediaobject>
+				<imageobject><imagedata align="center" fileref="images/webtop-iview.png" format="PNG" scalefit="1" width="80%"/></imageobject>
+			</mediaobject>
+		</figure></para></listitem>
+		</itemizedlist>
+		</para>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>What's the benifit for developement team?</title>
+		<para>The core of Sencha's Javascript Library, Ext JS, is an object-oriented JavaScript framework. Is makes Java developer's study life easier. For Spring Framework, it's not necessary to introduce more. With Webtop, the communication between client and server become easy and unified. Developer just need to register his POJO to Webtop then it could be used by UI dumped to client at runtime and he can put more efforts to build business service.</para>
+	</sect1>		
+	<sect1>
+		<title>Requirements for running, deploying and developing Webtop</title>
+		<para><itemizedlist>
+			<listitem>
+				<para><emphasis role="bold">Client Environment Requirement</emphasis> Grade-A Browsers (IE6+, FireFox2+, Chrome, Safari)</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Server Environment Requirement</emphasis> Java 1.5+, Servlet specifications 2.4 (2.5 if NIO required)</para>
+			</listitem>
+			<listitem>
+				<para><emphasis role="bold">Development Environment Requirement</emphasis> Java 1.5+, Apache Maven 2.2.x</para>
+			</listitem>				
+		</itemizedlist></para>
+	</sect1>	
+
+</chapter>

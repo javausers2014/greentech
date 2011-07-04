@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter>
+	<title>API Reference</title>
+	<section>
+		<title>webtop-app.xml</title><para>...</para>
+	</section>
+
+	<section>
+		<title>Workspace Descriptor</title><para>...</para>
+	</section>
+
+	<section>
+		<title>Java Classes / Spring Managed Beans</title><para>...</para>
+	</section>
+
+	<section>
+		<title>JavaScript Classes</title><para>...</para>
+	</section>
+
+	<section>
+		<title>Events</title><para>
+		UI Events
+		Spring Events</para>		
+	</section>
+</chapter>	
