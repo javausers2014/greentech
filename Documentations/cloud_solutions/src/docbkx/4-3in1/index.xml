@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter>
+	<title>Core Services</title>
+	<sect1>
+		<title>Technical Architecture</title>		<para>
+
+		</para>
+	</sect1>	
+	<sect1>
+		<title>Sequence, lifecycle, bootstrap</title>		<para>
+
+		</para>
+	</sect1>
+
+</chapter>	
+		
+
+
+

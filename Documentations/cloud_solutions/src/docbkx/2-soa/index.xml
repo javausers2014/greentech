@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<chapter>
+	<title>Use Webtop to develope a simple web application</title>
+	<para>All application resources managed by Webtop should be deployed in classpath, including css files, javascript files, images. And all resources required by Webtop, such as javascript, css and images, is packaged into the jar file.</para>
+<para>The Webtop application we are going to develop is a web application with a simple output of string "Hello!MyFirstApp" in the opened window when menu is clicked. The application only shows basic GUI component of Webtop, later some interactive functions will be added.</para>
+	<sect1 id="using.simpleApp"><title>My First web application using webtop</title>
+	<para>At the beginning, we need to show the files required for this simply web application. Then we will use maven to build developement environment and add more interactive function.</para>
+		<sect2 id="using.simpleApp.welcomeJS"><title>Hello! MyFirstApp</title>
+
+<para>First, we need to compose a javascript window class using extJS. In Webtop, all window component should extends from <code>Webtop.View</code>, which is packaged in Webtop client javascript library. All framwork functions are intgrated in <code>Webtop.View</code>. In Webtop, we name the javascript window class as  <code>View</code>.</para>
+<programlisting><![CDATA[Ext.ns("MyFirstApp");
+MyFirstApp.HelloWorld = Ext.extend(Webtop.View, {	
+	title: "Hello MyFirstApp",
+	width: 400,
+	height: 110,	
+	initComponent: function() {
+		var app = this;				
+		Ext.apply(this,{
+			layout: "form",
+			items: [{
+				html: "Hello MyFirstApp!"
+			}]
+		});	
+		this.supr().initComponent.call(this);
+	}
+});]]></programlisting>
+<para>We name this js file as HelloWorld.js and put this file under the classpath. In this sample, it's package com.innovations.webtop.demo.view in the src folder. Then we need to create a webtop-app.xml file to specify the details of this view. The webtop-app.xml should be deployed in the classpath, i.e. WEB-INF/classes at the runtime. When application started, Webtop will read webtop-app.xml, and load views and css defination. When resources is refered by request, Webtop could load them from classpath.</para>
+<programlisting><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<webtop>
+	<name>Architype-generated basic webtop app</name>
+	
+	<globalIncludes>
+		<css>classpath:com.innovations.webtop.theme.gray/gray.css</css>
+		<css>classpath:com.innovations.webtop.theme/theme.css</css>	
+		<css>classpath:com.innovations.webtop.iconsets/fugue.css</css>
+	</globalIncludes>
+	
+	<views>
+		<view id="MyFirstApp.view.helloworld" 
+			src="com.innovations.webtop.MyFirstApp.views/HelloWorld.js" 
+			jsClass="MyFirstApp.HelloWorld" 
+			alias="hello-world" />
+	</views>
+</webtop>]]></programlisting> 
+<para>We still need another XML to specify the Webtop workspace, a GUI layout rendered on client's browser. The name of XML by default is default-workspace.xml. Also, should be deployed under classpath. The following is a simple workspace for our first web application.</para>
+<programlisting><![CDATA[<workspace name="For Administrators">
+	<title>Webtop Demo</title>
+	<header>
+		<bar justify="left">	
+			<spacer width="10px" />
+			<image src="classpath:com.innovations.webtop.theme/boschlogo.png" />
+			<spacer width="10px" />			
+			<taskbar/>
+			<fill/>
+			<menu>
+				<entry>
+					<title>MyFirstApp-Menu</title>
+					<icon>classpath:com.innovations.webtop.MyFirstApp.
+						images.menu/helloworld.png</icon>
+					<menuItems>
+						<menuItem>					
+							<name>Hello MyFirstApp!</name>	
+							<icon>classpath:com.innovations.webtop.MyFirstApp.
+								images.menu/x16_helloworld.png</icon>
+							<view ref="MyFirstApp.view.helloworld" />
+						</menuItem>
+					</menuItems>
+				</entry>
+			</menu>
+			<taskbar />
+			<shutdown />
+		</bar>
+	</header>
+	<dashboard columns="3">
+		<column></column>
+		<column></column>
+		<column></column>
+	</dashboard>
+</workspace>]]></programlisting>	
+<para>Till now, we already show how to get the simple message from server, asking Webtop to open a window on client's browser and loading the pre-define text. In the next section, we will show how to use Webtop to retrive data and post data. Before we move further, we need to use MAVEN to build development environment using maven webtop quickstart archetype.</para>
+</sect2>
+
+<sect2 id="using.simpleApp.archetype">
+<title>Quickly Setup Developement Enviroment using Maven Webtop Archetype</title>
+<para><blockquote><attribution>http://maven.apache.org/guides/introduction/introduction-to-archetypes.html</attribution>
+<para>Using archetypes provides a great way to enable developers quickly in a way consistent with best practices employed by your project or organization. Within the Maven project we use archetypes to try and get our users up and running as quickly as possible by providing a sample project that demonstrates many of the features of Maven while introducing new users to the best practices employed by Maven.</para>
+</blockquote></para>
+<sidebar><title>Quickstart archetype</title>
+	<para>The maven archetype for quickstart could be found in the zip file named: quickstart.zip</para>
+</sidebar>
+<para>Using webtop's maven archetype, we can easily setup developement project environment. First, make sure the webtop maven quickstart archetype already registered in the maven repository, locally or remotely. To install maven archetype into local environment, just unzip quickstart.zip file: to folder:${home}\.m2\repository\com\innovations\webtop\archetypes\. The final folder structure for archetype should be like: .m2\repository\com\innovations\webtop\archetypes\quickstart\${version}
+<programlisting>
+mvn archetype:generate -DarchetypeGroupId=com.innovations.webtop.archetypes 
+					-DarchetypeArtifactId=quickstart 
+					-DarchetypeVersion=1.2 
+					-DgroupId=${webapp.goup.id} 
+					-DartifactId=${webapp.artifact.id} 
+					-Dversion=${webapp.version}</programlisting>
+A new folder will be created as shown below, where webapp.artifact.id is MyFirstApp and webapp.goup.id is com.innovations.webtop.<figure id="figure.projFolderStr">
+	<title>Project Folder Structure</title>
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="images/01_proj_file_folder.bmp" format="BMP" scalefit="1" width="80%"/>
+			</imageobject>
+		</mediaobject>	
+</figure>		
+Now we can build a simply web application. Just key in maven install command in the project folder i.e. MyFirstApp
+<programlisting>..\>cd MyFirstApp
+..\MyFirstApp\> mvn install</programlisting>	
+In the folder named target, a new war file will be created, named: MyFirstApp-1.0-SNAPSHOT.war. To config development environment for Eclipse, just key in mvn eclipse:eclipse in the MyFirstApp folder. Then use Eclipse to build a java project pointing to the folder MyFirstApp.
+<programlisting>..\MyFirstApp\>mvn eclipse:eclipse</programlisting>
+Then, we will get extra files and folders which is eclipse specific.<figure id="figure.projEclipseFolderStr">
+	<title>Eclipse Project Folder Structure</title>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="images/02_proj_eclipse_folder.bmp" format="BMP" scalefit="1" width="80%"/>
+				</imageobject>
+			</mediaobject>
+		</figure>
+Now, let's use eclipse to create a new java project.
+		<orderedlist>
+			<important>
+				<para>Never point your eclipse workspace to the folder where our project created. If do so, later when create new eclipse project and point to existing source will cause eclipse to recursively pointing to self and import self.</para>
+			</important>		
+		<listitem>
+			<para>Open Eclipse and select <code> File &gt; New &gt;Java Project</code> or using mouse right click in package explorer. Just a reminder, never create eclipse workspace using parent folder of folder MyFirstApp.</para>
+		
+			<figure id="figure.eclipseNewProj" pgwide="0">
+				<title>Eclipse New Java Project</title>
+				<mediaobject>
+					<imageobject>
+					  <imagedata fileref="images/04_eclipse_new_proj.bmp" format="BMP" scalefit="1" width="100%" align="left"/>
+					</imageobject>
+				</mediaobject>
+			</figure>			
+		</listitem>
+		
+		<listitem>
+			<para>Select <code>Create project from existing source &gt; Browse...</code> Choose folder MyFirstApp</para>
+			<figure id="figure.eclipseNewProjFromExistingSrc" pgwide="1">
+				<title>Eclipse Project from Existing Source</title>
+				<mediaobject>
+					<imageobject>
+					  <imagedata fileref="images/05_eclipse_proj_point.bmp" format="BMP" scalefit="1" width="100%" align="left"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		</listitem>	
+		
+		<listitem>
+			<para>Now, project will be built with error of error variable M2_REPO. Select <code>Window &gt; Preferences &gt; Java &gt; Build Path &gt; Classpath Varibles &gt; New...</code> to create a new vaiable entry pointing to local maven repository</para>
+			<figure id="figure.eclipseM2_REPO" pgwide="1">
+				<title>Eclipse M2_REPO</title>
+				<mediaobject>
+					<imageobject>
+					  <imagedata fileref="images/06_eclipse_proj_properties_M2_REPO.bmp" format="BMP" scalefit="1" width="100%" align="left"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		</listitem>	
+		</orderedlist>
+		Now, the development environment of webtop is ready.
+		<figure id="figure.eclipseDevEnv" pgwide="1">
+			<title>Eclipse Dev Enviroment</title>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="images/07_eclipse_proj_up.bmp" format="BMP" scalefit="1" width="100%" align="left"/>
+				</imageobject>
+			</mediaobject>
+		</figure>		
+	</para>
+	</sect2>	
+
+<sect2 id="using.simpleApp.restful">
+	<title>Create a more interactive UI</title>
+	<para>The next thing we want to add is some interaction and make the first example a little bit more interactive.</para>
+	<para>Webtop provides two way to perform remote interaction with backend server, RESTful and DWR. At this moment, we will add a new view using RESTful service to show data fetching from server. Let's create a javascript file, named RestfulService.js under classpath com.innovations.webtop.MyFirstApp.views.
+	<programlisting><![CDATA[Ext.ns("MyFirstApp");
+	MyFirstApp.RestfulService = Ext.extend(Webtop.View, {
+	width: 500,
+	height: 500,
+	title: "Restful Services Demo",
+	initComponent: function() {
+		
+		var store = new Ext.data.Store({
+			restful: true,
+			autoLoad: true,
+			autoSave: true,
+			proxy: new Ext.data.HttpProxy({ url: XWT_BASE_PATH 
+				+ "/services/rest/contacts" }),
+			reader: new Ext.data.JsonReader({
+				totalProperty: 'total',
+				successProperty: 'success',
+				idProperty: 'email',
+				root: 'data',
+				messageProperty: 'message'
+			},[
+				{ name: "email" },
+				{ name: "firstName" },
+				{ name: "lastName" },
+				{ name: "dateOfBirth", type: "date" },
+				{ name: "contactNumber" }
+			]),
+			writer: new Ext.data.JsonWriter({
+				encode: false,
+				writeAllFields: true
+			})
+		});
+		
+		var editor = new Ext.ux.grid.RowEditor({ saveText: 'Update'});		
+		var grid = new Ext.grid.GridPanel({
+			iconCls: 'icon-grid',
+			frame: true,
+			sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+			store: store,
+			plugins: [editor],
+			columns : [
+				{header: "Email", width: 100, sortable: true, 
+					dataIndex: 'email' },
+				{header: "First Name", width: 50, sortable: true, 
+					dataIndex: 'firstName', editor: new Ext.form.TextField({})},
+				{header: "Last Name", width: 50, sortable: true, 
+					dataIndex: 'lastName', editor: new Ext.form.TextField({})},
+				{header: "Date of Birth", width: 50, sortable: true, 
+					dataIndex: 'dateOfBirth', editor: new Ext.form.DateField({})},
+				{header: "Contact Number", width: 50, sortable: true, 
+					dataIndex: 'contactNumber', editor: new Ext.form.TextField({})}
+			],
+			viewConfig: {
+				forceFit: true
+			}
+		});
+		
+		Ext.apply(this, {
+			layout: "fit",
+			tbar: [
+			"->",
+			{
+				text: 'Add',
+				iconCls: 'icon-fugue-plus-circle-frame',
+				handler: function(btn, ev) {
+					var u = new grid.store.recordType({ firstName : '', 
+						lastName: '', email : '' });
+					editor.stopEditing();
+					grid.store.insert(0, u);
+					editor.startEditing(0);            			
+				}
+			}, '-', {
+				text: 'Delete',
+				iconCls: 'icon-fugue-cross-circle-frame',
+				handler: function() {
+					var rec = grid.getSelectionModel().getSelected();
+					if (!rec) {
+						return false;
+					}
+					grid.store.remove(rec); 
+				}
+			}],			
+			items: grid
+		});
+		
+		this.supr().initComponent.call(this);
+	}	
+	});	]]>	</programlisting> 	
+	We need to change webtop-app.xml and default-workspace.xml to configure the view and the menu. Some new js lib and new css will be added, and could be found in the source code package.	
+	<programlisting><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+	<webtop>
+		<name>Architype-generated basic webtop app</name>
+		
+		<globalIncludes>
+			<css>classpath:com.innovations.webtop.MyFirstApp.theme.gray/gray.css</css>
+			<css>classpath:com.innovations.webtop.MyFirstApp.theme/theme.css</css>	
+			<css>classpath:com.innovations.webtop.MyFirstApp.ux/RowEditor.css</css>
+			<css>classpath:com.innovations.webtop.iconsets/fugue.css</css>
+			<js>classpath:com.innovations.webtop.MyFirstApp.ux/RowEditor.js</js>
+		</globalIncludes>
+
+		<services>
+			<rest id="rs01" springBean="ContactsRestService">
+				<route>/contacts</route>
+				<route>/contacts/{userEmail}</route>			
+				<get method="getContacts" />
+			</rest>		
+		</services>
+				
+		<views>
+			<view id="MyFirstApp.view.helloworld" 
+				src="com.innovations.webtop.MyFirstApp.views/HelloWorld.js" 
+				jsClass="MyFirstApp.HelloWorld" 
+				alias="hello-world" />
+			<view id="MyFirstApp.view.restful" 
+				src="com.innovations.webtop.MyFirstApp.views/RestfulService.js" 
+				jsClass="MyFirstApp.RestfulService" />
+		</views>
+	</webtop>]]></programlisting> 
+	Following is shown contents added in default-workspace.xml.
+	<programlisting><![CDATA[<workspace name="For Administrators">
+	<title>Webtop Demo</title>
+	<header>
+		<bar justify="left">	
+			...
+			<menu>
+				...
+					<menuItems>
+						<...
+						<menuItem>
+							<name>Restful Services</name>
+							<icon>classpath:com.innovations.webtop.MyFirstApp.images.menu/x16_helloworld.png</icon>
+							<view ref="MyFirstApp.view.restful" />
+						</menuItem>						
+					</menuItems>
+				</entry>
+			</menu>
+			...
+		</bar>
+	</header>
+...
+</workspace>]]></programlisting>
+	At last, we need to create JAVA service class and added into Spring context with name "ContactsRestService".
+	<figure id="figure.newchanges" pgwide="1">
+		<title>New Restful Service changes</title>
+		<mediaobject>
+			<imageobject>
+				<imagedata fileref="images/08_eclipse_proj_new_service.bmp" format="BMP" scalefit="1" width="100%" align="left"/>
+			</imageobject>
+		</mediaobject>
+	</figure>	
+	</para>
+
+	<sidebar><title>Source Code Package</title>
+		<para>All settings and codes shown could be found in the zip file named: myfirstapp.zip</para>
+	</sidebar>
+
+	</sect2>	
+</sect1>
+
+	<sect1>
+	<title>How does Webtop manage resources and services?</title>
+<sidebar><title>Source Code Package</title>
+	<para>The source code for the following parts could be found in the zip file named:demo.zip</para>
+</sidebar>	
+	<para>Let us take a closer look at resources and services management in Webtop. In Webtop, all application resources and services should be defined in web-app.xml provided by application developer and deployed in the application's classpath where it's easy for framework to manage and control resource. </para>
+	<para> Webtop also provides convenience for developer to create reuseable modulerized package. If a application were developed with Webtop, then it will be easily reused by any other Webtop applications with simple modification for package building and module descriptor XML, web-module.xml.</para>
+	
+	<sect2>
+		<title>Application Resource Definition, web-app.xml</title>
+		<para>
+			<itemizedlist>
+				<listitem>
+					<para><guilabel>name</guilabel>: Application's name</para>
+				</listitem>
+				<listitem>
+					<para><guilabel>modules</guilabel>: List of module entries</para>
+					<itemizedlist>
+						<listitem>
+							<para><guilabel>module</guilabel>: Reference to the resources in module component. If resource from module is refered here, all attributes specified in web-app.xml will override ones defined in module's web-module.xml</para>
+							<itemizedlist>
+								<listitem>
+									<para><guilabel>services</guilabel>: Refer to the services tag defined as following.</para>
+								</listitem>
+								<listitem>
+									<para><guilabel>views</guilabel>: Refer to the views tag defined as following.</para>
+								</listitem>								
+							</itemizedlist>	
+						</listitem>	
+					</itemizedlist>	
+				</listitem>				
+				<listitem>
+					<para><guilabel>globalIncludes</guilabel>: Resources will be used crossing whole framework</para>
+					<itemizedlist>
+						<listitem>
+							<para><guilabel>css</guilabel>: Definition for CSS.</para>
+						</listitem>	
+						<listitem>
+							<para><guilabel>js</guilabel>: Definition for JavaScript
+<programlisting><![CDATA[<globalIncludes>
+	<css>classpath:com.innovations.webtop.MyFirstApp.theme.gray/gray.css</css>
+	<css>classpath:com.innovations.webtop.MyFirstApp.theme/theme.css</css>
+	<css>classpath:com.innovations.webtop.MyFirstApp.ux/RowEditor.css</css>
+	<css>classpath:com.innovations.webtop.iconsets/fugue.css</css>
+	<js>classpath:com.innovations.webtop.MyFirstApp.ux/RowEditor.js</js>
+</globalIncludes>]]></programlisting>
+							</para>
+						</listitem>	
+					</itemizedlist>
+				</listitem>	
+				<listitem>
+				  <para><guilabel>services</guilabel>: Webtop provides support for two mechanisms of communication between client's browser and server, DWR and RestLet.</para>
+					<itemizedlist>
+						<listitem>
+						  <para><guilabel>dwr</guilabel>: Webtop exposes services for DWR by managing new instance of service class and by delegating to spring bean from application context.
+<programlisting><![CDATA[<services>
+	<dwr id="dwr01" class="com.innovations.webtop.demo.web.SandboxService" scriptName="SandboxService" />
+	<dwr id="dwr02" type="spring" scriptName="ServerPushService">
+		<property key="beanName" value="ServerPushService" />
+		<converters>
+			<converter class="com.innovations.webtop.demo.models.Personnel" />
+		</converters>
+	</dwr>
+	...
+<services>]]></programlisting>Webtop will generate a new instance of <emphasis>com.innovations.webtop.demo.web.SandboxService</emphasis>. Webtop will delegate the invocation to the spring bean <emphasis>ServerPushService</emphasis> which is managed by application's spring context.
+						  </para>
+						</listitem>	
+						<listitem>
+						  <para><guilabel>rest</guilabel>:
+						  <programlisting><![CDATA[<services>
+...
+	<rest id="rs01" springBean="ContactsRestService">
+		<route>/contacts</route>
+		<route>/contacts/{userEmail}</route>
+		<get method="getContacts" />
+	</rest>		
+</services>]]></programlisting>
+						  </para>
+						</listitem>
+					</itemizedlist> 
+				</listitem>
+				<listitem>
+				  <para><guilabel>views</guilabel>: List of all user interfaces created using extJS
+				  </para>
+					<itemizedlist>
+						<listitem>
+							<para><guilabel>view</guilabel>: Definition for user interface.
+<programlisting><![CDATA[<views>
+	...
+	<view id="webtopdemo.view.restful" src="com.innovations.webtop.remoting/RestfulService.js" jsClass="WebtopDemo.RestfulService" />
+	...
+	<view id="webtopdemo.view.helloworld" src="com.innovations.webtop.demo.views/HelloWorld.js" jsClass="WebtopDemo.HelloWorld" alias="hello-world">
+		<property key="KEY" value="ADMIN_ROLE" />
+	</view>
+	...
+<views>]]></programlisting>					  
+							</para>
+						</listitem>
+					</itemizedlist>
+				</listitem>
+			</itemizedlist>
+		</para>
+	</sect2>
+	<sect2>
+		<title>Application Workspace Definition</title>
+	<para>The framework-wide co-ordination of each component of Webtop could be found in the workspace descriptor XML file. It describes how a Webtop instance will look like during runtime. The workspace descriptor XML file should be provided by application developer, however, the contents of workspace may not only be defined in XML file, but also can be from other sources like database.</para>
+	<para>The UI components provided by webtop:</para>
+		<itemizedlist>
+			<listitem><para>Workspace</para><para>This is the main container hosting all other components.</para>
+				<itemizedlist>
+					<listitem><para>Header</para><para>Header is one of the two Bar containers in webtop, another one is Footer. It only can host "transparent component" Bar, where Bar can host many other components, such as Taskbar, Menu, MenuButton and ShutdownButton.</para>
+						<itemizedlist>
+							<listitem><para>Bar</para>
+								<itemizedlist>
+									<listitem><para>Taskbar</para><para>A bar container to host minimized icon for openning window. Minimized window could be restored by click the icons in Taskbar.</para></listitem>
+									<listitem><para>Menu</para><para>Drop down menu container, hosting list of MenuItem.</para>
+										<itemizedlist>
+											<listitem><para>MenuItem</para><para>GUI Component where open window event could be fired once clicked. MenuItem will keep the reference to the view defined in web-app.xml.</para></listitem>
+										</itemizedlist>
+									</listitem>
+									<listitem><para>MenuButton</para><para>GUI Component where excute command event could be fired once clicked.</para></listitem>
+									<listitem><para>ShutdownButton</para><para>GUI Component where logout event could be fired once clicked.</para></listitem>
+								</itemizedlist>
+							</listitem>						
+						</itemizedlist>
+					</listitem>
+					<listitem><para>Footer</para>
+						<itemizedlist>
+							<listitem><para>Bar</para>
+								<para>...</para>
+							</listitem>						
+						</itemizedlist>
+					</listitem>
+					<listitem><para>Dashboard</para>
+						<itemizedlist>
+							<listitem><para>Column</para>
+								<itemizedlist>
+									<listitem><para>Dashlet</para></listitem>
+								</itemizedlist>
+							</listitem>
+						</itemizedlist>
+					</listitem>			
+				</itemizedlist>
+			</listitem>
+		</itemizedlist>		
+	
+	</sect2>
+	<sect2>
+		<title>Webtop Module Descriptor, web-module.xml</title>
+			<itemizedlist>
+				<listitem>
+					<para><guilabel>id</guilabel>: Indentity for the module component</para>
+				</listitem>
+				<listitem>
+					<para><guilabel>description</guilabel></para>
+				</listitem>				
+				<listitem>
+				  <para><guilabel>services</guilabel>: Refer to the services tag defined in web-app.xml</para>
+					<itemizedlist>
+						<listitem>
+						  <para><guilabel>dwr</guilabel>: Refer to the dwr tag defined in web-app.xml</para>
+						</listitem>	
+						<listitem>
+						  <para><guilabel>rest</guilabel>: Refer to the rest tag defined in web-app.xml</para>
+						</listitem>
+					</itemizedlist> 
+				</listitem>
+				<listitem>
+				  <para><guilabel>views</guilabel>: Refer to the views tag defined in web-app.xml</para>
+					<itemizedlist>
+						<listitem>
+							<para><guilabel>view</guilabel>: :Refer to the view tag defined in web-app.xml</para>
+						</listitem>
+					</itemizedlist>
+				</listitem>
+			</itemizedlist>
+<important>
+<para>For services defined in module descriptor, attribute <emphasis>enabled</emphasis> is not allowd, since the accessiblity should be controlled in module tag in  main application descriptor, web-app.xml.</para>
+</important>
+	</sect2>	
+	<sect2>
+		<title>Properties file for webtop</title><para>Application developer could use Java properties file to pass parameters to Webtop.</para>
+		<para>
+		<itemizedlist>
+				<listitem>
+					<para>webtop.dwr.crossDomainSessionSecurity, default value is true</para>
+				</listitem>
+				<listitem>
+					<para>webtop.dwr.useSecuredCookies, default value is true</para>
+				</listitem>				
+				<listitem>
+					<para>webtop.dwr.escapeOutput, default value is false</para>
+				</listitem>
+				<listitem>
+					<para>webtop.xforwardbaseurl:</para>
+				</listitem>
+				<listitem>
+					<para>webtop.enableServerPush, default value is false</para>
+				</listitem>
+				<listitem>
+					<para>webtop.notifyOnUnload, default value is false</para>
+				</listitem>
+				<listitem>
+					<para>webtop.resources.pack, default value is false</para>
+				</listitem>
+				<listitem>
+					<para>webtop.resources.cacheControl:</para>
+				</listitem>
+				<listitem>
+					<para>webtop.debugMode, default value is false</para>
+				</listitem>
+				<listitem>
+					<para>webtop.jsonpEnabled, default value is true</para>
+				</listitem>
+				<listitem>
+					<para>webtop.resources.gzip.disabled, default value is false</para>
+				</listitem>
+				<listitem>
+					<para>webtop.resources.gzip.minsize, default value is 1000</para>
+				</listitem>
+				<listitem>
+					<para>webtop.defaultLocale, default value is en_UK</para>
+				</listitem>
+				<listitem>
+					<para>webtop.i18n.springbeanid, default value is FreemarkerTemplateProcessor</para>
+				</listitem>
+				
+			</itemizedlist>
+		</para>
+	</sect2>
+	</sect1>
+</chapter>	
+
+
+				
+	
