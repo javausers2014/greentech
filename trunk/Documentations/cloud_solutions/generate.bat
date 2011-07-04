@@ -1,1 +1,1 @@
-mvn clean com.agilejava.docbkx:docbkx-fop-support:generate com.agilejava.docbkx:docbkx-maven-plugin:generate-pdf
+mvn clean com.agilejava.docbkx:docbkx-fop-support:generate com.agilejava.docbkx:docbkx-maven-plugin:generate-html
