@@ -4,8 +4,8 @@
 
 <chapter>
 	<title>Use Webtop to develope a simple web application</title>
-	<para>All application resources managed by Webtop should be deployed in classpath, including css files, javascript files, images. And all resources required by Webtop, such as javascript, css and images, is packaged into the jar file.</para>
-<para>The Webtop application we are going to develop is a web application with a simple output of string "Hello!MyFirstApp" in the opened window when menu is clicked. The application only shows basic GUI component of Webtop, later some interactive functions will be added.</para>
+	<para>作为一套架构理念和方法论，SOA帮助企业实现了IT服务的高内聚和低耦合。</para>
+<para>SOA和云计算试图解决的问题是不同的：SOA试图解决的问题是架构设计问题（包括业务和技术），云计算试图解决的是成本问题。当然，随着云计算的发展，已经开始影响架构设计了。从IaaS的基础设施云化角度看，云计算确实首要想解决的问题是不降低性能的同时如何降低成本。但从PaaS、SaaS开始，已不仅仅关注成本，弹性等特性，未来必将形成主流的自有架构。在刚刚进入云计算的时代, 如作者所言, 大部分企业即使采纳了云方案, 也不可能抛弃原来的IT设施与应用, 正好可以借助于SOA的方法, 将本地原生应用,私有云和公有云中的应用"粘合"起来,形成灵活的混合云方案。 理想情况下，资源还可以在这三者之间迁移，从而应对不同时期的负载，或者进行故障恢复。http://www.infoq.com/cn/articles/cloud-computing-soa</para>
 	<sect1 id="using.simpleApp"><title>My First web application using webtop</title>
 	<para>At the beginning, we need to show the files required for this simply web application. Then we will use maven to build developement environment and add more interactive function.</para>
 		<sect2 id="using.simpleApp.welcomeJS"><title>Hello! MyFirstApp</title>

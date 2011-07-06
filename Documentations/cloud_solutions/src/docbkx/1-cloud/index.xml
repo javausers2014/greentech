@@ -5,7 +5,21 @@
 	<title>云计算</title>
 
 	<sect1><title>云计算概述</title>
-		<para>Webtop is a cross-browser Web UI framework for building rich, web-based applications. It composed by two parts, server context based on Spring Framework and client side javascript library built on Sencha's Ext javascript Library. Webtop provides: 
+		<para>从最高层的意义上讲，云计算代表了从以基本建设费用购买软硬件进行过渡计算，到按照需求以营业预算来“租用”工具式服务这一不可阻挡的转变。 云计算的内涵在于，多余的计算资源能够进行动态分配，因此企业可以通过只购买那些需要的计算服务来杜绝浪费。 这种动态作用提供了全新概念的业务灵活性，因为随着时间的推移，企业将能够把“即时生产”的概念应用于计算工作。 事实上这还算不上一套理论，但一些只能在传统计算方面进行有限投入的中小型企业已经积极采用了云计算，并且对于较大的企业形成了竞争压力，迫使他们同样采取云计算方法。</para>
+<para>美国国家标准与技术研究院(NIST)制订了一套广泛采用的术语用于描述云计算的各方面内容。 NIST针对“云”定义了三大交付模式，称为S-P-I模式:</para>
+<itemizedlist>
+			<listitem><para>软件即服务(SaaS)，即将整个商业应用作为一项服务来提供;</para></listitem>
+    <listitem><para>平台即服务(PaaS)，允许在云中进行快速应用开发;</para></listitem>
+	<listitem><para>架构即服务(IaaS)，即将简单操作系统(OS)和储存功能作为一项服务来提供。</para></listitem>
+</itemizedlist>    
+<para>NIST进一步定义了云计算的四大配置:</para>
+<itemizedlist>
+<listitem><para>公共云，即面向广泛客户群的互联网接入服务;</para></listitem>
+<listitem><para>私有云，针对单个机构进行配置;</para></listitem>
+<listitem><para>社区云，针对供应链这类有限数量的，彼此相关的组织设计;</para></listitem>
+<listitem><para>混合云，以上三种配置模式的任意组合。</para></listitem>
+</itemizedlist>    
+<para> 为了将云计算作为一种低成本工具来提供，云服务供应商必须掌握一些管理方面的问题以形成规模经济。 诸如虚拟化这类技术可以用来获取一切可能的CPU周期和空余磁盘空间。 此外还设计了一些新的管理工具来实现客户供应和资源分配的自动化。为了创建高效的规模经济，将不可避免地导致许多客户的数据和其他资产在共享的硬件平台上相互混杂，而这些数据和资产只是用一些新的，往往未经验证的逻辑控制方法进行区分。 另一个主要的，可能也是最为深远的影响是，实现这种经济效益的新技术架构本身就是一种新的应用开发平台。 在计算中很少出现重大的平台转换。 软件在云中得到革新，而新的软件则革新了商业运作方式。 
 		<itemizedlist>
 			<listitem><para>Rich set of widgets (based on Sencha's Ext Javascript Library i.e. ext JS)</para></listitem>
 			<listitem><para>Support of multiple view modes &amp; Navigation menus, etc</para></listitem>
