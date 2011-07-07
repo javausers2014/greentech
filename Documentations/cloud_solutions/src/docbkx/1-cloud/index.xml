@@ -39,7 +39,7 @@
 
 	<sect2>
 		<title>云计算对于终端用户的影响</title>
-		<para>The core of Sencha's Javascript Library, Ext JS, is an object-oriented JavaScript framework. Is makes Java developer's study life easier. For Spring Framework, it's not necessary to introduce more. With Webtop, the communication between client and server become easy and unified. Developer just need to register his POJO to Webtop then it could be used by UI dumped to client at runtime and he can put more efforts to build business service.</para>
+		<para>现在的电视已经不再只被用来被动地收看电视节目，而是能进行个性化应用和内容的“定制”。 如果说平板电视时代让人们看得更清晰；那么在未来的智能电视时代，人们将体验到全新的、智能化的的“三屏融合”生活： 世界杯的比赛在电视上没有看完，走在路上打开手机继续收看，而到了办公室，还能打开电脑继续观看（当然，你不能耽误工作） The core of Sencha's Javascript Library, Ext JS, is an object-oriented JavaScript framework. Is makes Java developer's study life easier. For Spring Framework, it's not necessary to introduce more. With Webtop, the communication between client and server become easy and unified. Developer just need to register his POJO to Webtop then it could be used by UI dumped to client at runtime and he can put more efforts to build business service.</para>
 	</sect2>		
 	
 	<sect2>
