@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <book id="doc.main" lang="cn">
-	<title>物流云端</title>
-	<subtitle>构架解决方案</subtitle>
+	<title>物流：云端物联网</title>
+	<subtitle>物流行业基于云计算构架的物联网应用解决方案</subtitle>
 	<bookinfo>
 		<corpname>gTech Software Technology</corpname>
 		<copyright>
@@ -26,7 +26,7 @@
 				<date>2011-10-05</date>
 				<authorinitials>徐知道</authorinitials>
 				<revdescription>
-					<para>物流云端构架解决方案</para>
+					<para>物流行业基于云计算构架的物联网应用解决方案</para>
 				</revdescription>
 			</revision>			
 		</revhistory>
