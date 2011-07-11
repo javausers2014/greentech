@@ -40,8 +40,7 @@
 <title>云计算以及SOA架构</title>
 <partintro><para>本方案主要讨论如何有效地搭建基于云计算资源的企业服务构架从而提供面向云计算的物流业的标准的服务。云计算提供的多是标准化的概念，而具体实现取决于实施者自身的业务定位。作为软件服务提供者，在设定本方案过程中，采用SOA的架构搭建思想，对物流业的核心服务和业务模型进行模块化分析，制定出简洁，通用而且灵活的标准接口，使得实现后的模块能无缝地融入云计算提供的服务构架中。在深入讨论构架前，有必要简单介绍本方案所依据的概念基础。</para></partintro>
 <xi:include href="1-cloud/index.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-<xi:include href="2-soa/index.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-<xi:include href="3-rfid/index.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+<xi:include href="2-rfid/index.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 <xi:include href="4-3in1/index.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 </part>
 <!--
