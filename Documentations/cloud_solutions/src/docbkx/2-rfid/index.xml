@@ -17,7 +17,7 @@
 	<listitem><para>开发传感器可以与之通讯的网络应用软件系统（无线，有线或GSM）-网络层+应用层</para></listitem>
 	<listitem><para>在网络应用软件系统基础上，开发适用于公众网络标准的接口-应用层</para></listitem>
 </itemizedlist>
-在众多感知层技术中，射频识别技术（RadioFrequencyIdentification，简称RFID）成为了市场最为关注的技术，也是物联网基础核心技术。
+在众多感知层技术中，无线射频识别技术（RFID，RadioFrequencyIdentification）成为了市场最为关注的技术，也是物联网基础核心技术。
 </para>
 </sect1>	
 	<sect1>
