@@ -2,15 +2,13 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <chapter>
-	<title>物流业的IT应用</title>
+	<title>IT在物流业的应用</title>
 	<sect1>
-		<title>物流业的IT应用现状</title>
+		<title>物流业的IT应用现状,瓶颈</title>
+		
 	</sect1>
 	<sect1>
-		<title>物流业的IT应用瓶颈</title>
-	</sect1>
-	<sect1>
-		<title>物流业的IT应用机遇</title>
+		<title>物流业在云计算的机遇和挑战</title>
 	</sect1>	
 </chapter>	
 		

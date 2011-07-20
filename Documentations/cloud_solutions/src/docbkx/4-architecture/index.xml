@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter>
+	<title>云端物流信息控制平台</title>
+	<para>云端物流信息平台，提供了标准化的业务数据模型，业务服务接口和业务处理流程，具有低成本、高可靠性、高移植互用性和高扩展性等特性，可成为现代中小型物流企业所依赖的信息平台。该平台的建立将企业原来出资开发IT应用变为按自身业务特点，租用、定制云端服务，大大节省IT开发、维护、升级成本，加快企业的产业信息化效率。</para>
+	<sect1>
+		<title>应用模式</title>		
+	</sect1>
+	<para>
+	<itemizedlist>
+	<listitem>
+		<para><guilabel>信息事物处理平台</guilabel> ：基于SaaS模式的业务平台，利用各种终端（PC，智能手机，平板电脑的Web浏览器，或RFID传感器），可随时随地提供：
+		<itemizedlist>
+			<listitem>数据信息的录入，采集和查询</listitem>
+			<listitem>业务流程控制</listitem>
+		</itemizedlist>
+	统一规范的接口，是得平台服务可扩展包括监控型服务（物流监控、污染监控）、查询型服务（智能检索、远程抄表），控制型服
+务（智能交通、智能家居、路灯控制），扫描型服务（手机钱包、高速公路不停车收费）等。</para>
+	</listitem>
+	<listitem><para><guilabel>数据处理存储中心</guilabel>：基于SaaS和PaaS模式的数据中心，以信息事物处理平台为中心专注于
+	<itemizedlist>
+			<listitem>物联网数据安全可靠的海量存储</listitem>
+			<listitem>优化数据模型，保证快速的查询分析。</listitem>
+			<listitem>共享的信息分析挖掘流程，为业务决策提供有效的支持。</listitem>
+		</itemizedlist>
+	</para></listitem>
+	<listitem><para><guilabel>基础设施资源</guilabel>：按企业自身业务规模和规划，租用现有云计算服务商提供的资源，节省开支。</para></listitem>
+</itemizedlist>
+	</para>
+	<sect1>
+		<title>平台架构</title>	
+		<sect2><title>面向服务架构（SOA）</title><para>主要框架搭建指导思想</para></sect2>
+		<sect2><title>动态模块系统（OSGi：Open Service Gateway Initiative）</title><para>具体应用的实施技术平台：http://baike.baidu.com/view/362847.htm</para></sect2>
+	</sect1>
+	<sect1>
+		<title>物流信息服务</title>
+		<sect2><title>核心业务信息服务分类</title><para>库存信息，订单信息，配送信息</para></sect2>
+		<sect2><title>信息服务对象</title><para>供应商，生产厂，零售商，运输</para></sect2>
+		<sect2><title>信息服务适用终端</title><para>PC，智能手机，平板电脑的Web浏览器，RFID传感器</para></sect2>
+		<sect2><title>信息分类安全共享</title><para>合同规定，数据隐私，开放程度</para></sect2>
+	</sect1>
+	<sect1>
+		<title>物流控制服务</title>
+		<sect2><title>核心流程分类</title><para>预报，预订，订货，收货，入库，......</para></sect2>
+		<sect2><title>核心流程控制</title><para>预报，预订，订货，收货，入库，</para></sect2>
+	</sect1>	
+</chapter>	
+		
+
+
+
