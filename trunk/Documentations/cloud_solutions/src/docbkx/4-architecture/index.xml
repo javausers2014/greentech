@@ -2,7 +2,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <chapter>
-	<title>云端物流信息控制平台</title>
+	<title>云端物流信息控制平台</title>Clound Logistic information management platform cloinform
 	<para>云端物流信息平台，提供了标准化的业务数据模型，业务服务接口和业务处理流程，具有低成本、高可靠性、高移植互用性和高扩展性等特性，可成为现代中小型物流企业所依赖的信息平台。该平台的建立将企业原来出资开发IT应用变为按自身业务特点，租用、定制云端服务，大大节省IT开发、维护、升级成本，加快企业的产业信息化效率。</para>
 	<sect1>
 		<title>平台结构</title>	
@@ -51,48 +51,47 @@
 	
 	<sect1>
 		<title>平台服务内容</title>
-		<sect2><title>信息化服务</title><para>库存信息，订单信息，配送信息，物品实时追踪，物品交易记录回溯</para>
-		<sidebar><title>网页链接</title>
-		<para>互动百科-物流信息化 :http://www.hudong.com/wiki/物流信息化; http://www.hudong.com/wiki/第三方物流信息系统</para>
-		<para>百度-物流信息化:http://baike.baidu.com/view/1224993.htm; </para>
-		<para>物流信息化是指物流企业运用现代信息技术对物流过程中产生的全部或部分信息进行采集、分类、传递、汇总、识别、跟踪、查询等一系列处理活动，以实现对货物流动过程的控制，从而降低成本、提高效益的管理活动。物流信息化的重点是基础信息采集，以及信息共享和交换。</para>
-		</sidebar>
-		<para>
-		<itemizedlist>
-			<listitem><guilabel>基础数据的采集</guilabel>
-				<itemizedlist>
-					<listitem>手工录入：PC录入、条码扫描、智能终端录入（手机）</listitem>
-					<listitem>RFID识别</listitem>
-					<listitem>信息共享导入</listitem>	
-				</itemizedlist>			
-			</listitem>
-			<listitem><guilabel>业务信息交换共享</guilabel>
-				<itemizedlist>
-					<listitem>数据整理存储</listitem>
-					<listitem>信息过滤保护</listitem>
-					<listitem>信息重组分析</listitem>	
-					<listitem>信息分类管理</listitem>
-				</itemizedlist>				
-			</listitem>	
-		</itemizedlist>
-		
-		<table xml:id="ex.htmltable">
-			<caption>物流信息化服务重点</caption>
-			<thead>
-				<tr><td>基础数据的采集</td><td>业务信息交换共享</td></tr>
-			</thead>
-			<tbody>
-				<tr><td>手工录入：PC录入、条码扫描、智能终端录入（手机）</td><td>数据整理存储</td></tr>
-				<tr><td>RFID识别</td><td>信息过滤保护</td></tr>
-				<tr><td>信息共享导入</td><td>信息重组分析</td></tr>
-				<tr><td></td><td>信息分类管理</td></tr>
-			</tbody>
-		</table>		
-		</para>		
+		<sect2><title>信息化服务</title>
+			<sidebar><title>网页链接</title>
+			<para>互动百科-物流信息化 :http://www.hudong.com/wiki/物流信息化; http://www.hudong.com/wiki/第三方物流信息系统</para>
+			<para>百度-物流信息化:http://baike.baidu.com/view/1224993.htm; </para>
+			</sidebar>
+			<para>库存信息，订单信息，配送信息，物品实时追踪，物品交易记录回溯</para>
+			<itemizedlist>
+				<listitem><guilabel>基础数据的采集</guilabel>
+					<itemizedlist>
+						<listitem>手工录入：PC录入、条码扫描、智能终端录入（手机）</listitem>
+						<listitem>RFID识别</listitem>
+						<listitem>信息共享导入</listitem>	
+					</itemizedlist>			
+				</listitem>
+				<listitem><guilabel>业务信息交换共享</guilabel>
+					<itemizedlist>
+						<listitem>数据整理存储</listitem>
+						<listitem>信息过滤保护</listitem>
+						<listitem>信息重组分析</listitem>	
+						<listitem>信息分类管理</listitem>
+					</itemizedlist>				
+				</listitem>	
+			</itemizedlist>
+			
+			<table xml:id="ex.htmltable">
+				<caption>物流信息化服务重点</caption>
+				<thead>
+					<tr><td>基础数据的采集</td><td>业务信息交换共享</td></tr>
+				</thead>
+				<tbody>
+					<tr><td>手工录入：PC录入、条码扫描、智能终端录入（手机）</td><td>数据整理存储</td></tr>
+					<tr><td>RFID识别</td><td>信息过滤保护</td></tr>
+					<tr><td>信息共享导入</td><td>信息重组分析</td></tr>
+					<tr><td></td><td>信息分类管理</td></tr>
+				</tbody>
+			</table>		
+			</para>		
 		</sect2>
 		
 		<sect2><title>信息服务对象</title><para>物流信息化不仅要在原始数据模型上做到尽可能的全面，而且在设计服务对象上也要尽可能包括整个物流链中各个行业的操作、管理和决策人员。需要根据他们各自的工作性质和环境来决定信息以最合适的方式传送到用户手中。实际的例子就是：仓库现场的入库操作员，他只希望数据以最简洁明确的方式体现，不会象管理或决策层需要某个阶段的总结或趋势图标。考虑到使用者的职业特性，平台在设计提供的服务时，必须考虑不同的技术来最有效地帮助使用者。而不是需要使用者花费过多的时间精力来学习最后却造成更低的工作效率。</para></sect2>
-		<sect2><title>信息服务适用终端</title><para>任何能介入网络的设备都是平台可能的采集端、显示端、控制端或执行端，包括PC，手机，平板电脑，RFID传感器甚至任何可以用既定协议来操作的设备例如网络电视。在这方面，物联网已经</para></sect2>
+		<sect2><title>信息服务适用终端</title><para>任何能介入网络的设备都是平台可能的采集端、显示端、控制端或执行端，包括PC，手机，平板电脑，RFID传感器甚至任何可以用既定协议来操作的设备例如网络电视。也就是物联网的终端设备。</para></sect2>
 		<sect2><title>信息分类安全共享</title><para>合同规定，数据隐私，开放程度</para></sect2>
 	</sect1>
 	<sect1>
