@@ -2,45 +2,10 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <chapter>
-	<title>云端物流信息控制平台</title>
-	<para>云端物流信息平台，提供了标准化的业务数据模型，业务服务接口和业务处理流程，具有低成本、高可靠性、高移植互用性和高扩展性等特性，可成为现代中小型物流企业所依赖的信息平台。该平台的建立将企业原来出资开发IT应用变为按自身业务特点，租用、定制云端服务，大大节省IT开发、维护、升级成本，加快企业的产业信息化效率。</para>
-	<sect1>
-		<title>应用模式</title>		
-	</sect1>
+	<title>服务模块和组件</title>
 	<para>
-	<itemizedlist>
-	<listitem>
-		<para><guilabel>信息事物处理平台</guilabel> ：基于SaaS营运模式的业务平台，利用各种终端（PC，智能手机，平板电脑的Web浏览器，或RFID传感器），可随时随地提供：
-		<itemizedlist>
-			<listitem>数据信息的录入，采集和查询</listitem>
-			<listitem>业务流程控制</listitem>
-		</itemizedlist>
-	统一规范的接口，是得平台服务可扩展包括监控型服务（物流监控、污染监控）、查询型服务（智能检索、远程抄表），控制型服
-务（智能交通、智能家居、路灯控制），扫描型服务（手机钱包、高速公路不停车收费）等。</para>
-	</listitem>
-	<listitem><para><guilabel>数据处理存储中心</guilabel>：基于SaaS和PaaS营运模式的数据中心，以信息事物处理平台为中心专注于
-	<itemizedlist>
-			<listitem>物联网数据安全可靠的海量存储</listitem>
-			<listitem>优化数据模型，保证快速的查询分析。</listitem>
-			<listitem>共享的信息分析挖掘流程，为业务决策提供有效的支持。</listitem>
-		</itemizedlist>
-	</para></listitem>
-	<listitem><para><guilabel>基础设施资源</guilabel>：按企业自身业务规模和规划，租用现有云计算服务商提供的资源，节省开支。传统方案Vs. 虚拟化解决方案. 传统的服务器＋PC结构??更加适合中小企业的原因，而是因为他认为搭建虚拟化环境存在两个问题，第一是风险高，第二是总体成本也许更高。 </para></listitem>
-</itemizedlist>
 	</para>
-	<sect1>
-		<title>平台架构</title>	
-		<sect2><title>面向服务架构（SOA）</title><para>SOA，面向服务架构或面向服务体系结构是一个组件模型，它将应用程序的不同服务（功能单元）通过之间契定的合约接口联系起来。合约接口仅仅考虑双方的服务内容而独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在该系统中的各种服务能够以统一的方式和进行交互。从业务角度说，SOA的思想就是针对企业的一些旧的软件体系重新利用并整合，构建一套松散耦合的软件系统，同时也能方便的结合新的软件共同服务于企业的一个具备包容性和扩展性的企业级的体系模型。从技术上讲，SOA实际上是系统分析设计思想的进一步发展，它的思想超出了对象的概念，一切都以服务为核心，而服务由组件构成，组件是若干操作的集合，操作对应具体实现的程序函数。服务是通过对业务过程模型的分析而识别出来的。每个服务能够实现若干功能，这些功能由组件而不是操作来实现。组件是操作的调用集合，是服务功能实现的最小单位，而不是程序实现的最小单位。组件的职责可以由仅一个程序应用提供完成也可由多个程序应用的各种组合来完成。SOA更注重在运行状态时，应用程序所能提供的服务，而不是应用在设计时的功能目标。所以在具体实现上，只要能提供服务的技术都可以实现SOA思想，如Web Service、RMI、JMS、MQ以及RESTful。另外还需要安全性、策略管理、可靠消息传递以及会计系统的支持。</para>
-<para>云计算SaaS中的服务与SOA里的服务是两个概念，SOA中的服务是指IT技术服务;SaaS中的服务是指运营服务，是一种盈利模式。SaaS需要一个技术平台，SOA相关技术可以为这个技术平台提供服务设计、管理、调度、运维和升级，可以更灵活构建SaaS应用。采用SOA思想技术构建的SaaS服务模式应用系统平台，在业务扩展，业务重组和业务执行方式的灵活性上具备了天生的优势，借助云计算运营本身的低成本特质，让企业能够灵活地适应环境变化而调整业务来提供按需（On demand）服务。</para></sect2>
-		<sect2><title>动态模块系统（OSGi：Open Service Gateway Initiative）</title><para>具体应用的实施技术平台：http://baike.baidu.com/view/362847.htm</para></sect2>
-	</sect1>
-	<sect1>
-		<title>物流信息服务</title>
-		<sect2><title>核心业务信息服务分类</title><para>库存信息，订单信息，配送信息，物品实时追踪，物品交易记录回溯</para></sect2>
-		<sect2><title>信息服务对象</title><para>供应商，生产厂，零售商，运输</para></sect2>
-		<sect2><title>信息服务适用终端</title><para>PC，智能手机，平板电脑的Web浏览器，RFID传感器</para></sect2>
-		<sect2><title>信息分类安全共享</title><para>合同规定，数据隐私，开放程度</para></sect2>
-	</sect1>
+	
 	<sect1>
 		<title>物流控制服务</title>
 		<sect2><title>核心流程分类</title><para>预报，预订，订货，收货，入库，......</para></sect2>
