@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>info.gtech.solutions</groupId>
@@ -22,7 +22,7 @@
          <plugin>
             <groupId>com.agilejava.docbkx</groupId>
             <artifactId>docbkx-fop-support</artifactId>
-            <version>2.0.8</version>
+            <version>2.0.13</version>
             <configuration>
                <sourceDirectory>src/docbkx/resources/</sourceDirectory>
                <targetDirectory>target/fonts/</targetDirectory>
@@ -43,7 +43,7 @@
          <plugin>
             <groupId>com.agilejava.docbkx</groupId>
             <artifactId>docbkx-maven-plugin</artifactId>
-            <version>2.0.8</version>
+            <version>2.0.13</version>
             <configuration>
                <!-- Relative to ${basedir}/src/docbkx -->
                <includes>*_cn.xml</includes>
@@ -52,32 +52,32 @@
                <draftWatermarkImage>src/docbkx/resources/draft.png</draftWatermarkImage>
                <xincludeSupported>true</xincludeSupported>
                <foCustomization>src/docbkx/docbook-fo.xsl</foCustomization>
-               <titleFontFamily>MetaBookLF-Roman</titleFontFamily>
-               <bodyFontFamily>MetaBookLF-Roman</bodyFontFamily>
+               <titleFontFamily>宋体</titleFontFamily>
+               <bodyFontFamily>宋体</bodyFontFamily>
                <!-- Use innovations font -->
-               <fonts>
+              <fonts>
+                <font>
+                  <name>SimSun</name>
+                  <style>normal</style>
+                  <weight>normal</weight>
+                  <embedFile>${basedir}/src/docbkx/resources/simsun.ttf</embedFile>
+                  <metricsFile>${basedir}/target/fonts/simsun-metrics.xml</metricsFile>
+                </font>
                   <font>
-                     <name>MetaBookLF-Roman</name>
-                     <style>normal</style>
-                     <weight>normal</weight>
-                     <embedFile>${basedir}/src/docbkx/resources/MtBkLfRg.ttf</embedFile>
-                     <metricsFile>${basedir}/target/fonts/MtBkLfRg-metrics.xml</metricsFile>
-                  </font>
-                  <font>
-                     <name>MetaBookLF-Roman</name>
+                     <name>SimSun</name>
                      <style>normal</style>
                      <weight>bold</weight>
-                     <embedFile>${basedir}/src/docbkx/resources/MtBdLfRg.TTF</embedFile>
-                     <metricsFile>${basedir}/target/fonts/MtBdLfRg-metrics.xml</metricsFile>
+                  <embedFile>${basedir}/src/docbkx/resources/simsun.ttf</embedFile>
+                  <metricsFile>${basedir}/target/fonts/simsun-metrics.xml</metricsFile>
                   </font>
                   <font>
-                     <name>MetaBookLF-Roman</name>
+                     <name>SimSun</name>
                      <style>italic</style>
                      <weight>normal</weight>
-                     <embedFile>${basedir}/src/docbkx/resources/MtBkLfIt.TTF</embedFile>
-                     <metricsFile>${basedir}/target/fonts/MtBkLfIt-metrics.xml</metricsFile>
-                  </font>
-               </fonts>
+                  <embedFile>${basedir}/src/docbkx/resources/simsun.ttf</embedFile>
+                  <metricsFile>${basedir}/target/fonts/simsun-metrics.xml</metricsFile>
+                  </font>				
+              </fonts> 
                <entities>
                   <entity>
                      <name>version</name>
