@@ -41,13 +41,6 @@
             <xsl:value-of select="//revdescription" />
          </fo:block>
       </fo:block-container>
-      <fo:block-container absolute-position="absolute" left="420pt" top="500pt">
-         <fo:block>
-            <fo:external-graphic content-height="2.0cm"
-               src="src/docbkx/resources/innovationsBG-RGB-300dpi-transparent.png">
-            </fo:external-graphic>
-         </fo:block>
-      </fo:block-container>
    </xsl:template>
 
    <!-- only print toc for books and articles, do not print list of figures or tables etc. -->
