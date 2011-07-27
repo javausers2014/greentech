@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format"
    version='1.0'>
    <xsl:import href="urn:docbkx:stylesheet" />
+<xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
    <fo:declarations>
       <x:xmpmeta xmlns:x="adobe:ns:meta/">
@@ -19,7 +20,8 @@
          </rdf:RDF>
       </x:xmpmeta>
    </fo:declarations>
-
+   
+   <xsl:param name="body.fontset">SimSun</xsl:param>
    <xsl:param name="fop1.extensions" select="1"></xsl:param>
    <xsl:param name="double.sided" select="0"></xsl:param>
 
@@ -238,6 +240,12 @@
       yes
    </xsl:param>
 
+     <xsl:template match="section|sect1|sect2|sect3|sect4|sect5"
+    mode="object.title.markup">
+    <fo:block font-family="${body.font.family}" margin-left="{$title.margin.left}" margin-bottom="3cm" white-space-collapse="false"/>
+  </xsl:template>
+   
+   
    <!-- insert hard page-break -->
    <xsl:template match="processing-instruction('hard-pagebreak')">
       <fo:block break-after='page' />
