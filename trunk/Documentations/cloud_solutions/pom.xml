@@ -23,11 +23,6 @@
             <groupId>com.agilejava.docbkx</groupId>
             <artifactId>docbkx-fop-support</artifactId>
             <version>2.0.13</version>
-            <configuration>
-               <sourceDirectory>src/docbkx/resources/</sourceDirectory>
-               <targetDirectory>target/fonts/</targetDirectory>
-               <ansi>true</ansi>
-            </configuration>
             <executions>
                <execution>
                   <goals>
@@ -52,29 +47,29 @@
                <draftWatermarkImage>src/docbkx/resources/draft.png</draftWatermarkImage>
                <xincludeSupported>true</xincludeSupported>
                <foCustomization>src/docbkx/docbook-fo.xsl</foCustomization>
-               <titleFontFamily>宋体</titleFontFamily>
-               <bodyFontFamily>宋体</bodyFontFamily>
+               <titleFontFamily>SimSun</titleFontFamily>
+               <bodyFontFamily>SimSun</bodyFontFamily>
                <!-- Use innovations font -->
               <fonts>
                 <font>
                   <name>SimSun</name>
                   <style>normal</style>
                   <weight>normal</weight>
-                  <embedFile>${basedir}/src/docbkx/resources/simsun.ttf</embedFile>
+                  <embedFile>${basedir}/src/fonts/simsun.ttf</embedFile>
                   <metricsFile>${basedir}/target/fonts/simsun-metrics.xml</metricsFile>
                 </font>
                   <font>
                      <name>SimSun</name>
                      <style>normal</style>
                      <weight>bold</weight>
-                  <embedFile>${basedir}/src/docbkx/resources/simsun.ttf</embedFile>
+                  <embedFile>${basedir}/src/fonts/simsun.ttf</embedFile>
                   <metricsFile>${basedir}/target/fonts/simsun-metrics.xml</metricsFile>
                   </font>
                   <font>
                      <name>SimSun</name>
                      <style>italic</style>
                      <weight>normal</weight>
-                  <embedFile>${basedir}/src/docbkx/resources/simsun.ttf</embedFile>
+                  <embedFile>${basedir}/src/fonts/simsun.ttf</embedFile>
                   <metricsFile>${basedir}/target/fonts/simsun-metrics.xml</metricsFile>
                   </font>				
               </fonts> 
@@ -88,11 +83,18 @@
             <executions>
                <execution>
                   <goals>
-                     <goal>generate-html</goal>
+                     <goal>generate-pdf</goal>
                   </goals>
                   <phase>package</phase>
+				  <configuration>
+					<type>fo</type>
+					<superClassName>com.agilejava.docbkx.maven.AbstractFoMojo</superClassName>
+					<className>DocbkxPdfMojo</className>
+					<pluginSuffix>pdf</pluginSuffix>
+					<targetFileExtension>pdf</targetFileExtension>
+					</configuration>
                </execution>
-            </executions>
+			</executions>
             <dependencies>
                <dependency>
                   <groupId>org.docbook</groupId>
