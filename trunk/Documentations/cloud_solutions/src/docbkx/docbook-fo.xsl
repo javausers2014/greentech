@@ -239,12 +239,12 @@
    <xsl:param name="collect.xref.targets">
       yes
    </xsl:param>
-
+<!--
      <xsl:template match="section|sect1|sect2|sect3|sect4|sect5"
     mode="object.title.markup">
     <fo:block font-family="${body.font.family}" margin-left="{$title.margin.left}" margin-bottom="3cm" white-space-collapse="false"/>
   </xsl:template>
-   
+   -->
    
    <!-- insert hard page-break -->
    <xsl:template match="processing-instruction('hard-pagebreak')">

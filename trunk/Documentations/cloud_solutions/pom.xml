@@ -48,7 +48,7 @@
                <xincludeSupported>true</xincludeSupported>
                <foCustomization>src/docbkx/docbook-fo.xsl</foCustomization>
                <titleFontFamily>SimSun</titleFontFamily>
-               <bodyFontFamily>SimSun</bodyFontFamily>
+               <bodyFontFamily>宋体</bodyFontFamily>
                <!-- Use innovations font -->
               <fonts>
                 <font>
