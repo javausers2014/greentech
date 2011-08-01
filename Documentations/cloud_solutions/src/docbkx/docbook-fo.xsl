@@ -275,7 +275,7 @@
   </xsl:attribute-set>
 
   <!-- Format sidebars -->
-	<xsl:attribute-set name="sidebar.properties">
+  <xsl:attribute-set name="sidebar.properties">
   	<xsl:attribute name="border-top">5pt solid #22AACC</xsl:attribute>
   	<xsl:attribute name="border-bottom">1pt solid #BCBDBC</xsl:attribute>
   	<xsl:attribute name="border-left">1pt solid #BCBDBC</xsl:attribute>

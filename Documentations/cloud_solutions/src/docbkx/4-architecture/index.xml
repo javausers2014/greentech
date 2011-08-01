@@ -91,23 +91,45 @@
 	</sect1>
 	
 	<sect1>
-		<title>业务模型和流程控制</title><para><figure id="figure.5-areas">
-	<title>生产、库存、选址、运输和信息</title>
-			<mediaobject>
-				<imageobject>
-					<imagedata fileref="images/001-5-areas.bmp" format="BMP" scalefit="1" width="80%"/>
-				</imageobject>
-			</mediaobject>
-		</figure>		从企业的角度，其供应链能力主要取决于：生产、库存、选址、运输和信息。这五方面的平衡协调，使企业的供应链在提高吞吐量的同时降低库存和运行成本，其中信息即时共享是提高供应链绩效的核心基础和关键。系统的销售采购管理（SPM）、库存仓库管理（IWM）和配送运输管理（DTM）可以为生产、库存和运输间的调配平衡提供良好的信息平台。企业供应链中各行业用户可以通过共享的平台获得及时的信息资源，对可能出现的需求状况作出快速响应以及采取预防措施。</para>
+		<title>业务模型和流程控制</title>
+		<para>从企业的角度，其供应链能力主要取决于：生产、库存、选址、运输和信息。这五方面的平衡协调，使企业的供应链在提高吞吐量的同时降低库存和运行成本，其中信息即时共享是提高供应链绩效的核心基础和关键。系统的销售采购管理（SPM）、库存仓库管理（IWM）和配送运输管理（DTM）可以为生产、库存和运输间的调配平衡提供良好的信息平台。企业供应链中各行业用户可以通过共享的平台获得及时的信息资源，对可能出现的需求状况作出快速响应以及采取预防措施。
+			<figure id="figure.5-areas">
+				<title>生产、库存、选址、运输和信息</title>
+				<mediaobject>
+					<imageobject>
+						<imagedata fileref="images/001-5-areas.bmp" format="BMP" scalefit="1" width="80%"/>
+					</imageobject>
+				</mediaobject>
+			</figure>
+		从图可以看出信息是处于核心位置，只有将信息充分利用优化其它方面的绩效，达到市场响应性和生产效率性的最佳组合，企业才能获得最大市场份额和利润。
+		</para>
 
-		<sect2><title>供应链结构</title><para><figure id="figure.supplychain-structure">
-	<title>供应链结构</title>
-			<mediaobject>
-				<imageobject>
-					<imagedata fileref="images/001-supplychainstructure.bmp" format="BMP" scalefit="1" width="80%"/>
-				</imageobject>
-			</mediaobject>
-		</figure>		目前供应链的结构如图所示：</para></sect2>
+		<sect2><title>信息共享模型</title>
+			<para>云端物流信息控制平台的主要功能之一，就是提供面向物流链中个行业的信息共享接口。
+				<figure id="figure.supplychain-structure">
+					<title>信息共享</title>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="images/001-infomationsharing.bmp" format="BMP" scalefit="1" width="80%"/>
+						</imageobject>
+					</mediaobject>
+				</figure>
+			利用云端物流信息控制平台，企业物流链可以放弃落后的上下游垂直集成模型，而采用物流链中各环节的“虚拟集成”。在“虚拟集成”的物流链环境中，基于共享信息，各公司企业可以专注于各自的核心业务，充分发挥专业优势，在整体上提高物流链的效率和响应。
+			</para>
+			<para>云端物流信息控制平台的应用层包括销售采购管理（SPM）、库存仓库管理（IWM）、配送运输管理（DTM）以及财务管理（FIN）
+				<figure id="figure.supplychain-structure">
+					<title>信息共享</title>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="images/001-infomationsharing.bmp" format="BMP" scalefit="1" width="80%"/>
+						</imageobject>
+					</mediaobject>
+				</figure>
+			利用云端物流信息控制平台，企业物流链可以放弃落后的上下游垂直集成模型，而采用物流链中各环节的“虚拟集成”。在“虚拟集成”的物流链环境中，基于共享信息，各公司企业可以专注于各自的核心业务，充分发挥专业优势，在整体上提高物流链的效率和响应。
+			</para>
+			
+			
+			</sect2>
 
 
 
