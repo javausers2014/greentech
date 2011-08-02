@@ -29,7 +29,7 @@
    <xsl:template name="book.titlepage.recto">
       <fo:block-container absolute-position="absolute" left="10pt" top="50pt">
          <fo:block>
-            <fo:external-graphic src="src/docbkx/resources/background_titlePage_webtop.png" content-height="8cm">
+            <fo:external-graphic src="src/docbkx/resources/cloudinfoplatform.bmp" content-height="8cm">
             </fo:external-graphic>
          </fo:block>
       </fo:block-container>
