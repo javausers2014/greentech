@@ -2,12 +2,13 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <chapter>
-	<title>服务模块和组件</title>
+	<title>业务流程控制</title>
 	<para>
 	</para>
 	
 	<sect1>
-		<title>物流控制服务</title>
+		<title>物流业务流程</title>
+		<para>w</para>
 		<sect2><title>核心流程分类</title><para>预报，预订，订货，收货，入库，......</para></sect2>
 		<sect2><title>核心流程控制</title><para>预报，预订，订货，收货，入库，</para></sect2>
 	</sect1>	
