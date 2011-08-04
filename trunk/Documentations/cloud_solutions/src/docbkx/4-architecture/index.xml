@@ -13,7 +13,7 @@
 		<para>
 			<itemizedlist>
 				<listitem>
-					<para><emphasis role="bold">面向用户的商业应用平台</emphasis></para><para>基于SaaS运营模式的业务平台，利用各种终端（PC、智能手机、平板电脑的Web浏览器、RFID传感器），可随时随地提供数据信息的录入采集查询和业务流程控制。	按物流企业以及企业物流供应链核心操作：计划、采购、生产、库存、运输，平台支持以下核心服务模块：
+					<para><emphasis role="bold">面向用户的商业应用平台（BAP）</emphasis></para><para>基于SaaS运营模式的业务平台，利用各种终端（PC、智能手机、平板电脑的Web浏览器、RFID传感器），可随时随地提供数据信息的录入采集查询和业务流程控制。	按物流企业以及企业物流供应链核心操作：计划、采购、生产、库存、运输，平台支持以下核心服务模块：
 						<itemizedlist>
 							<listitem><para><emphasis role="bold">销售采购管理（SPM:Sales and Procurement Management）：</emphasis>通过销售管理建立客户档案与合同管理，健全客户信用监控体系；建立对客户订单的动态管理，快速响应客户订单，及时处理销售退/换货需求；建立灵活的销售价格策略和销售折扣管理；销售发票、应收款、成本核算与财务系统集成；销售预测、生产订单、采购订单等的业务应用集成。完善供应商档案管理，建立供应商评价体系；理顺采购询价、采购合同、采购订单、，建立采购价格控制体系；支持采购申请计划的多级审批；理顺采购物料管理，支持采购物料的入库质量检验管理；动态地查看物料库存、采购到货情况；支持采购物料对应以及采购退/换货管理；采购发票、应付款、成本核算等财务系统集成；销售订单、生产订单等业务应用集成。</para></listitem>
 							<listitem><para><emphasis role="bold">库存仓库管理（IWM:Inventory and Warehouse Management）：</emphasis>通过库存物品的入库、出库、移动和盘点等操作对企业的物流进行全面的控制和管理，以达到降低库存、减少资金占用，杜绝物料积压与短缺现象，提高客户服务水平，保证生产经营活动顺利进行的目的。要求管理系统支持仓库、区域、货位等多层次管理；提供物料ABC分类，提供物料的分级、分类管理；支持对库存物品的批次、单件、保质期管理方式；支持分销模式下的内部订单调拨；能够最大/安全库存量，超限报警处理、积压/短缺统计；支持多种仓库盘点，提供存盈、盘亏调整处理；可以动态地查看各种物料库存、各类进/出情况等。</para></listitem>
@@ -22,16 +22,23 @@
 						</itemizedlist>
 					同时，平台还提供一系列辅助业务的工具服务。主要用于:
 					<itemizedlist>
-							<listitem><para>配置客户业务流程模型</para></listitem>
+<!--							<listitem><para>用户业务流程配置</para></listitem>
+							<listitem><para>客户信息管理</para></listitem>
 							<listitem><para>提供数据录入和界面显示支持</para></listitem>
 							<listitem><para>支持外部信息数据处理、导入和消化</para></listitem>
 							<listitem><para>信息查询、动态报告</para></listitem>
+							-->
+					<listitem><para>业务流程管理（BPM）<para></listitem>
+					<listitem><para>客户信息管理（CRM）</para></listitem>
+					<listitem><para>数据信息管理（DIM）</para></listitem>
+					<listitem><para>信息查询报告（RPT）</para></listitem>
+					<listitem><para>界面集成配置（UIC）</para></listitem>
 					</itemizedlist>	
 					就象是洗衣机，洗衣、脱水是核心功能，如果只有这两个功能，那仅仅是老式的双缸。如果加入定时，清洁度识别，自动重复等等辅助控制，那才是全自动洗衣机。才能真正把用户从洗衣这项劳动中解放出来。所以，系统与其说是提供了物流服务，应该说提供了可按业务配置物流服务的服务。
 					</para>
 				</listitem>
 				
-				<listitem><para><emphasis role="bold">后端数据加工处理存储中心 DPC</emphasis>：基于SaaS和PaaS营运模式的数据中心，以信息事物处理平台为中心专注于
+				<listitem><para><emphasis role="bold">后端数据加工处理存储中心 （DPC）</emphasis>：基于SaaS和PaaS营运模式的数据中心，以信息事物处理平台为中心专注于
 					<itemizedlist>
 							<listitem><para>物联网数据安全可靠的海量存储。</para></listitem>
 							<listitem><para>优化数据模型，保证快速的查询分析。</para></listitem>
@@ -39,7 +46,7 @@
 						</itemizedlist>
 				</para></listitem>
 
-				<listitem><para><emphasis role="bold">底层基础设施资源 BIS</emphasis>：按企业自身业务规模和规划，租用现有云计算服务商提供的资源，节省开支。传统方案Vs. 虚拟化解决方案. 传统的服务器＋PC结构??更加适合中小企业的原因，而是因为他认为搭建虚拟化环境存在两个问题，第一是风险高，第二是总体成本也许更高。 </para>
+				<listitem><para><emphasis role="bold">底层基础设施资源 （BIS）</emphasis>：按企业自身业务规模和规划，租用现有云计算服务商提供的资源，节省开支。传统方案Vs. 虚拟化解决方案. 传统的服务器＋PC结构??更加适合中小企业的原因，而是因为他认为搭建虚拟化环境存在两个问题，第一是风险高，第二是总体成本也许更高。 </para>
 				</listitem>
 			</itemizedlist>
 		</para>
@@ -145,20 +152,28 @@
 				</figure>利用云端物流信息控制平台，企业物流链可以不受限于上下游垂直集成模型，而是将业务拓展到“物流链网集成”。在“物流链网集成”环境中，利用共享信息，各结点可以专注于各自的核心业务，充分发挥专业优势。使得物流网链在整体的效率和响应上得到提高。云端物流信息控制平台中销售采购管理（SPM）、库存仓库管理（IWM）和配送运输管理（DTM）等应用可以为客户提供生产、库存和运输等业务管理，同时用户可以通过共享信息资源，对生产、库存和运输进行动态调配平衡，对出现的以及可能出现的需求状况作出快速响应或采取预防措施。
 			</para>
 		</sect2>
+		http://zhidao.baidu.com/question/36470444.html?fr=qrl&cid=774&index=2&fr2=query
+		http://zhidao.baidu.com/question/238285909.html
 		
-		<sect2><title>核心商业服务应用</title><para></para>
-			<sect3><title>销售采购管理（SPM）</title><para>预报，预订，订货，收货，入库，</para></sect3>
-			<sect3><title>库存仓库管理（IWM）</title><para>预报，预订，订货，收货，入库，</para></sect3>			
-			<sect3><title>配送运输管理（DTM）</title><para>预报，预订，订货，收货，入库，</para></sect3>
-			<sect3><title>财务管理 （FIN）</title><para>预报，预订，订货，收货，入库，</para></sect3>
+		<sect2><title>业务服务应用模型</title><para></para>		
+			<sect3><title>核心商业服务应用</title><para>对于企业物流，销售采购管理（SPM）
+与库存仓库管理（IWM）联合使用可以追踪存货的出库信息，把握存货的畅滞信息，从而减少盲目采购，避免库存积压，保障供给，降低采购成本。同时利用财务管理 （FIN）将采购结算成本或销售收入自动记录到账，便于财务部门及时掌握企业的财务状况。
+				<itemizedlist>
+					<listitem><para><emphasis role="bold">销售采购管理（SPM）</emphasis>：在销售管理方面，平台提供客户信息管理、销售订单管理、发货退货请检、销售统计报表等功能，在采购管理方面支持供应商信息管理、采购订单管理、到货请验管理、采购收货对账。</para>					
+					</listitem>
+					<listitem><para><emphasis role="bold">库存仓库管理（IWM）</emphasis>：在库存管理方面，用户可以利用平台提供的统一的交易货单管理（采购订单、售货单以及运货单），在仓库管理方面，平台为用户提供智能库位分配（按货物历史进出频率决定存放位置）、自动提货库位参考、自动盘点和动态库存报警、叉车绿色路径（在运行繁忙时，建议叉车取货次序，减少往复行驶）。</para></listitem>
+					<listitem><para><emphasis role="bold">配送运输管理（DTM）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">财务管理 （FIN）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+			</para></sect3>
+			<sect3><title>辅助工具服务应用</title><para>
+				<itemizedlist>
+					<listitem><para><emphasis role="bold">业务流程管理（BPM）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">客户信息管理（CRM)</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">数据信息管理（DIM）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">信息查询报告（RPT）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">界面集成配置（UIC）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+			</para></sect3>
 		</sect2>
-		
-		<sect2><title>辅助工具服务应用</title><para></para>
-			<sect3><title>客户业务流程配置</title><para>预报，预订，订货，收货，入库，</para></sect3>
-			<sect3><title>数据采集、录入、集成、处理</title><para>预报，预订，订货，收货，入库，</para></sect3>			
-			<sect3><title>信息查询报告</title><para>预报，预订，订货，收货，入库，</para></sect3>
-			<sect3><title>用户交互界面</title><para>预报，预订，订货，收货，入库，</para></sect3>
-		</sect2>	
 	</sect1>	
 </chapter>	
 
