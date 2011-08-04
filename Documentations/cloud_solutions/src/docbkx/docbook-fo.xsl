@@ -43,6 +43,12 @@
             <xsl:value-of select="//revdescription" />
          </fo:block>
       </fo:block-container>
+      <fo:block-container absolute-position="absolute" left="420pt" top="500pt">
+         <fo:block>
+            <fo:external-graphic content-height="2cm" src="src/docbkx/resources/gtech_2cm.png">
+            </fo:external-graphic>
+         </fo:block>
+      </fo:block-container>
    </xsl:template>
 
    <!-- only print toc for books and articles, do not print list of figures or tables etc. -->

@@ -28,7 +28,7 @@
 							<listitem><para>支持外部信息数据处理、导入和消化</para></listitem>
 							<listitem><para>信息查询、动态报告</para></listitem>
 							-->
-					<listitem><para>业务流程管理（BPM）<para></listitem>
+					<listitem><para>业务流程管理（BPM）</para></listitem>
 					<listitem><para>客户信息管理（CRM）</para></listitem>
 					<listitem><para>数据信息管理（DIM）</para></listitem>
 					<listitem><para>信息查询报告（RPT）</para></listitem>
@@ -152,8 +152,7 @@
 				</figure>利用云端物流信息控制平台，企业物流链可以不受限于上下游垂直集成模型，而是将业务拓展到“物流链网集成”。在“物流链网集成”环境中，利用共享信息，各结点可以专注于各自的核心业务，充分发挥专业优势。使得物流网链在整体的效率和响应上得到提高。云端物流信息控制平台中销售采购管理（SPM）、库存仓库管理（IWM）和配送运输管理（DTM）等应用可以为客户提供生产、库存和运输等业务管理，同时用户可以通过共享信息资源，对生产、库存和运输进行动态调配平衡，对出现的以及可能出现的需求状况作出快速响应或采取预防措施。
 			</para>
 		</sect2>
-		http://zhidao.baidu.com/question/36470444.html?fr=qrl&cid=774&index=2&fr2=query
-		http://zhidao.baidu.com/question/238285909.html
+
 		
 		<sect2><title>业务服务应用模型</title><para></para>		
 			<sect3><title>核心商业服务应用</title><para>对于企业物流，销售采购管理（SPM）
@@ -162,20 +161,23 @@
 					<listitem><para><emphasis role="bold">销售采购管理（SPM）</emphasis>：在销售管理方面，平台提供客户信息管理、销售订单管理、发货退货请检、销售统计报表等功能，在采购管理方面支持供应商信息管理、采购订单管理、到货请验管理、采购收货对账。</para>					
 					</listitem>
 					<listitem><para><emphasis role="bold">库存仓库管理（IWM）</emphasis>：在库存管理方面，用户可以利用平台提供的统一的交易货单管理（采购订单、售货单以及运货单），在仓库管理方面，平台为用户提供智能库位分配（按货物历史进出频率决定存放位置）、自动提货库位参考、自动盘点和动态库存报警、叉车绿色路径（在运行繁忙时，建议叉车取货次序，减少往复行驶）。</para></listitem>
-					<listitem><para><emphasis role="bold">配送运输管理（DTM）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">财务管理 （FIN）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">配送运输管理（DTM）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">财务管理 （FIN）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+				</itemizedlist>
 			</para></sect3>
 			<sect3><title>辅助工具服务应用</title><para>
 				<itemizedlist>
-					<listitem><para><emphasis role="bold">业务流程管理（BPM）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">客户信息管理（CRM)</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">数据信息管理（DIM）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">信息查询报告（RPT）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">界面集成配置（UIC）</emphasis>：<para>预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">业务流程管理（BPM）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">客户信息管理（CRM)</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">数据信息管理（DIM）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">信息查询报告（RPT）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+					<listitem><para><emphasis role="bold">界面集成配置（UIC）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
+				</itemizedlist>	
 			</para></sect3>
 		</sect2>
 	</sect1>	
 </chapter>	
-
-
+		http://zhidao.baidu.com/question/36470444.html?fr=qrl&cid=774&index=2&fr2=query
+		http://zhidao.baidu.com/question/238285909.html
+http://baike.baidu.com/view/395772.htm
 
