@@ -13,8 +13,8 @@
 		<para>
 			<itemizedlist>
 				<listitem>
-					<para><emphasis role="bold">面向用户的商业应用平台（BAP）</emphasis></para><para>基于SaaS运营模式的业务云层，利用各种终端（PC、RFID传感器、智能手机、平板电脑的Web浏览器），进行数据信息的录入采集查询和业务流程控制，分业务管理层和基础服务层。业务管理层是建立在基础服务层之上，基础服务层为业务管理层提供可靠的信息共享基础。业务管理层和基础服务层都是以服务云方式运行的，只是二者的云客户不同：前者的客户是用户或终端设备，而后者的云客户是业务管理层。</para>
-					<para>业务管理层主要提供以下管理功能：
+					<para><emphasis role="bold">面向用户的商业应用平台（BAP）</emphasis></para><para>基于SaaS运营模式的应用云，适用于各种终端（PC、RFID传感器、智能手机、平板电脑的Web浏览器），进行信息交换和业务流程控制。应用云层分业务管理层、基础服务层（又分应用和功能组件）。业务管理层是建立在基础服务层之上，依靠基础服务层提供信息共享基础。功能组件是基础服务层的基本组成单位。业务管理层和基础服务层都是以服务云方式运行的，只是二者的云客户不同：前者的客户是用户或终端设备，而后者的云客户是业务管理层。</para>
+					<para>业务管理层以物流业务管理为主，按照业务职责分为：
 						<itemizedlist>
 							<listitem><para><emphasis role="bold">订单管理（OM:Order Management）：</emphasis>通过销售采购管理建立客户档案与合同管理，建立订单的动态管理，快速响应及时处理客户订单，并能根据客户历史数据做出库存预测作为库存仓库管理的参考。</para></listitem>
 							<listitem><para><emphasis role="bold">库存仓库管理（IWM:Inventory and Warehouse Management）：</emphasis>对企业物流进行全面的控制管理，支持区域、仓库、货位等多层次管理；提供库存物品的分级分类管理以及利用RFID做到准确定位；支持内部订单调拨，能够监控最大/安全库存量，具备超限报警处理、积压/短缺统计能力；支持多种仓库盘点，提供存盈、盘亏调整处理；支持动态地查看各种物料库存、各类进/出情况等。</para></listitem>
@@ -22,7 +22,7 @@
 							<listitem><para><emphasis role="bold">财务管理 （FIN: Financial Management）：</emphasis>在物流系统实施前，财务是一个独立的系统，失去了对业务系统进行监控的功能。但对于中小企业来说，业务管理才是核心。因此，中小企业在物流信息化过程中，迫切希望实现财务系统与采购、销售、应收应付系统集成，实现物流、资金流、信息流的完美协调。</para></listitem>
 						</itemizedlist></para>
 					<para>
-					基础服务层提供主要的技术支持基础，包括RFID感知功能、空间优化算法和GPS定位采集:
+					基础服务层主要是提供基础通用和标准化的管理模块,按照功能定义分为：
 					<itemizedlist>
 						<listitem><para>业务流程管理（BPM）</para></listitem>
 						<listitem><para>客户信息管理（CRM）</para></listitem>
@@ -30,11 +30,22 @@
 						<listitem><para>信息查询报告（RPT）</para></listitem>
 						<listitem><para>界面集成配置（UIC）</para></listitem>
 					</itemizedlist>	
-借助于云技术，更加易于在基础服务层动态增加或隔离技术和管理控制。结果可以使得业务管理层在不中断的服务的状态下活得新的技术支持。
+借助于云技术，更加易于控制基础服务层应用的状态，是得业务层能得到快速的技术支持。基础服务层的结构采用功能组件的模式，为系统的技术扩展和升级提供了良好的环境。结果可以使得业务管理层在不中断的服务的状态下活得新的技术和流程支持。</para>
+					<para>
+					功能组件提供主要的技术支持基础，例如RFID、优化算法和GPS定位采集等:
+					<itemizedlist>
+						<listitem><para>RFID标签初始登记、RFID阅读器驱动适配嵌入、RFID阅读数据预处理</para></listitem>
+						<listitem><para>货柜空间优化、仓库叉车绿色路径优化、货品库位优化、运输路径设计</para></listitem>
+						<listitem><para>定期统计报表图表、业务数据挖掘</para></listitem>
+						<listitem><para>公用事件响应、日程定时触发、事件上调系统</para></listitem>
+						<listitem><para>动态界面生成和热部署、日程定时触发、事件上调系统服务器端推送</para></listitem>
+						<listitem><para>GPS电子地图集成及标注</para></listitem>
+						<listitem><para>外部数据导入、内部数据开放</para></listitem>
+					</itemizedlist>	
 					</para>
 				</listitem>
 				
-				<listitem><para><emphasis role="bold">后端数据加工处理存储中心 （DPC）</emphasis>：基于SaaS和PaaS营运模式的数据中心，以信息事物处理平台为中心专注于
+				<listitem><para><emphasis role="bold">后端数据加工处理存储中心 （DPC）</emphasis>：以信息事物处理平台为中心专注于
 					<itemizedlist>
 							<listitem><para>物联网数据安全可靠的海量存储。</para></listitem>
 							<listitem><para>优化数据模型，保证快速的查询分析。</para></listitem>
