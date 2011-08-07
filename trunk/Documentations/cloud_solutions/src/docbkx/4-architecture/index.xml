@@ -2,14 +2,13 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <chapter>
-	<title>云端物流信息控制平台</title>
+	<title>云端物流信息控制平台：畅通信控</title>
 	<para>畅通信控平台，SaaS物流解决方案，基于标准化业务数据模型，提供多样的业务服务接口和可动态配置的业务处理流程，具有低成本、高可靠性、高移植互用性和高扩展性等特性，可成为现代中小型物流企业所依赖的业务控制中心。采用面向云计算设计思想，该平台的建立将企业原来出资开发IT应用变为按自身业务特点，租用、定制云端服务，大幅降低IT开发、维护、升级成本，加快企业的产业信息化效率。统一规范的接口，使得平台服务还可扩展包括监控型服务（物流监控、污染监控）、查询型服务（智能检索、远程抄表），控制型服务（智能交通、智能家居、路灯控制），扫描型服务（手机钱包、高速公路不停车收费）等。</para>
-	<sect1><title>系统概述</title>	
-		<para>系统由商业应用平台（BAP：Business Application Platform）、数据处理中心（DPC: Data Processing Center）构成。</para>	
-		<sect2>
-			<title>系统服务目标</title>
-			<sect3><title>促进物流企业业务信息化</title>
-				<para>物流信息化的重点是基础数据的采集，信息共享交换。
+	<sect1><title>平台结构设计</title>	
+		<para>平台系统服务设计目标就是要进一步深化企业物流业务信息化，利用云技术将信息化操作推广到更广泛的设备终端，搭建以物联网为基础的新的物流信息平台。物联网作为平台的感知层或感知服务云自动为系统提供终端感知数据。云端物流信息控制平台系统由商业应用平台（BAP：Business Application Platform）、数据处理中心（DPC: Data Processing Center）构成。</para>	
+		<itemizedlist>
+			<listitem><para><emphasis role="bold">促进物流企业业务信息化</emphasis>
+				物流信息化的重点是基础数据的采集，信息共享交换。
 				<itemizedlist>
 					<listitem><para><emphasis role="bold">基础数据的采集</emphasis>：高效、准确、及时是衡量采集系统的基本标准。目前行业采用的采集方式有：
 						<itemizedlist>
@@ -20,26 +19,26 @@
 						</para>
 					</listitem>
 					<listitem><para><emphasis role="bold">信息共享交换</emphasis>：物流系统中的大量信息不仅随时间波动，而且还依赖于气象和经济条件，是不稳定的。因此，物流管理和决策作业与活动，需要实时地分析各种条件，并在最短时间内，给出最佳实施方案。而在物流信息管理系统中需要运用智能规划理论和方法，实现管理和决策的最优化、智能化，可以最合理地利用有限的资源，以最小的消耗，取得最大的经济效益，实现从数据到信息到知识到智慧在物流中的应用。
-					<figure id="figure.supplychain-structure">
-						<title>信息共享</title>
-						<mediaobject>
-							<imageobject>
-								<imagedata fileref="images/001-informationsharing.bmp" format="BMP" scalefit="1" width="80%"/>
-							</imageobject>
-						</mediaobject>
-					</figure>				
+						<figure id="figure.supplychain-structure">
+							<title>信息共享</title>
+							<mediaobject>
+								<imageobject>
+									<imagedata fileref="images/001-informationsharing.bmp" format="BMP" scalefit="1" width="80%"/>
+								</imageobject>
+							</mediaobject>
+						</figure>				
 						<itemizedlist>
 							<listitem><para>数据模型设计：系统的各个服务模块均按统一标准来设计数据模型，避免重复存储保证数据利用率，而且为扩展数据挖掘提供良好的基础。系统各模块因其业务特点，对同一数据有不用形式的使用要求，综合考虑各模块业务中典型事物处理过程来设计数据模型，可以整体提高系统的响应速度和信息的完整准确。同时也便于划分数据的所有权，利于各模块实施不同的分类和安全保护措施。</para></listitem>
 							<listitem><para>数据加工及共享：原始数据只有经简单整理加工后成为预信息或统计信息后，才有共享价值。对内部或外部共享信息进行分析可以综合出辅助决策的信息，结合其他信息来源，对信息进行进一步的统计推断，可以产生决策信息。处理运输记录，可以获得本月的运行费用，从多个月的费用统计，可以看出支出的走势，如果从新闻中得知主要石油输出地发生战乱，那就得决定今后是否要寻找其它的运输方式或运营方式了。系统提供多种预设定的信息展现功能（趋势图和报表），同时提供即时的信息查询入口，便于用户按数据特殊关联组合来查询以及超长时间的批处理配置功能，让用户自行加工数据。</para></listitem>	
 							<listitem><para>信息分类管理：对整个平台而言，数据管理是所有服务的基础。平台的服务都是围绕着数据信息来完成的。各个业务流程也都是根据数据的内容来执行，统一的基础数据标准保证了信息的准确性，统一的编码格式和传输协议，可以保证信息在平台范围内的共享，避免在平台的不同服务模块中出现二义性。信息加工正从批处理形式向联机处理形式发展，从事后处理为中心向实时处理发展，这种趋势要求系统具备快速灵活且可扩展的信息管理模式。系统的软件构架保证了管理的灵活性和扩展性。系统优秀的数据模型，使得实时处理即时响应成为可能。系统提供可配置的信息实时监控功能，能实时地把变化推送到任何指定的设备。</para></listitem>
-						</itemizedlist>	</para>			
+						</itemizedlist>	
+						</para>			
 					</listitem>	
 				</itemizedlist>			
 				</para>		
-			</sect3>
-			
-			<sect3><title>多种对象用户及适用终端</title>
-				<para>
+			</listitem>
+
+			<listitem><para><emphasis role="bold">多种对象用户及适用终端</emphasis>				物流信息化不仅要在原始数据模型上做到尽可能的全面，而且在定义服务对象上也要尽可能包括整个物流链中各个行业的操作、管理和决策人员。需要根据他们各自的工作性质和环境来决定信息以最合适的方式传送到用户手中。实际的例子就是：仓库现场的入库操作员，他只希望数据以最简洁明确的方式快速显示或录入，不会象管理或决策层需要某个阶段的总结或趋势图标。考虑到使用者的职业特性，平台在设计提供的服务时，必须考虑使用不同的实现技术，来保证系统能最有效地帮助使用者，而不是需要使用者花费过多的时间精力来学习最后造成更低的工作效率。这种统一系统中面向不同用户体验的实现方式对软件组件架构是一项挑战，要求系统能同时支持多种显示方式和处理过程。任何能接入网络的设备都是平台可能的采集、显示、控制或执行端，包括PC，手机，平板电脑，RFID传感器甚至任何可以用既定协议来操作的设备例如网络电视。也就是物联网的终端设备。平台的服务宗旨就是实时地将用户要求的信息或操作准确及时地发送到指定的设备，并将新的信息自动及时准确地发送到用户指定的设备。
 				<figure id="figure.cloudInfoplatform-devices">
 					<title>适用终端设备</title>
 					<mediaobject>
@@ -47,10 +46,10 @@
 							<imagedata fileref="images/001-cloudInfoplatform.bmp" format="BMP" scalefit="1" width="80%"/>
 						</imageobject>
 					</mediaobject>
-				</figure>物流信息化不仅要在原始数据模型上做到尽可能的全面，而且在定义服务对象上也要尽可能包括整个物流链中各个行业的操作、管理和决策人员。需要根据他们各自的工作性质和环境来决定信息以最合适的方式传送到用户手中。实际的例子就是：仓库现场的入库操作员，他只希望数据以最简洁明确的方式快速显示或录入，不会象管理或决策层需要某个阶段的总结或趋势图标。考虑到使用者的职业特性，平台在设计提供的服务时，必须考虑使用不同的实现技术，来保证系统能最有效地帮助使用者，而不是需要使用者花费过多的时间精力来学习最后造成更低的工作效率。这种统一系统中面向不同用户体验的实现方式对软件组件架构是一项挑战，要求系统能同时支持多种显示方式和处理过程。任何能接入网络的设备都是平台可能的采集、显示、控制或执行端，包括PC，手机，平板电脑，RFID传感器甚至任何可以用既定协议来操作的设备例如网络电视。也就是物联网的终端设备。平台的服务宗旨就是实时地将用户要求的信息或操作准确及时地发送到指定的设备，并将新的信息自动及时准确地发送到用户指定的设备。
+				</figure>
 				</para>
-			</sect3>
-		</sect2>
+			</listitem>
+		</itemizedlist>
 		
 		<sect2>
 			<title>系统云服务构架</title>	
@@ -60,7 +59,7 @@
 						<para><emphasis role="bold">面向用户的商业应用平台（BAP）</emphasis></para><para>基于SaaS运营模式的应用云，适用于各种终端（PC、RFID传感器、智能手机、平板电脑的Web浏览器），进行信息交换和业务流程控制。应用云层分业务管理层、基础服务层（又分应用和功能组件）。业务管理层是建立在基础服务层之上，依靠基础服务层提供信息共享基础。功能组件是基础服务层的基本组成单位。业务管理层和基础服务层都是以服务云方式运行的，只是二者的云客户不同：前者的客户是用户或终端设备，而后者的云客户是业务管理层。</para>
 						<para>业务管理层以物流业务管理为主，按照业务职责分为：
 						<itemizedlist>
-							<listitem><para><emphasis role="bold">订单管理（OM:Order Management）：</emphasis>通过销售采购管理建立客户档案与合同管理，建立订单的动态管理，快速响应及时处理客户订单，并能根据客户历史数据做出库存预测作为库存仓库管理的参考。</para></listitem>
+							<listitem><para><emphasis role="bold">订单管理（ODM:Order Management）：</emphasis>通过销售采购管理建立客户档案与合同管理，建立订单的动态管理，快速响应及时处理客户订单，并能根据客户历史数据做出库存预测作为库存仓库管理的参考。</para></listitem>
 							<listitem><para><emphasis role="bold">库存仓库管理（IWM:Inventory and Warehouse Management）：</emphasis>支持区域、仓库、货位等多层次管理；提供库存物品的分级分类管理以及利用RFID做到准确定位；支持内部订单调拨，能够监控最大/安全库存量，具备超限报警处理、积压/短缺统计能力；支持多种仓库盘点，提供存盈、盘亏调整处理；支持动态地查看各种物料库存、各类进/出情况等。</para></listitem>
 							<listitem><para><emphasis role="bold">运输配送管理（TDM:Transportation and Distribution Management）：</emphasis>适应运输和配送的业务要求，提供更快更准确的信息响应。对于运输业务，系统提供公共信息汇集管理，提供包括天气、路况以及收费的信息，支持仓库区域和路线运输的优化，提供实时或定期跟踪监控，在配送方面，区域划分、车辆配载调度以及配送次序安排，都有专门的控制管理， 同时也考虑直接转运、线路任务汇集式等算法问题。</para></listitem>
 							<listitem><para><emphasis role="bold">财务管理 （FIN: Financial Management）：</emphasis>尽管业务管理是核心，但实现财务系统与其他系统集成，实现货物流、资金流、信息流的完美协调是物流信息化的一个重要指标。</para></listitem>
@@ -69,11 +68,11 @@
 						<para>
 						基础服务层主要是提供基础通用和标准化的管理模块,按照功能定义分为：
 						<itemizedlist>
-							<listitem><para>业务流程管理（BPM）</para></listitem>
-							<listitem><para>客户信息管理（CRM）</para></listitem>
-							<listitem><para>数据采集管理（DCM）</para></listitem>
-							<listitem><para>信息查询报告（RPT）</para></listitem>
-							<listitem><para>界面集成配置（UIC）</para></listitem>
+							<listitem><para><emphasis role="bold">业务流程管理（BPM）：</emphasis></para></listitem>
+							<listitem><para><emphasis role="bold">客户信息管理（CRM）：</emphasis></para></listitem>
+							<listitem><para><emphasis role="bold">数据采集管理（DCM）：</emphasis></para></listitem>
+							<listitem><para><emphasis role="bold">信息查询报告（RPT）：</emphasis></para></listitem>
+							<listitem><para><emphasis role="bold">界面集成配置（UIC）：</emphasis></para></listitem>
 						</itemizedlist>	借助于云计算所倡导的面向服务的松耦合结构，可以动态控制和调整基础服务层应用，为业务管理层提供快速的技术支持。基础服务层采用的功能组件的结构模式，为系统的技术扩展和升级提供了良好的构架基础。对于最终用户而言，就是可以得到在不中断业务管理层服务的状态下得到新技术和流程的支持。
 						</para>
 						<para>
@@ -122,8 +121,7 @@
 		</sect2>	
 	</sect1>
 	
-	<sect1>
-		<title>信息共享平台模型</title><para></para>
+	<sect1><title>信息共享平台模型</title><para></para>
 		<sect2><title>信息是物流的核心</title>
 			<para>	物流存在于各行各业，只要企业单位有物资进出，材料购买，产品生产销售，就有物流，就成为物流供应链中的一个或多个结点，就需要进行物流管理。随着咨询和交通的发展，竞争的日益加剧，传统的单一上下游垂直集成模型已经不能满足业务发展需要。链中的各个企业基于商业效率考虑，开始采用多元的进出货渠道，以及更灵活的链结构。物流业务分工变得更细致，在供应链性能方面，对灵活响应和效率的要求愈来愈高。
 				<figure id="figure.stream">
@@ -156,25 +154,11 @@
 
 		
 		<sect2><title>业务服务应用模型</title><para></para>		
-			<sect3><title>核心商业服务应用</title><para>对于企业物流，销售采购管理（SPM）
-与库存仓库管理（IWM）联合使用可以追踪存货的出库信息，把握存货的畅滞信息，从而减少盲目采购，避免库存积压，保障供给，降低采购成本。同时利用财务管理 （FIN）将采购结算成本或销售收入自动记录到账，便于财务部门及时掌握企业的财务状况。
-				<itemizedlist>
-					<listitem><para><emphasis role="bold">销售采购管理（SPM）</emphasis>：在销售管理方面，平台提供客户信息管理、销售订单管理、发货退货请检、销售统计报表等功能，在采购管理方面支持供应商信息管理、采购订单管理、到货请验管理、采购收货对账。</para>					
-					</listitem>
-					<listitem><para><emphasis role="bold">库存仓库管理（IWM）</emphasis>：库存仓库管理（IWM）不仅为用户提供的统一的交易货单管理（采购订单、售货单以及运货单），而且在仓库管理方面，平台为用户提供智能库位分配（按货物历史进出频率决定存放位置）、自动提货库位参考、自动盘点和动态库存报警、叉车绿色路径（在运行繁忙时，建议叉车取货次序，减少往复行驶）。同时，仓储管理在配送运输管理中也占有重要位置，平台也为此提供了装卸货预处理管理，</para></listitem>
-					<listitem><para><emphasis role="bold">运输配送管理（TDM）</emphasis>：在运输管理方面，平台支持集装运输业务和联合运输业务，并提供结合GPS的实时车辆追踪和路程设计的动态优化管理。在配送管理上，装箱空间优化、集货和配货管理、装卸货预处理管理都能为业者节省大量时间和资源。</para></listitem>
-					<listitem><para><emphasis role="bold">财务管理 （FIN）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
-				</itemizedlist>
+			<sect3><title>核心商业服务应用</title><para>在实际业务操作中，订单管理（ODM）、库存仓库管理（IWM）和运输配送管理（TDM）统一协调运行，订单一旦生成，数据流即可产生，信息流启动，同时货物流亦在系统中处于全程虚拟完成。根据订单信息，运输管理可以根据历史记录预测货物到库时间；库存管理会检查所有等待中的出货要求，制定出货单的提货工作安排；仓库管理可以制定合理的库位预留或内部库位调整的工作安排；配送管理需要进行可能的转运任务安排；运输管理也要根据提货出货的安排来制定车辆和路线的安排和设计。当然，所有应用目前还只是在“准备”状态，货物流的路径已经规划完成。当货物一旦到库，各应用就会按货物的状态来启动相应的操作。当产生状态偏差时，提示信息或警报将以设定的方式即刻推送到指定的接受人和接受设备。财务管理 （FIN）将全程自动获得货物流状态，并记录到账，资金流启动必需的数据基础已经具备。
+				
 			</para></sect3>
-			<sect3><title>辅助工具服务应用</title><para>
-				<itemizedlist>
-					<listitem><para><emphasis role="bold">业务流程管理（BPM）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">客户信息管理（CRM)</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">数据信息管理（DIM）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">信息查询报告（RPT）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
-					<listitem><para><emphasis role="bold">界面集成配置（UIC）</emphasis>：预报，预订，订货，收货，入库，</para></listitem>
-				</itemizedlist>	
-			</para></sect3>
+			
+
 		</sect2>
 	</sect1>	
 </chapter>	
