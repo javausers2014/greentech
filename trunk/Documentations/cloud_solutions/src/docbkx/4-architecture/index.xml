@@ -109,23 +109,23 @@
 
             <para>基础服务层主要是提供基础通用和标准化的管理模块,按照功能定义分为： <itemizedlist>
                 <listitem>
-                  <para><emphasis role="bold">业务流程管理（BPM）：</emphasis></para>
+                  <para><emphasis role="bold">业务流程管理（BPM）：</emphasis>×××加点啥？×××</para>
                 </listitem>
 
                 <listitem>
-                  <para><emphasis role="bold">客户信息管理（CRM）：</emphasis></para>
+                  <para><emphasis role="bold">客户信息管理（CRM）：</emphasis>×××加点啥？×××</para>
                 </listitem>
 
                 <listitem>
-                  <para><emphasis role="bold">数据采集管理（DCM）：</emphasis></para>
+                  <para><emphasis role="bold">数据采集管理（DCM）：</emphasis>×××加点啥？×××</para>
                 </listitem>
 
                 <listitem>
-                  <para><emphasis role="bold">信息查询报告（RPT）：</emphasis></para>
+                  <para><emphasis role="bold">信息查询报告（RPT）：</emphasis>×××加点啥？×××</para>
                 </listitem>
 
                 <listitem>
-                  <para><emphasis role="bold">界面集成配置（UIC）：</emphasis></para>
+                  <para><emphasis role="bold">界面集成配置（UIC）：</emphasis>×××加点啥？×××</para>
                 </listitem>
               </itemizedlist>
             借助于云计算所倡导的面向服务的松耦合结构，可以动态控制和调整基础服务层应用，为业务管理层提供快速的技术支持。基础服务层采用的功能组件的结构模式，为系统的技术扩展和升级提供了良好的构架基础。对于最终用户而言，就是可以得到在不中断业务管理层服务的状态下得到新技术和流程的支持。</para>
@@ -144,11 +144,11 @@
                 </listitem>
 
                 <listitem>
-                  <para>公用事件响应、日程定时触发、事件上调系统</para>
+                  <para>公用事件响应、服务器信息订阅推送、日程定时触发、事件上调系统</para>
                 </listitem>
 
                 <listitem>
-                  <para>动态界面生成和热部署、日程定时触发、事件上调系统服务器端推送</para>
+                  <para>动态界面生成和热部署、日程定时触发、事件上调系统</para>
                 </listitem>
 
                 <listitem>
