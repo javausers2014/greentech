@@ -1,3 +1,10 @@
 互动百科-物流信息化 :http://www.hudong.com/wiki/物流信息化; 
 http://www.hudong.com/wiki/第三方物流信息系统
 百度-物流信息化:http://baike.baidu.com/view/1224993.htm;
+
+RFID: 
+
+http://www.pramari.com/solutions/rifidi-edge-server
+http://www.llrp.org/
+http://www.gs1.org/gsmp/kc/epcglobal/llrp
+http://www.alientechnology.com/
