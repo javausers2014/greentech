@@ -57,12 +57,12 @@
           <para><emphasis role="bold">面向多类用户对象及各种适用终端</emphasis>
           物流信息化不仅要在原始数据模型上做到尽可能的全面，而且在定义服务对象上也要尽可能包括整个物流链中各个行业的操作、管理和决策人员。需要根据他们各自的工作性质和环境来决定信息以最合适的方式传送到用户手中。实际的例子就是：仓库现场的入库操作员，他只希望数据以最简洁明确的方式快速显示或录入，不会象管理或决策层需要某个阶段的总结或趋势图标。考虑到使用者的职业特性，平台在设计提供的服务时，必须考虑使用不同的实现技术，来保证系统能最有效地帮助使用者，而不是需要使用者花费过多的时间精力来学习最后造成更低的工作效率。这种统一系统中面向不同用户体验的实现方式对软件组件架构是一项挑战，要求系统能同时支持多种显示方式和处理过程。任何能接入网络的设备都是平台可能的采集、显示、控制或执行端，包括PC，手机，平板电脑，RFID传感器甚至任何可以用既定协议来操作的设备例如网络电视。也就是物联网的终端设备。平台的服务宗旨就是实时地将用户要求的信息或操作准确及时地发送到指定的设备，并将新的信息自动及时准确地发送到用户指定的设备。
           <figure id="figure.cloudInfoplatform-devices">
-              <title>适用终端设备</title>
+              <title>多类用户适用终端设备</title>
 
               <mediaobject>
                 <imageobject>
                   <imagedata align="center"
-                             fileref="images/001-cloudInfoplatform.bmp"
+                             fileref="images/001-cloudInfoplatform-apps.bmp"
                              format="BMP" scalefit="1" valign="middle"
                              width="80%" />
                 </imageobject>
@@ -72,10 +72,9 @@
       </itemizedlist></para>
 	</sect2>
     <sect2><title>云端物流信息控制平台服务构架</title>
-
       <para><itemizedlist>
 	  <listitem>
-            <para><emphasis role="bold">物联网数据采集网络（IoT of Data Collection）××××× 待改进 !××××× </emphasis>物联网与其说是网络，不如说是业务和应用。其存在与否，实用与否不在于RFID或其它感知设备，关键是在于利用这些感知原件的应用。云端物流信息控制平台是将RFID作为重要的数据采集源与其业务管理和基础服务精密结合，采用定期或主动式的扫描采集方式，对物理对象进行监控。目前，RFID主要应用在自动库位选择（系统决定托盘和库位的对用，操作即为扫描托盘标签值以及库位标签值，确定是否符合系统的配对）、自动提货确认。在下阶段开发中，计划在装卸过程中引入RFID和GPS，以便跟踪运输中货物，并根据地理位置预测达到时间，准备收货操作。物联网和RFID促进了多种业务操作的自动化，在平台实际运营中还会有更多的业务要求。</para>
+            <para><emphasis role="bold">物联网数据采集网络（IoT of Data Collection）××××× 待改进 !××××× </emphasis>物联网与其说是网络，不如说是业务和应用。RFID或其它感知设备仅仅是最底层的技术实现之一，关键部分是在于控制和管理底层感知数据的应用层。云端物流信息控制平台是将RFID作为重要的数据采集源与其业务管理和基础服务精密结合，采用定期或主动式的扫描采集方式，对物理对象进行监控。目前，RFID主要应用在自动库位选择（系统决定托盘和库位的对用，操作即为扫描托盘标签值以及库位标签值，确定是否符合系统的配对）、自动提货确认。在下阶段开发中，计划在装卸过程中引入RFID和GPS，以便跟踪运输中货物，并根据地理位置预测达到时间，准备收货操作。物联网和RFID促进了多种业务操作的自动化，在平台实际运营中还会有更多的业务要求。</para>
 </listitem>
           <listitem>
             <para><emphasis role="bold">面向用户的商业应用平台（BAP）</emphasis></para>
@@ -105,7 +104,18 @@
                   <para><emphasis role="bold">财务管理 （FIN: Financial
                   Management）：</emphasis>尽管业务管理是核心，但实现财务系统与其他系统集成，实现货物流、资金流、信息流的完美协调是物流信息化的一个重要指标。</para>
                 </listitem>
-              </itemizedlist></para>
+              </itemizedlist>
+			  <figure id="figure.service-structure">
+              <title>服务构架</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata align="center"
+                             fileref="images/001-cloudInfoplatform-apps2.bmp"
+                             format="BMP" scalefit="1" valign="middle"
+                             width="80%" />
+                </imageobject>
+              </mediaobject>
+            </figure></para>
 
             <para>基础服务层主要是提供基础通用和标准化的管理模块,按照功能定义分为： <itemizedlist>
                 <listitem>
@@ -175,40 +185,6 @@
           </listitem>
         </itemizedlist></para>
     </sect2>
-
-    <sect2><title>系统模型设计的架构思想</title>
-
-      <para>系统模型设计必须保证最终产品具备以下性能：信息标准化、服务模块化、功能组件化、运维动态化。</para>
-
-      <sect3>
-        <title>宏观系统服务架构：面向服务架构（SOA）</title>
-
-        <para>系统在设计开发过程均采用国际先进的建模思想和实现技术。在定义服务和设计构架模型方面，采用SOA作为建模思想。</para>
-
-        <para>SOA，面向服务架构或面向服务体系结构是一个组件模型，它将应用程序的不同服务（功能单元）通过之间契定的合约接口联系起来。合约接口仅仅考虑双方的服务内容而独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在该系统中的各种服务能够以统一的方式和进行交互。从业务角度说，SOA的思想就是针对企业的一些旧的软件体系重新利用并整合，构建一套松散耦合的软件系统，同时也能方便的结合新的软件共同服务于企业的一个具备包容性和扩展性的企业级的体系模型。从技术上讲，SOA实际上是系统分析设计思想的进一步发展，它的思想超出了对象的概念，一切都以服务为核心，而服务由组件构成，组件是若干操作的集合，操作对应具体实现的程序函数。服务是通过对业务过程模型的分析而识别出来的。每个服务能够实现若干功能，这些功能由组件而不是操作来实现。组件是操作的调用集合，是服务功能实现的最小单位，而不是程序实现的最小单位。组件的职责可以由仅一个程序应用提供完成也可由多个程序应用的各种组合来完成。SOA更注重在运行状态时，应用程序所能提供的服务，而不是应用在设计时的功能目标。所以在具体实现上，只要能提供服务的技术都可以实现SOA思想，如Web
-        Service、RMI、JMS、MQ以及RESTful。另外还需要安全性、策略管理、可靠消息传递以及会计系统的支持。</para>
-
-        <para>云计算SaaS中的服务与SOA里的服务是两个概念，SOA中的服务是指IT技术服务;SaaS中的服务是指运营服务，是一种盈利模式。SaaS需要一个技术平台，SOA相关技术可以为这个技术平台提供服务设计、管理、调度、运维和升级，可以更灵活构建SaaS应用。采用SOA思想技术构建的SaaS服务模式应用系统平台，在业务扩展，业务重组和业务执行方式的灵活性上具备了天生的优势，借助云计算运营本身的低成本特质，让企业能够灵活地适应环境变化而调整业务来提供按需（On
-        demand）服务。</para>
-      </sect3>
-
-      <sect3>
-        <title>具体底层动态组件：软件组件架构（OSGi：Open Service Gateway Initiative）</title>
-
-        <para>在实现服务模块技术方面，采用了目前流行的组件架构OSGi，依据OSGi的标准来设计定义功能组件。</para>
-
-        <para>OSGI是Open Service Gateway
-        Initiative的简称，该组织建立于1999年，是一个非赢利机构，旨在建立一个开放的服务规范，为通过网络向设备提供服务建立开放的标准。
-        OSGi规范为网络服务定义了一个标准的、面向组件的计算环境。将OSGi服务平台添加到一个网络设备中，可以为其增加在网络的任何地方管理组件的生命周期的能力。软件组件可以从运行中被安装、升级或者移除而不需要中断设备的操作。软件组件可以动态的发现和使用其他库或者应用程序。OSGi联盟已经开发出很多标准组件接口，从普通的功能如：HTTP服务器、配置、日志、安全、用户管理、XML等等很多。统一标准的插件机制可以使这些组件满足不同用户的不同需求。
-        软件组件架构致力于一个软件开发中越来越大的问题：大量的基础配置需要开发和维护。标准化的OSGI组件架构显然可以简化这个配置过程。</para>
-      </sect3>
-
-      <sect3>
-        <title>整体企业级集成构架（Enterprise Architecture：EA）</title>
-
-        <para>××××× 内容待定 ××××××</para>
-      </sect3>
-    </sect2>
   </sect1>
 
   <sect1>
@@ -216,46 +192,7 @@
 
     <para></para>
 
-    <sect2>
-      <title>信息是物流的核心</title>
 
-      <para>物流存在于各行各业，只要企业单位有物资进出，材料购买，产品生产销售，就有物流，就成为物流供应链中的一个或多个结点，就需要进行物流管理。随着咨询和交通的发展，竞争的日益加剧，传统的单一上下游垂直集成模型已经不能满足业务发展需要。链中的各个企业基于商业效率考虑，开始采用多元的进出货渠道，以及更灵活的链结构。物流业务分工变得更细致，在供应链性能方面，对灵活响应和效率的要求愈来愈高。
-      <figure id="figure.stream">
-          <title>物资供应模型</title>
-
-          <mediaobject>
-            <imageobject>
-              <imagedata align="center"
-                         fileref="images/001-supplychainstructure.bmp"
-                         format="BMP" scalefit="1" valign="middle" width="60%" />
-            </imageobject>
-          </mediaobject>
-        </figure>
-      图中所示的模型中的流已经不再是单向的，而是趋于网状发展的结构。网中每个结点都需要考虑进出货、库存的问题。即使是货运单位，当考虑到路径的优化再组合时，也得借助于临时的存储来完成途中装卸重组。从企业的角度，其供应链性能主要取决于生产、库存、选址、运输和信息五方面。这五方面的平衡协调，使企业的供应链在提高吞吐量的同时降低库存和运行成本。其中信息共享是提高供应链绩效的核心基础和关键。
-      <figure id="figure.5-areas">
-          <title>生产、库存、选址、运输和信息</title>
-
-          <mediaobject>
-            <imageobject>
-              <imagedata align="center" fileref="images/001-5-areas.bmp"
-                         format="BMP" scalefit="1" valign="middle" width="50%" />
-            </imageobject>
-          </mediaobject>
-        </figure>
-      从图可以看出信息是处于核心位置，只有将信息充分利用才能优化其它方面的绩效，达到市场响应性和生产效率性的最佳组合，企业才能获得最大市场份额和利润。
-      云端物流信息控制平台的主要功能之一，就是提供面向物流行业共用的信息共享接口，将信息标准化，达到最充分利用。平台应用的设备包容性,使企业用户可以更灵活地制定业务运作方式，充分利用有限的资源和时间来获得最大的效益。
-      <figure id="figure.supplychain-structure2">
-          <title>客户应用</title>
-
-          <mediaobject>
-            <imageobject>
-              <imagedata align="center"
-                         fileref="images/001-cloudInfoplatform-apps.bmp"
-                         format="BMP" scalefit="1" width="80%" />
-            </imageobject>
-          </mediaobject>
-        </figure>利用云端物流信息控制平台，企业物流链可以不受限于上下游垂直集成模型，而是将业务拓展到“物流链网集成”。在“物流链网集成”环境中，利用共享信息，各结点可以专注于各自的核心业务，充分发挥专业优势。使得物流网链在整体的效率和响应上得到提高。云端物流信息控制平台中销售采购管理（SPM）、库存仓库管理（IWM）和运输配送管理（DTM）等应用可以为客户提供生产、库存和运输等业务管理，同时用户可以通过共享信息资源，对生产、库存和运输进行动态调配平衡，对出现的以及可能出现的需求状况作出快速响应或采取预防措施。</para>
-    </sect2>
 
     <sect2>
       <title>业务服务应用模型</title>

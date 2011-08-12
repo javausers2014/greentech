@@ -70,7 +70,7 @@
    <xsl:template name="book.titlepage.separator"></xsl:template>
 
 	<xsl:attribute-set name="header.table.properties">
-  	<xsl:attribute name="border-bottom-width">12pt</xsl:attribute>
+  	<xsl:attribute name="border-bottom-width">5pt</xsl:attribute>
     <xsl:attribute name="border-bottom-style">solid</xsl:attribute>
     <xsl:attribute name="border-bottom-color">#33AACC</xsl:attribute>
 	</xsl:attribute-set>
