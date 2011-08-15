@@ -25,7 +25,17 @@
   <sect1>
     <title>信息是物流的核心</title>
 
-    <para>随着咨询和交通的发展，竞争的日益加剧，传统的单一上下游信息集成模型已经不能提供开创新业务的需要。物流各个企业基于商业效率考虑，开始采用多元的进出货渠道，以及更灵活的业务操作结构。物流业务分工变得更细致，对灵活响应和效率的要求愈来愈高。
+    <para>决定物流链性能的因素为生产、库存、选址、运输和信息，其中信息共享是提高物流链绩效的核心基础和关键。
+    <figure id="figure.5-areas">
+        <title>生产、库存、选址、运输和信息</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata align="center" fileref="images/3-02-5-areas.bmp"
+                       format="BMP" scalefit="1" valign="middle" width="40%" />
+          </imageobject>
+        </mediaobject>
+      </figure>    从图可以看出信息是处于核心位置，只有将信息充分利用才能优化其它方面的绩效，达到市场响应和生产效率的最佳组合，才能获得最大利润。随着咨询和交通的发展，竞争的日益加剧，传统的信息上下游集成模型已经不能提供开创新业务的需要。物流业者需要可以灵活配置的业务管理系统，而且对信息的即时性，准确性要求愈来愈高。信息流已趋呈网状发展
     <figure id="figure.stream">
         <title>物流信息集成模型</title>
 
@@ -33,51 +43,37 @@
           <imageobject>
             <imagedata align="center"
                        fileref="images/3-01-supplychainstructure.bmp"
-                       format="BMP" scalefit="1" valign="middle" width="60%" />
+                       format="BMP" scalefit="1" valign="middle" width="75%" />
           </imageobject>
         </mediaobject>
-      </figure>
-    图中所示的模型已经不再是上下游垂直，而是趋于网状发展。决定物流链性能的因素为生产、库存、选址、运输和信息，其中信息共享是提高物流链绩效的核心基础和关键。
-    <figure id="figure.5-areas">
-        <title>生产、库存、选址、运输和信息</title>
-
-        <mediaobject>
-          <imageobject>
-            <imagedata align="center" fileref="images/3-02-5-areas.bmp"
-                       format="BMP" scalefit="1" valign="middle" width="50%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-    从图可以看出信息是处于核心位置，只有将信息充分利用才能优化其它方面的绩效，达到市场响应和生产效率的最佳组合，才能获得最大利润。</para>
+      </figure></para>
   </sect1>
 
   <sect1>
     <title>第三方物流与第四方物流</title>
 
-    <para>第三方物流(Thrid party logistics， 3PL
-    )是指生产经营企业为集中精力搞好主业，把原来属于自己处理的物流活动，以合同方式委托给专业物流服务企业，同时通过信息系统与物流企业保持密切联系，以达到对物流全程管理控制的一种物流运作与管理方式。
+    <para>第三方物流(Thrid party logistics，3PL)是指生产经营企业为集中精力搞好主业，把原来属于自己处理的物流活动，以合同方式委托给专业物流服务企业，同时通过信息系统与物流企业保持密切联系，以达到对物流全程管理控制的一种物流运作与管理方式。
     <figure id="figure.supplychain-3pl">
         <title>第三方物流服务</title>
 
         <mediaobject>
           <imageobject>
             <imagedata align="center" fileref="images/3-04-3pl.bmp"
-                       format="BMP" scalefit="1" width="80%" />
+                       format="BMP" scalefit="1" width="90%" />
           </imageobject>
         </mediaobject>
       </figure></para>
 
-    <para>第四方物流(Fourth party logistics， 4PL
-    )是一个供应链的集成商，是领导供需双方及第三方物流的力量。它不是物流的直接利益方，而是通过拥有的信息技术、整合能力以及其他资源提供一套完整的供应链解决方案，以此获取一定的利润。它是帮助企业实现降低成本和有效整合资源，并且依靠优秀的第三方物流供应商、技术供应商、管理咨询以及其他增值服务商，为客户提供独特的和广泛的供应链解决方案。</para>
+    <para>第四方物流(Fourth party logistics，4PL)是一个供应链的集成，是领导供需双方及第三方物流的力量。它不是物流的直接利益方，而是通过拥有的信息技术、整合能力以及其他资源提供一套完整的供应链解决方案，以此获取一定的利润。它是帮助企业实现降低成本和有效整合资源，并且依靠优秀的第三方物流供应商、技术供应商、管理咨询以及其他增值服务商，为客户提供独特的和广泛的供应链解决方案。</para>
 
-    <para>第三方物流公司不擅长于对整个供应链进行战略性运作和真正整合供应链流程的相关技术。第四方物流正日益成为一种帮助企业实现持续运作成本降低和区别于传统的外包业务的真正的资产转移。第四方物流它依靠业内最优秀的第三方物流供应商，技术供应商，管理咨询顾问和其他增值服务商，为客户提供一整套供应链解决方案。第四方物流可以使迅速、高质量、低成本的产品运送服务得以实现，将实现零库存的目标距离又缩短。
+    <para>第三方物流公司不具备对整个供应链进行战略性运作和真正整合供应链流程的相关技术。第四方物流管理成为一种帮助企业实现持续运作成本降低和区别于传统的外包业务的真正的资产转移。第四方物流管理依靠业内最优秀的第三方物流供应商，技术供应商，管理咨询顾问和其他增值服务商，为客户提供一整套供应链解决方案，可以使迅速、高质量、低成本的产品运送服务得以实现，将实现零库存的目标距离又缩短。
     <figure id="figure.supplychain-4pl">
         <title>第四方物流服务</title>
 
         <mediaobject>
           <imageobject>
             <imagedata align="center" fileref="images/3-05-4pl-app.bmp"
-                       format="BMP" scalefit="1" valign="middle" width="80%" />
+                       format="BMP" scalefit="1" valign="middle" width="100%" />
           </imageobject>
         </mediaobject>
       </figure></para>
@@ -108,7 +104,7 @@
     <sect2>
       <title>云端物流信息控制平台</title>
 
-      <para>开发云端物流信息控制平台的主要目的就是将信息标准化，制定共用的信息共享接口，集成更多样的设备和协议，达到信息的最充分利用。面向服务的架构方式和应用的动态组件模型模式,使用户可以灵活地制定新的业务运作方式，充分利用有限的资源和时间来获得最大的效益。
+      <para>开发面向云技术的物流信息平台，在技术上能进一步强化信息标准化，制定并集成信息共享接口，达到信息的最充分利用。在物流业务上，促进第三方物流业者从更高一层的视点去处理业务，提高业者的竞争力，促进物流业的发展。平台采用的面向服务的架构方式和应用的动态组件模型模式,使业者可以灵活地制定新的业务运作方式，充分利用有限的资源和时间来获得最大的效益。
       <figure id="figure.supplychain-structure2">
           <title>客户应用</title>
 
@@ -119,7 +115,7 @@
                          format="BMP" scalefit="1" width="80%" />
             </imageobject>
           </mediaobject>
-        </figure>利用云端物流信息控制平台，企业物流信息流可以不受限于上下游集成模型，而是拓展到“物流网”。在“物流网”环境中共享信息，网中各结点可以专注于各自的核心业务，充分发挥专业优势。使得物流物资流在整体的效率和响应上得到提高。云端物流信息控制平台中订单管理（ODM）、库存仓库管理（IWM）和运输配送管理（DTM）等应用可以为客户提供生产、库存和运输等业务管理，同时用户可以通过共享信息资源，对生产、库存和运输进行动态调配平衡，对出现的以及可能出现的需求状况作出快速响应或采取预防措施。</para>
+        </figure>利用云端物流信息控制平台，物流业者可以从高处俯瞰“物流网”，方便及时地掌握全局范围的信息变化，运筹帷幄。利用“物流网”中的共享信息，网中各结点可以专注于各自的核心业务，充分发挥专业优势。使得物流物资流在整体的效率和响应上得到提高。云端物流信息控制平台中订单管理（ODM）、库存仓库管理（IWM）和运输配送管理（DTM）等应用为客户提供订单、库存和运输等业务管理，用户可以对生产、库存和运输进行动态调配平衡，对出现的以及可能出现的需求状况作出快速响应或采取预防措施。</para>
     </sect2>
 
     <sect2>
