@@ -19,7 +19,6 @@ CREATE TABLE PRODUCT (
     SHELF_LIFE                  INTEGER,
     CUST_SHELF_LIFE             INTEGER,
     SHELF_LIFE_UOM              VARCHAR(60),
-    COA_REQUIRED                VARCHAR(60),
     PICKING_MTD                 VARCHAR(60),
     PUTAWAY_MTD                 VARCHAR(60),
     DEFAULT_PUTAWAY_LOC         INTEGER,
@@ -44,8 +43,6 @@ CREATE TABLE PRODUCT (
     STYLE                       VARCHAR(60),
     REPLENISH_MTD               VARCHAR(60),
     PARENT_PROD_CODE            VARCHAR(60),
-    HS_CODE                     VARCHAR(60),
-    MSDS_FILENAME               VARCHAR(300),
     LOT_CNTL_MTD                VARCHAR(60),
     LOT_PREFIX                  VARCHAR(60),
     LOT_NO_SIZE                 INTEGER,
@@ -75,7 +72,6 @@ CREATE TABLE PRODUCT (
     MAX_STOCK_LEVEL             DOUBLE,
     SERVICE_LEVEL               INTEGER,
     SAFETY_STOCK                BIGINT,
-
     RECORDER_POINT              INTEGER,
     CC_ENABLED                  VARCHAR(300),
     LEAD_TIME                   INTEGER,
@@ -86,17 +82,13 @@ CREATE TABLE PRODUCT (
     LAST_CCBY_PROJ_DATE         DATE,
     LAST_CCBY_VAL_DATE          DATE,
     LAST_CCBY_MOV_DATE          DATE,
-
-    CONT_REQ                    VARCHAR(60),
-    REMARK                      VARCHAR(300),
-    BILLING_CLASS               VARCHAR(60),
     PRODUCT_CLASS               VARCHAR(60),
     INB_SERIAL_SCAN_IND         CHAR(1),
     INB_SERIAL_CNTL_MTD         VARCHAR(60),
     OUTB_SERIAL_SCAN_IND        CHAR(1),
     OUTB_SERIAL_CNTL_MTD        VARCHAR(60),
     PACK_TYPE					VARCHAR(60),
-    ACTIVE_IND                  CHAR(1)				NULL NOT NULL
+    ACTIVE_IND                  CHAR(1) NOT NULL
 ); 
 
 drop table OWNER if exists;
