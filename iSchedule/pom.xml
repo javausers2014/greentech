@@ -12,7 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<iarcore.version>0.1-SNAPSHOT</iarcore.version>			
-		<quarzt.version>1.8.5</quarzt.version>
+		<quarzt.version>2.0.0</quarzt.version>
 		<junit.version>4.7</junit.version>
 	</properties>  
   

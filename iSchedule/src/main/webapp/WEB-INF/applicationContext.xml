@@ -71,28 +71,4 @@
 	<bean id="personnelBioServiceProxy" class="com.gtech.iarc.demo.web.PersonnelBioServiceProxy" p:personnelBioService-ref = "personnelBioService"/>		
 	
 	<bean id="UOMService" class="com.gtech.iarc.ipallet.service.core.UOMService" p:baseRepository-ref = "baseRepository"/>
-		
-<!-- For Webtop UI framework -->
-	<bean id="WebtopProvider" class="com.gtech.iarc.ipallet.support.IPalletAppWebtopProvider">
-		<property name="customTemplateModel">
-			<map>
-				<entry key="title" value="iPallet" />
-			</map>
-		</property>
-	</bean>
-
-<!-- Bean for remote service, such as RESTful, DWR and so on -->
-
-	<bean id="UOMCodeRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCodeRestService">
-		<property name="uomService" ref="UOMService"/>
-	</bean>
-	<bean id="UOMCatRestService" class="com.gtech.iarc.ipallet.web.restful.UOMCatRestService">
-		<property name="uomService" ref="UOMService"/>
-	</bean>	
-	<bean id="RemoteStaffService" class="com.gtech.iarc.ipallet.web.dwrproxy.RemoteStaffService">
-		<property name="personnelBioService" ref="personnelBioService"/>
-	</bean>
-<!--
-	<import resource="/gtech-security.xml" />
-	-->
 </beans>

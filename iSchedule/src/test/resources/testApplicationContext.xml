@@ -60,5 +60,5 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>	
 	
-	<bean id="simpleTestScheduledWork" class="com.gtech.iarc.test.ischedule.support.executor.SimpleTestScheduledWork"/>
+	<bean id="simpleTestScheduledWork" class="com.gtech.iarc.testcase.ischedule.support.executor.SimpleTestScheduledWork"/>
 </beans>

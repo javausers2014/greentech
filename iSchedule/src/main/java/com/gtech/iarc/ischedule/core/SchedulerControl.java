@@ -7,9 +7,17 @@ import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.quartz.CronTrigger;
+import org.quartz.Job;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.JobBuilder;
+import org.quartz.CronScheduleBuilder;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.TriggerKey;
+import org.quartz.impl.matchers.GroupMatcher;
+import org.quartz.JobKey;
 
 /**
  * Proxy Class for <b>org.quartz.Scheduler</b><br>
@@ -43,26 +51,24 @@ public class SchedulerControl {
 	/**
 	 * Start the schedule job using Quartz.
 	 */
-	public void activateJob(Class<?> cls, String jobCode,
+	public void activateJob(Class <? extends Job> cls, String jobCode,
 			String jobGroup, Date startTime, Date endTime, String cronExpression)
 			throws SchedulerException, ParseException {
 
-		JobDetail quartzJobDetail = new JobDetail();
-		quartzJobDetail.setName(jobCode);
-		quartzJobDetail.setGroup(jobGroup);
-		quartzJobDetail.setJobClass(cls);
+		JobDetail jobDetail = JobBuilder.newJob(cls).withIdentity(jobCode, jobGroup)
+	    .storeDurably()
+	    .requestRecovery()
+	    .build();
+//		quartzJobDetail.setName(jobCode);
+//		quartzJobDetail.setGroup(jobGroup);
+//		quartzJobDetail.setJobClass(cls);
 
-		CronTrigger trigger = new CronTrigger();
-		trigger.setName(jobCode);
-		trigger.setGroup(jobGroup);
-		trigger.setJobName(jobCode);
-		trigger.setJobGroup(jobGroup);
-		trigger.setStartTime(startTime);
-		trigger.setEndTime(endTime);
-		trigger.setCronExpression(cronExpression);
+		Trigger trigger = TriggerBuilder.newTrigger().withIdentity(jobCode, jobGroup).forJob(jobDetail).startAt(startTime).endAt(endTime)
+		.withSchedule(CronScheduleBuilder.cronSchedule(cronExpression)).build();
 
-		scheduler.scheduleJob(quartzJobDetail, trigger);
-		log.debug("\n Quartz CronTrigger created for Task[" + jobCode
+		
+		scheduler.scheduleJob(jobDetail, trigger);
+		log.debug("\n Quartz Cron Trigger created for Task[" + jobCode
 				+ "], Group[" + jobGroup + "]\n");
 
 	}
@@ -72,7 +78,9 @@ public class SchedulerControl {
 	 */
 	public void deleteJob(String jobCode, String jobGroup)
 			throws SchedulerException {
-		scheduler.deleteJob(jobCode, jobGroup);
+
+		scheduler.deleteJob(JobKey.jobKey(jobCode,jobGroup));
+		
 		log.info("deleteJob - Successfully remove the job from Quartz");
 	}
 
@@ -84,8 +92,8 @@ public class SchedulerControl {
 	public void pauseJob(String jobCode, String jobGroup)
 			throws SchedulerException {
 
-		scheduler.pauseTrigger(jobCode, jobGroup);
-		scheduler.pauseJob(jobCode, jobGroup);
+		scheduler.pauseTrigger(TriggerKey.triggerKey(jobCode, jobGroup));
+		scheduler.pauseJob(JobKey.jobKey(jobCode,jobGroup));
 
 	}
 
@@ -97,7 +105,7 @@ public class SchedulerControl {
 	public void resumeJob(String jobCode, String jobGroup)
 			throws SchedulerException {
 
-		scheduler.resumeJob(jobCode, jobGroup);
+		scheduler.resumeJob(JobKey.jobKey(jobCode,jobGroup));
 
 	}
 
@@ -110,17 +118,11 @@ public class SchedulerControl {
 	public void rescheduleJob(String jobCode,
 			String jobGroup, Date startTime, Date endTime, String cronExpression)
 			throws SchedulerException, ParseException {
+		TriggerKey triggerKey = TriggerKey.triggerKey(jobCode, jobGroup);
+		Trigger newTrigger = TriggerBuilder.newTrigger().withIdentity(jobCode, jobGroup).forJob(jobCode,jobGroup).startAt(startTime).endAt(endTime)
+		.withSchedule(CronScheduleBuilder.cronSchedule(cronExpression)).build();
 
-		CronTrigger trigger = new CronTrigger();
-		trigger.setName(jobCode);
-		trigger.setGroup(jobGroup);
-		trigger.setJobName(jobCode);
-		trigger.setJobGroup(jobGroup);
-		trigger.setStartTime(startTime);
-		trigger.setEndTime(endTime);
-		trigger.setCronExpression(cronExpression);
-		scheduler.rescheduleJob(jobCode, jobGroup, trigger);
-
+		scheduler.rescheduleJob(triggerKey, newTrigger) ;
 	}
 
 	/**
