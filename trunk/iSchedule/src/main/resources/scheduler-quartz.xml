@@ -40,7 +40,7 @@
 		</property>
 		<!--
 		<property name="schedulerListeners">
-			<list><ref bean="y3SchedulerListener"/></list>
+			<list><ref bean="???SchedulerListener"/></list>
 		</property>	
 		-->
 	</bean>

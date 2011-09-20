@@ -44,7 +44,7 @@ public abstract class AbstractScheduledWork implements ScheduledWork {
     }
 	
     public void doIt(JobExecutionContext context) {
-        String scheduledTaskName = context.getJobDetail().getName();
+        String scheduledTaskName = context.getJobDetail().getKey().getName();
         doItNow(scheduledTaskName);
     }
 

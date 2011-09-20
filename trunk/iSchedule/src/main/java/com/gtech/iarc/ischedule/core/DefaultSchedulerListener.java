@@ -1,19 +1,11 @@
 package com.gtech.iarc.ischedule.core;
 
-import java.util.Date;
-import java.util.HashMap;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerListener;
 import org.quartz.Trigger;
-
-import com.gtech.iarc.ischedule.core.model.TaskExecutionAudit;
-import com.gtech.iarc.ischedule.core.model.TaskSchedule;
-import com.gtech.iarc.ischedule.repository.TaskRepository;
-import com.gtech.iarc.ischedule.service.ScheduleConstants;
+import org.quartz.TriggerKey;
 
 
 
@@ -29,266 +21,58 @@ import com.gtech.iarc.ischedule.service.ScheduleConstants;
  * 
  */
 public class DefaultSchedulerListener implements SchedulerListener {
-	
-    private static Log log = LogFactory.getLog(DefaultSchedulerListener.class);
-    private static HashMap<Long, String> statusMap = new HashMap<Long, String>();
-    private static String COMPLETED = "COMPLETED";
-    private static String COMPLETED_WITH_ERROR = "COMPLETED_WITH_ERROR";
-    private static String ERROR = "ERROR";
-
-
-    public synchronized void updateCompletedStatus(Long jobId) {
-        log.debug("Updating COMPLETED status for Job " + jobId);
-
-        String status = (String) statusMap.get(jobId);
-
-        if (null != status) {
-            if (ERROR.equals(status)) {
-                log.debug("Updating COMPLETED_WITH_ERROR status for Job " +
-                    jobId);
-                statusMap.put(jobId, COMPLETED_WITH_ERROR);
-
-                return;
-            }
-        }
-
-        statusMap.put(jobId, COMPLETED);
-    }
-
-
-    public synchronized void updateErrorStatus(Long jobId) {
-        log.debug("Updating ERROR status for Job " + jobId);
-        statusMap.put(jobId, ERROR);
-    }
-
-
-    public boolean isJobCompletedWithError(Long jobId) {
-        String status = (String) statusMap.get(jobId);
-
-        if (null != status) {
-            return COMPLETED_WITH_ERROR.equals(status);
-        }
-
-        return false;
-    }
-    
-    private TaskRepository taskRepository;
-
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#jobScheduled(org.quartz.Trigger)
-     * @param trigger
-     */
-    public void jobScheduled(Trigger trigger) {
-        try {
-        	TaskSchedule job = taskRepository.getTaskScheduleByJobScheduledCode(trigger.getJobName());
-
-            if (job != null) {
-                TaskExecutionAudit jobAudit = new TaskExecutionAudit();
-//                jobAudit.setActiveInd(ArcSchedulerConstants.JOB_ACTIVE_IND);
-//                jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
-//                jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
-
-                jobAudit.setTaskId(job.getId());
-                jobAudit.setStatus(ScheduleConstants.JOB_STATUS_ACTIVE);
-
-               // taskRepository.insertTaskAudit(jobAudit);
-            }
-        } catch (Exception e) {           
-            updateErrorStatus(Long.valueOf(trigger
-                    .getJobGroup()));
-            log.error("jobScheduled - " + e.getMessage());
-            throw new RuntimeException(e.getCause());
-        }
-
-        log.debug("jobScheduled - " + trigger.getJobName() + " of Job Group "
-                + trigger.getJobGroup() + " has been scheduled.");
-        log.info("jobScheduled - " + trigger.getJobName() + " of Job Group "
-                + trigger.getJobGroup() + " has been scheduled.");
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#jobsPaused(java.lang.String, java.lang.String)
-     * @param jobName
-     * @param jobGroup
-     */
-    public void jobsPaused(String jobName, String jobGroup) {
-        try {
-        	TaskSchedule job = taskRepository.getTaskScheduleByJobScheduledCode(jobName);
-
-            TaskExecutionAudit jobAudit = new TaskExecutionAudit();
-//            jobAudit.setActiveInd(ArcSchedulerConstants.JOB_ACTIVE_IND);
-//            jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
-//            jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
-            jobAudit.setTaskId(job.getId());
-            //jobAudit.setRequestedBy(job.getModifiedBy());
-            jobAudit.setStatus(ScheduleConstants.JOB_STATUS_PAUSED);
-
-            //taskRepository.insertTaskAudit(jobAudit);
-        } catch (Exception e) {
-            updateErrorStatus(Long.valueOf(jobGroup));
-            log.error("jobsPaused - " + e.getMessage());
-            throw new RuntimeException(e.getCause());
-        }
-
-        log.info("jobsPaused - " + jobName + " of Job Group " + jobGroup
-                + " has been paused.");
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#jobsResumed(java.lang.String, java.lang.String)
-     * @param jobName
-     * @param jobGroup
-     */
-    public void jobsResumed(String jobName, String jobGroup) {
-        try {
-        	TaskSchedule job = taskRepository.getTaskScheduleByJobScheduledCode(jobName);
-
-            TaskExecutionAudit jobAudit = new TaskExecutionAudit();
-//            jobAudit.setActiveInd(ArcSchedulerConstants.JOB_ACTIVE_IND);
-//            jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
-//            jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
-            jobAudit.setTaskId(job.getId());
-            //jobAudit.setRequestedBy(job.getModifiedBy());
-            jobAudit.setStatus(ScheduleConstants.JOB_STATUS_ACTIVE);
-
-           // taskRepository.insertTaskAudit(jobAudit);
-        } catch (Exception e) {
-            updateErrorStatus(Long.valueOf(jobGroup));
-            log.error("jobsResumed - " + e.getMessage());
-            throw new RuntimeException(e.getCause());
-        }
-
-        log.info("jobsResumed - " + jobName + " of Job Group " + jobGroup
-                + " has been resumed.");
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#jobUnscheduled(java.lang.String, java.lang.String)
-     * @param triggerName
-     * @param triggerGroup
-     */
-    public void jobUnscheduled(String triggerName, String triggerGroup) {
-        try {
-        	TaskSchedule job = taskRepository.getTaskScheduleByJobScheduledCode(triggerName);
-
-            TaskExecutionAudit jobAudit = new TaskExecutionAudit();
-//            jobAudit.setActiveInd(ArcSchedulerConstants.JOB_ACTIVE_IND);
-//            jobAudit.setCreatedBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
-//            jobAudit.setCreatedDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
-//            jobAudit.setInactBy(ArcSchedulerConstants.SCHEDULER_USERNAME);
-//            jobAudit.setInactDate( new Timestamp((Calendar.getInstance()).getTimeInMillis()));
-            jobAudit.setTaskId(job.getId());
-            //jobAudit.setRequestedBy(job.getModifiedBy());
-            jobAudit.setStatus(ScheduleConstants.JOB_STATUS_DELETED);
-
-           // taskRepository.insertTaskAudit(jobAudit);
-        } catch (Exception e) {
-            updateErrorStatus(Long.valueOf(triggerGroup));
-            log.error("triggerFinalized - " + e.getMessage());
-            throw new RuntimeException(e.getCause());
-        }
-
-        log.info("jobUnscheduled - " + triggerName + " of Trigger Group "
-                + triggerGroup + " has been unscheduled.");
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#schedulerError(java.lang.String, org.quartz.SchedulerException)
-     * @param msg
-     * @param cause
-     */
-    public void schedulerError(String msg, SchedulerException cause) {
-        cause.printStackTrace();
-        log.error("schedulerError - Error message: " + msg);
-        log.error("schedulerError - Cause of error: " + cause);
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#schedulerShutdown()
-     */
-    public void schedulerShutdown() {
-        log.info("schedulerShutdown - Scheduler has been shutdown.");
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#triggerFinalized(org.quartz.Trigger)
-     * @param trigger
-     */
-    public void triggerFinalized(Trigger trigger) {
-        try {
-        	TaskSchedule taskSchedule = taskRepository.getTaskScheduleByJobScheduledCode(trigger.getJobName());
-        	taskSchedule.setStatus(ScheduleConstants.JOB_STATUS_COMPLETE);
-            taskRepository.updateTaskSchedule(taskSchedule);
-
-            TaskExecutionAudit jobAudit = new TaskExecutionAudit();
-            jobAudit.setCompleteDate(new Date());
-            jobAudit.setTaskId(taskSchedule.getId());
-
-            if (isJobCompletedWithError(Long.valueOf(trigger
-                    .getJobGroup()))) {
-                jobAudit
-                        .setStatus(ScheduleConstants.JOB_STATUS_COMPLETEWITHERROR);
-            } else {
-                jobAudit.setStatus(ScheduleConstants.JOB_STATUS_COMPLETE);
-            }
-
-           // jobAuditDAO.insertJobAudit(jobAudit);
-        } catch (Exception e) {
-            updateErrorStatus(Long.valueOf(trigger
-                    .getJobGroup()));
-            log.error("triggerFinalized - " + e.getMessage());
-            throw new RuntimeException(e.getCause());
-        }
-
-        log.debug("triggerFinalized - Job ID: " + trigger.getJobGroup());
-        log.info("triggerFinalized - Job ID: " + trigger.getJobGroup());
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#triggersPaused(java.lang.String, java.lang.String)
-     * @param triggerName
-     * @param triggerGroup
-     */
-    public void triggersPaused(String triggerName, String triggerGroup) {
-        log.debug("triggersPaused - " + triggerName + " of Trigger Group "
-                + triggerGroup + " has been paused.");
-        log.info("triggersPaused - " + triggerName + " of Trigger Group "
-                + triggerGroup + " has been paused.");
-    }
-
-    /**
-     * 
-     * @see org.quartz.SchedulerListener#triggersResumed(java.lang.String, java.lang.String)
-     * @param triggerName
-     * @param triggerGroup
-     */
-    public void triggersResumed(String triggerName, String triggerGroup) {
-        log.debug("triggersResumed - " + triggerName + " of Trigger Group "
-                + triggerGroup + " has been resumed.");
-        log.info("triggersResumed - " + triggerName + " of Trigger Group "
-                + triggerGroup + " has been resumed.");
-    }
 
 	public void jobAdded(JobDetail jobDetail) {
+		// TODO Auto-generated method stub
 		
 	}
 
-	
-	public void jobDeleted(String jobName, String groupName) {
+	public void jobDeleted(JobKey jobKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jobPaused(JobKey jobKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jobResumed(JobKey jobKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jobScheduled(Trigger trigger) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jobUnscheduled(TriggerKey triggerKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jobsPaused(String jobGroup) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jobsResumed(String jobGroup) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void schedulerError(String msg, SchedulerException cause) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	public void schedulerInStandbyMode() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void schedulerShutdown() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -302,4 +86,35 @@ public class DefaultSchedulerListener implements SchedulerListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void schedulingDataCleared() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void triggerFinalized(Trigger trigger) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void triggerPaused(TriggerKey triggerKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void triggerResumed(TriggerKey triggerKey) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void triggersPaused(String triggerGroup) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void triggersResumed(String triggerGroup) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

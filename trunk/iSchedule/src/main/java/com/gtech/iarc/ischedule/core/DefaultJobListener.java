@@ -11,16 +11,16 @@ public class DefaultJobListener implements JobListener{
 	}
 
 	public void jobExecutionVetoed(JobExecutionContext context) {
-		System.out.println("jobExecutionVetoed : "+context.getJobDetail().getName());
+		System.out.println("jobExecutionVetoed : "+context.getJobDetail().getKey().getName());
 	}
 
 	public void jobToBeExecuted(JobExecutionContext context) {
-		System.out.println("jobToBeExecuted : "+context.getJobDetail().getName());
+		System.out.println("jobToBeExecuted : "+context.getJobDetail().getKey().getName());
 	}
 
 	public void jobWasExecuted(JobExecutionContext context,
 			JobExecutionException jobException) {
-		System.out.println("jobWasExecuted : "+context.getJobDetail().getName());
+		System.out.println("jobWasExecuted : "+context.getJobDetail().getKey().getName());
 	}
 
 }
